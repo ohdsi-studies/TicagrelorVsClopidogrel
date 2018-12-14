@@ -10,3 +10,5 @@ atlasId,atlasName,cohortId,name
 1027,SCYou:SuddenCardiacDeath,1027,SCYouSuddenCardiacDeath
 1025,SCYou:(outcome)Acute myocardial infarction,1025,SCYououtcomeAcute_myocardial_infarction
 1026,[SCYou]Ischemic stroke,1026,SCYouIschemic_stroke
+20,SCYou:(outcome)any death,20,SCYououtcomeany_death
+1165,SCYou: dyspnea,1165,SCYou_dyspnea

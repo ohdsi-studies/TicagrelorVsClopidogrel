@@ -195,7 +195,9 @@
           1028,
           1027,
           1025,
-          1026
+          1026,
+          20,
+          1165
         ]
       }],
       "cohortMethodAnalysisList": [
@@ -17027,6 +17029,121 @@
       "expressionType": "SIMPLE_EXPRESSION",
       "modifiedBy": null,
       "id": 1026
+    },
+    {
+      "expression": {
+        "ExpressionLimit": {"Type": "First"},
+        "CollapseSettings": {
+          "CollapseType": "ERA",
+          "EraPad": 0
+        },
+        "CensorWindow": null,
+        "ConceptSets": [],
+        "EndStrategy": null,
+        "CensoringCriteria": [],
+        "Title": null,
+        "AdditionalCriteria": null,
+        "QualifiedLimit": {"Type": "First"},
+        "InclusionRules": [],
+        "PrimaryCriteria": {
+          "CriteriaList": [{"Death": {
+            "CorrelatedCriteria": null,
+            "CodesetId": null,
+            "DeathSourceConcept": null,
+            "DeathTypeExclude": false,
+            "DeathType": null,
+            "OccurrenceStartDate": null,
+            "Gender": null,
+            "Age": null
+          }}],
+          "PrimaryCriteriaLimit": {"Type": "First"},
+          "ObservationWindow": {
+            "PostDays": 0,
+            "PriorDays": 0
+          }
+        }
+      },
+      "createdDate": "2017-04-02T16:30:33.890+0900",
+      "createdBy": null,
+      "name": "SCYou:(outcome)any death",
+      "modifiedDate": "2017-05-17T15:04:41.020+0900",
+      "description": "All-cause mortality",
+      "expressionType": "SIMPLE_EXPRESSION",
+      "modifiedBy": null,
+      "id": 20
+    },
+    {
+      "expression": {
+        "ExpressionLimit": {"Type": "All"},
+        "CollapseSettings": {
+          "CollapseType": "ERA",
+          "EraPad": 0
+        },
+        "CensorWindow": {
+          "StartDate": null,
+          "EndDate": null
+        },
+        "ConceptSets": [{
+          "expression": {"items": [{
+            "isExcluded": false,
+            "concept": {
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_ID": 312437,
+              "STANDARD_CONCEPT": "S",
+              "CONCEPT_CODE": "267036007",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_NAME": "Dyspnea",
+              "DOMAIN_ID": "Condition",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "CONCEPT_CLASS_ID": "Clinical Finding",
+              "INVALID_REASON": "V"
+            },
+            "includeMapped": false,
+            "includeDescendants": true
+          }]},
+          "name": "dyspnea",
+          "id": 0
+        }],
+        "EndStrategy": {"DateOffset": {
+          "DateField": "StartDate",
+          "Offset": 1
+        }},
+        "CensoringCriteria": [],
+        "Title": null,
+        "AdditionalCriteria": null,
+        "QualifiedLimit": {"Type": "First"},
+        "InclusionRules": [],
+        "PrimaryCriteria": {
+          "CriteriaList": [{"ConditionOccurrence": {
+            "OccurrenceEndDate": null,
+            "CorrelatedCriteria": null,
+            "ConditionTypeExclude": false,
+            "CodesetId": 0,
+            "ProviderSpecialty": null,
+            "Gender": null,
+            "VisitType": null,
+            "First": null,
+            "OccurrenceStartDate": null,
+            "ConditionType": null,
+            "ConditionSourceConcept": null,
+            "StopReason": null,
+            "Age": null
+          }}],
+          "PrimaryCriteriaLimit": {"Type": "All"},
+          "ObservationWindow": {
+            "PostDays": 0,
+            "PriorDays": 0
+          }
+        }
+      },
+      "createdDate": "2018-12-14T11:10:11.227+0900",
+      "createdBy": null,
+      "name": "SCYou: dyspnea",
+      "modifiedDate": "2018-12-14T13:08:25.650+0900",
+      "description": "dyspnea cohort for outcome",
+      "expressionType": "SIMPLE_EXPRESSION",
+      "modifiedBy": null,
+      "id": 1165
     }
   ],
   "name": "Ticagrelor vs Clopidogrel",
