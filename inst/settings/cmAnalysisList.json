@@ -423,7 +423,7 @@
     "createStudyPopArgs": {
       "restrictToCommonPeriod": false,
       "removeDuplicateSubjects": "keep all",
-      "minDaysAtRisk": 1,
+      "minDaysAtRisk": 364,
       "addExposureDaysToStart": false,
       "riskWindowStart": 1,
       "washoutPeriod": 0,
@@ -1563,7 +1563,7 @@
     "createStudyPopArgs": {
       "restrictToCommonPeriod": false,
       "removeDuplicateSubjects": "keep all",
-      "minDaysAtRisk": 1,
+      "minDaysAtRisk": 364,
       "addExposureDaysToStart": false,
       "riskWindowStart": 1,
       "washoutPeriod": 0,
