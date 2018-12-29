@@ -8,10 +8,10 @@ execute(connectionDetails, cdmDatabaseSchema,
   cohortDatabaseSchema = cdmDatabaseSchema, cohortTable = "cohort",
   oracleTempSchema = cohortDatabaseSchema, outputFolder,
   databaseId = "Unknown", databaseName = "Unknown",
-  databaseDescription = "Unknown", createCohorts = TRUE,
-  synthesizePositiveControls = TRUE, runAnalyses = TRUE,
-  runDiagnostics = TRUE, packageResults = TRUE, maxCores = 4,
-  minCellCount = 5)
+  databaseDescription = "Unknown", country = NULL,
+  createCohorts = TRUE, synthesizePositiveControls = TRUE,
+  runAnalyses = TRUE, runDiagnostics = TRUE, packageResults = TRUE,
+  maxCores = 4, minCellCount = 5)
 }
 \arguments{
 \item{connectionDetails}{An object of type \code{connectionDetails} as created using the
@@ -44,6 +44,8 @@ performance.}
 Synthetic Public Use Files (SynPUFs)').}
 
 \item{databaseDescription}{A short description (several sentences) of the database.}
+
+\item{country}{Coutry name of the database coming from. Currently not supported (Should be NULL)}
 
 \item{createCohorts}{Create the cohortTable table with the exposure and outcome cohorts?}
 

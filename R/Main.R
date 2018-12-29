@@ -44,6 +44,7 @@
 #' @param databaseName         The full name of the database (e.g. 'Medicare Claims
 #'                             Synthetic Public Use Files (SynPUFs)').
 #' @param databaseDescription  A short description (several sentences) of the database.
+#' @param country              Coutry name of the database coming from. Currently not supported (Should be NULL)
 #' @param createCohorts        Create the cohortTable table with the exposure and outcome cohorts?
 #' @param synthesizePositiveControls  Should positive controls be synthesized?
 #' @param runAnalyses          Perform the cohort method analyses?
@@ -80,6 +81,7 @@ execute <- function(connectionDetails,
                     databaseId = "Unknown",
                     databaseName = "Unknown",
                     databaseDescription = "Unknown",
+                    country = NULL,
                     createCohorts = TRUE,
                     synthesizePositiveControls = TRUE,
                     runAnalyses = TRUE,
@@ -129,7 +131,8 @@ execute <- function(connectionDetails,
                     cohortTable = cohortTable,
                     oracleTempSchema = oracleTempSchema,
                     outputFolder = outputFolder,
-                    maxCores = maxCores)
+                    maxCores = maxCores,
+                    country = country)
   }
   
   if (runDiagnostics) {

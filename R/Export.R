@@ -96,7 +96,7 @@ exportAnalyses <- function(outputFolder, exportFolder) {
                       definition = readChar(tempFileName, file.info(tempFileName)$size))
     return(row)
   }
-  cohortMethodAnalysis <- lapply(cmAnalysisList, cmAnalysisToRow)
+  try(cohortMethodAnalysis <- lapply(cmAnalysisList, cmAnalysisToRow))
   cohortMethodAnalysis <- do.call("rbind", cohortMethodAnalysis)
   cohortMethodAnalysis <- unique(cohortMethodAnalysis)
   unlink(tempFileName)
