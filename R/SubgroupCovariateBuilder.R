@@ -103,7 +103,6 @@ getDbSubgroupCovariateData <- function(connection,
     covariates <- DatabaseConnector::querySql.ffdf(connection, sql)
     colnames(covariates) <- SqlRender::snakeCaseToCamelCase(colnames(covariates))
 
-
     sql <- SqlRender::loadRenderTranslateSql("DropSubgroupTempTables.sql",
                                              packageName = "TicagrelorVsClopidogrel",
                                              dbms = connection@dbms,
@@ -127,8 +126,8 @@ getDbSubgroupCovariateData <- function(connection,
                               domainId = "Cohort",
                               startDay = as.numeric(covariateSettings$windowStart),
                               endDay = as.numeric(covariateSettings$windowEnd),
-                              shortTermWindowStart = as.numeric(covariateSettings$shortTermWindowStart), 
-                              MaintenanceWindowEnd = as.numeric(covariateSettings$MaintenanceWindowEnd),
+                              #shortTermWindowStart = as.numeric(covariateSettings$shortTermWindowStart), 
+                              #MaintenanceWindowEnd = as.numeric(covariateSettings$MaintenanceWindowEnd),
                               isBinary = "Y",
                               missingMeansZero = "Y")
     analysisRef <- ff::as.ffdf(analysisRef)

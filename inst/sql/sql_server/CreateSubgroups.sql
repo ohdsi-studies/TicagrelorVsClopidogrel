@@ -137,6 +137,24 @@ FROM (
 	) tmp;
 
 --6. High aspirin maintenance dose(>=300mg)
+SELECT DISTINCT row_id,
+	CAST(6000 + @analysis_id AS BIGINT) AS covariate_id,
+	1 AS covariate_value
+INTO #cov_6
+FROM (
+	SELECT DISTINCT @row_id_field AS row_id
+	FROM @cohort_temp_table c
+	INNER JOIN @cdm_database_schema.drug_exposure co
+		ON c.subject_id = co.person_id
+			AND co.drug_exposure_start_date <= DATEADD(DAY, @window_end, c.cohort_start_date)
+			AND co.drug_exposure_end_date >= DATEADD(DAY, @short_term_window_start, c.cohort_start_date)
+{@cohort_id != -1} ? {			AND c.cohort_definition_id = @cohort_id}
+			AND co.drug_concept_id IN (
+				SELECT descendant_concept_id
+				FROM @cdm_database_schema.concept_ancestor
+				WHERE ancestor_concept_id IN (21600095) /*concepts for proton pump inhibitor (ATC 4th:A02BC) */
+				)
+	) tmp;
 
 /*
 SELECT DISTINCT row_id,
@@ -471,10 +489,10 @@ FROM (
 
 	
 	
-TRUNCATE TABLE #codesets;
+--TRUNCATE TABLE #codesets;
 
-DROP TABLE #codesets;
+--DROP TABLE #codesets;
 
-TRUNCATE TABLE #initial_cohort;
+--TRUNCATE TABLE #initial_cohort;
 
-DROP TABLE #initial_cohort;
+--DROP TABLE #initial_cohort;

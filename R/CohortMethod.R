@@ -46,7 +46,8 @@ runCohortMethod <- function(connectionDetails,
                             cohortTable,
                             oracleTempSchema,
                             outputFolder,
-                            maxCores) {
+                            maxCores,
+                            country = country) {
   cmOutputFolder <- file.path(outputFolder, "cmOutput")
   if (!file.exists(cmOutputFolder)) {
     dir.create(cmOutputFolder)

@@ -36,125 +36,141 @@ createAnalysesDetails <- function(workFolder) {
                                            cvRepetitions = 10,
                                            seed = 1234)
 
-  covariateSettings <-  FeatureExtraction::createCovariateSettings(useDemographicsGender = TRUE,
-                                                                   useDemographicsAge = FALSE, 
-                                                                   useDemographicsAgeGroup = TRUE,
-                                                                   useDemographicsRace = TRUE, 
-                                                                   useDemographicsEthnicity = FALSE,
-                                                                   useDemographicsIndexYear = TRUE, 
-                                                                   useDemographicsIndexMonth = TRUE,
-                                                                   useDemographicsPriorObservationTime = FALSE,
-                                                                   useDemographicsPostObservationTime = FALSE,
-                                                                   useDemographicsTimeInCohort = FALSE,
-                                                                   useDemographicsIndexYearMonth = FALSE,
-                                                                   useConditionOccurrenceAnyTimePrior = FALSE,
-                                                                   useConditionOccurrenceLongTerm = FALSE,
-                                                                   useConditionOccurrenceMediumTerm = FALSE,
-                                                                   useConditionOccurrenceShortTerm = TRUE,
-                                                                   useConditionOccurrencePrimaryInpatientAnyTimePrior = FALSE,
-                                                                   useConditionOccurrencePrimaryInpatientLongTerm = FALSE,
-                                                                   useConditionOccurrencePrimaryInpatientMediumTerm = FALSE,
-                                                                   useConditionOccurrencePrimaryInpatientShortTerm = FALSE,
-                                                                   useConditionEraAnyTimePrior = FALSE, 
-                                                                   useConditionEraLongTerm = FALSE,
-                                                                   useConditionEraMediumTerm = FALSE, 
-                                                                   useConditionEraShortTerm = FALSE,
-                                                                   useConditionEraOverlapping = FALSE,
-                                                                   useConditionEraStartLongTerm = FALSE,
-                                                                   useConditionEraStartMediumTerm = FALSE,
-                                                                   useConditionEraStartShortTerm = FALSE,
-                                                                   useConditionGroupEraAnyTimePrior = FALSE,
-                                                                   useConditionGroupEraLongTerm = TRUE,
-                                                                   useConditionGroupEraMediumTerm = FALSE,
-                                                                   useConditionGroupEraShortTerm = TRUE,
-                                                                   useConditionGroupEraOverlapping = FALSE,
-                                                                   useConditionGroupEraStartLongTerm = FALSE,
-                                                                   useConditionGroupEraStartMediumTerm = FALSE,
-                                                                   useConditionGroupEraStartShortTerm = FALSE,
-                                                                   useDrugExposureAnyTimePrior = FALSE, 
-                                                                   useDrugExposureLongTerm = FALSE,
-                                                                   useDrugExposureMediumTerm = FALSE, 
-                                                                   useDrugExposureShortTerm = FALSE,
-                                                                   useDrugEraAnyTimePrior = FALSE, 
-                                                                   useDrugEraLongTerm = FALSE,
-                                                                   useDrugEraMediumTerm = FALSE, 
-                                                                   useDrugEraShortTerm = FALSE,
-                                                                   useDrugEraOverlapping = FALSE, 
-                                                                   useDrugEraStartLongTerm = FALSE,
-                                                                   useDrugEraStartMediumTerm = FALSE, 
-                                                                   useDrugEraStartShortTerm = FALSE,
-                                                                   useDrugGroupEraAnyTimePrior = FALSE, 
-                                                                   useDrugGroupEraLongTerm = TRUE,
-                                                                   useDrugGroupEraMediumTerm = FALSE, 
-                                                                   useDrugGroupEraShortTerm = TRUE,
-                                                                   useDrugGroupEraOverlapping = FALSE,
-                                                                   useDrugGroupEraStartLongTerm = FALSE,
-                                                                   useDrugGroupEraStartMediumTerm = FALSE,
-                                                                   useDrugGroupEraStartShortTerm = FALSE,
-                                                                   useProcedureOccurrenceAnyTimePrior = FALSE,
-                                                                   useProcedureOccurrenceLongTerm = TRUE,
-                                                                   useProcedureOccurrenceMediumTerm = FALSE,
-                                                                   useProcedureOccurrenceShortTerm = TRUE,
-                                                                   useDeviceExposureAnyTimePrior = FALSE,
-                                                                   useDeviceExposureLongTerm = FALSE,
-                                                                   useDeviceExposureMediumTerm = FALSE,
-                                                                   useDeviceExposureShortTerm = TRUE,
-                                                                   useMeasurementAnyTimePrior = FALSE, 
-                                                                   useMeasurementLongTerm = FALSE,
-                                                                   useMeasurementMediumTerm = FALSE, 
-                                                                   useMeasurementShortTerm = FALSE,
-                                                                   useMeasurementValueAnyTimePrior = FALSE,
-                                                                   useMeasurementValueLongTerm = FALSE,
-                                                                   useMeasurementValueMediumTerm = FALSE,
-                                                                   useMeasurementValueShortTerm = FALSE,
-                                                                   useMeasurementRangeGroupAnyTimePrior = FALSE,
-                                                                   useMeasurementRangeGroupLongTerm = FALSE,
-                                                                   useMeasurementRangeGroupMediumTerm = FALSE,
-                                                                   useMeasurementRangeGroupShortTerm = FALSE,
-                                                                   useObservationAnyTimePrior = FALSE, 
-                                                                   useObservationLongTerm = FALSE,
-                                                                   useObservationMediumTerm = FALSE, 
-                                                                   useObservationShortTerm = FALSE,
-                                                                   useCharlsonIndex = TRUE, 
-                                                                   useDcsi = FALSE, 
-                                                                   useChads2 = FALSE,
-                                                                   useChads2Vasc = FALSE, 
-                                                                   useDistinctConditionCountLongTerm = FALSE,
-                                                                   useDistinctConditionCountMediumTerm = FALSE,
-                                                                   useDistinctConditionCountShortTerm = FALSE,
-                                                                   useDistinctIngredientCountLongTerm = FALSE,
-                                                                   useDistinctIngredientCountMediumTerm = FALSE,
-                                                                   useDistinctIngredientCountShortTerm = FALSE,
-                                                                   useDistinctProcedureCountLongTerm = FALSE,
-                                                                   useDistinctProcedureCountMediumTerm = FALSE,
-                                                                   useDistinctProcedureCountShortTerm = FALSE,
-                                                                   useDistinctMeasurementCountLongTerm = FALSE,
-                                                                   useDistinctMeasurementCountMediumTerm = FALSE,
-                                                                   useDistinctMeasurementCountShortTerm = FALSE,
-                                                                   useDistinctObservationCountLongTerm = FALSE,
-                                                                   useDistinctObservationCountMediumTerm = FALSE,
-                                                                   useDistinctObservationCountShortTerm = FALSE,
-                                                                   useVisitCountLongTerm = TRUE, 
-                                                                   useVisitCountMediumTerm = FALSE,
-                                                                   useVisitCountShortTerm = TRUE, 
-                                                                   useVisitConceptCountLongTerm = FALSE,
-                                                                   useVisitConceptCountMediumTerm = FALSE,
-                                                                   useVisitConceptCountShortTerm = FALSE, 
-                                                                   longTermStartDays = -365,
-                                                                   mediumTermStartDays = -180, 
-                                                                   shortTermStartDays = -7, 
-                                                                   endDays = 0,
-                                                                   includedCovariateConceptIds = c(), 
-                                                                   addDescendantsToInclude = FALSE,
-                                                                   excludedCovariateConceptIds = c(), 
-                                                                   addDescendantsToExclude = FALSE,
-                                                                   includedCovariateIds = c())
+  defaultCovariateSettings <-  FeatureExtraction::createCovariateSettings(useDemographicsGender = TRUE,
+                                                                         useDemographicsAge = FALSE, 
+                                                                         useDemographicsAgeGroup = TRUE,
+                                                                         useDemographicsRace = TRUE, 
+                                                                         useDemographicsEthnicity = FALSE,
+                                                                         useDemographicsIndexYear = TRUE, 
+                                                                         useDemographicsIndexMonth = TRUE,
+                                                                         useDemographicsPriorObservationTime = FALSE,
+                                                                         useDemographicsPostObservationTime = FALSE,
+                                                                         useDemographicsTimeInCohort = FALSE,
+                                                                         useDemographicsIndexYearMonth = FALSE,
+                                                                         useConditionOccurrenceAnyTimePrior = FALSE,
+                                                                         useConditionOccurrenceLongTerm = FALSE,
+                                                                         useConditionOccurrenceMediumTerm = FALSE,
+                                                                         useConditionOccurrenceShortTerm = TRUE,
+                                                                         useConditionOccurrencePrimaryInpatientAnyTimePrior = FALSE,
+                                                                         useConditionOccurrencePrimaryInpatientLongTerm = FALSE,
+                                                                         useConditionOccurrencePrimaryInpatientMediumTerm = FALSE,
+                                                                         useConditionOccurrencePrimaryInpatientShortTerm = FALSE,
+                                                                         useConditionEraAnyTimePrior = FALSE, 
+                                                                         useConditionEraLongTerm = FALSE,
+                                                                         useConditionEraMediumTerm = FALSE, 
+                                                                         useConditionEraShortTerm = FALSE,
+                                                                         useConditionEraOverlapping = FALSE,
+                                                                         useConditionEraStartLongTerm = FALSE,
+                                                                         useConditionEraStartMediumTerm = FALSE,
+                                                                         useConditionEraStartShortTerm = FALSE,
+                                                                         useConditionGroupEraAnyTimePrior = FALSE,
+                                                                         useConditionGroupEraLongTerm = TRUE,
+                                                                         useConditionGroupEraMediumTerm = FALSE,
+                                                                         useConditionGroupEraShortTerm = TRUE,
+                                                                         useConditionGroupEraOverlapping = FALSE,
+                                                                         useConditionGroupEraStartLongTerm = FALSE,
+                                                                         useConditionGroupEraStartMediumTerm = FALSE,
+                                                                         useConditionGroupEraStartShortTerm = FALSE,
+                                                                         useDrugExposureAnyTimePrior = FALSE, 
+                                                                         useDrugExposureLongTerm = FALSE,
+                                                                         useDrugExposureMediumTerm = FALSE, 
+                                                                         useDrugExposureShortTerm = FALSE,
+                                                                         useDrugEraAnyTimePrior = FALSE, 
+                                                                         useDrugEraLongTerm = FALSE,
+                                                                         useDrugEraMediumTerm = FALSE, 
+                                                                         useDrugEraShortTerm = FALSE,
+                                                                         useDrugEraOverlapping = FALSE, 
+                                                                         useDrugEraStartLongTerm = FALSE,
+                                                                         useDrugEraStartMediumTerm = FALSE, 
+                                                                         useDrugEraStartShortTerm = FALSE,
+                                                                         useDrugGroupEraAnyTimePrior = FALSE, 
+                                                                         useDrugGroupEraLongTerm = TRUE,
+                                                                         useDrugGroupEraMediumTerm = FALSE, 
+                                                                         useDrugGroupEraShortTerm = TRUE,
+                                                                         useDrugGroupEraOverlapping = FALSE,
+                                                                         useDrugGroupEraStartLongTerm = FALSE,
+                                                                         useDrugGroupEraStartMediumTerm = FALSE,
+                                                                         useDrugGroupEraStartShortTerm = FALSE,
+                                                                         useProcedureOccurrenceAnyTimePrior = FALSE,
+                                                                         useProcedureOccurrenceLongTerm = TRUE,
+                                                                         useProcedureOccurrenceMediumTerm = FALSE,
+                                                                         useProcedureOccurrenceShortTerm = TRUE,
+                                                                         useDeviceExposureAnyTimePrior = FALSE,
+                                                                         useDeviceExposureLongTerm = FALSE,
+                                                                         useDeviceExposureMediumTerm = FALSE,
+                                                                         useDeviceExposureShortTerm = TRUE,
+                                                                         useMeasurementAnyTimePrior = FALSE, 
+                                                                         useMeasurementLongTerm = FALSE,
+                                                                         useMeasurementMediumTerm = FALSE, 
+                                                                         useMeasurementShortTerm = FALSE,
+                                                                         useMeasurementValueAnyTimePrior = FALSE,
+                                                                         useMeasurementValueLongTerm = FALSE,
+                                                                         useMeasurementValueMediumTerm = FALSE,
+                                                                         useMeasurementValueShortTerm = FALSE,
+                                                                         useMeasurementRangeGroupAnyTimePrior = FALSE,
+                                                                         useMeasurementRangeGroupLongTerm = FALSE,
+                                                                         useMeasurementRangeGroupMediumTerm = FALSE,
+                                                                         useMeasurementRangeGroupShortTerm = FALSE,
+                                                                         useObservationAnyTimePrior = FALSE, 
+                                                                         useObservationLongTerm = FALSE,
+                                                                         useObservationMediumTerm = FALSE, 
+                                                                         useObservationShortTerm = FALSE,
+                                                                         useCharlsonIndex = TRUE, 
+                                                                         useDcsi = FALSE, 
+                                                                         useChads2 = FALSE,
+                                                                         useChads2Vasc = FALSE, 
+                                                                         useDistinctConditionCountLongTerm = FALSE,
+                                                                         useDistinctConditionCountMediumTerm = FALSE,
+                                                                         useDistinctConditionCountShortTerm = FALSE,
+                                                                         useDistinctIngredientCountLongTerm = FALSE,
+                                                                         useDistinctIngredientCountMediumTerm = FALSE,
+                                                                         useDistinctIngredientCountShortTerm = FALSE,
+                                                                         useDistinctProcedureCountLongTerm = FALSE,
+                                                                         useDistinctProcedureCountMediumTerm = FALSE,
+                                                                         useDistinctProcedureCountShortTerm = FALSE,
+                                                                         useDistinctMeasurementCountLongTerm = FALSE,
+                                                                         useDistinctMeasurementCountMediumTerm = FALSE,
+                                                                         useDistinctMeasurementCountShortTerm = FALSE,
+                                                                         useDistinctObservationCountLongTerm = FALSE,
+                                                                         useDistinctObservationCountMediumTerm = FALSE,
+                                                                         useDistinctObservationCountShortTerm = FALSE,
+                                                                         useVisitCountLongTerm = TRUE, 
+                                                                         useVisitCountMediumTerm = FALSE,
+                                                                         useVisitCountShortTerm = TRUE, 
+                                                                         useVisitConceptCountLongTerm = FALSE,
+                                                                         useVisitConceptCountMediumTerm = FALSE,
+                                                                         useVisitConceptCountShortTerm = FALSE, 
+                                                                         longTermStartDays = -365,
+                                                                         mediumTermStartDays = -180, 
+                                                                         shortTermStartDays = -7, 
+                                                                         endDays = 0,
+                                                                         includedCovariateConceptIds = c(), 
+                                                                         addDescendantsToInclude = FALSE,
+                                                                         excludedCovariateConceptIds = c(1322184,
+                                                                                                         40241186), 
+                                                                         addDescendantsToExclude = TRUE,
+                                                                         includedCovariateIds = c())
+
+  # defaultCovariateSettings <-  FeatureExtraction::createCovariateSettings(useDemographicsGender = TRUE,
+  #                                                                        useDemographicsAge = FALSE, 
+  #                                                                        useDemographicsAgeGroup = TRUE,
+  #                                                                        useConditionOccurrenceLongTerm = FALSE,
+  #                                                                        useConditionOccurrenceMediumTerm = FALSE,
+  #                                                                        useConditionOccurrenceShortTerm = TRUE,
+  #                                                                        addDescendantsToInclude = FALSE,
+  #                                                                        excludedCovariateConceptIds = c(1322184,
+  #                                                                                                        40241186), 
+  #                                                                        addDescendantsToExclude = TRUE,
+  #                                                                        includedCovariateIds = c())
+    
  		
-  subGroupCovariateSettings <- function(windowStart = -365, windowEnd = -1, 
-                                        shortTermWindowStart = -7, MaintenanceWindowEnd = 365,
-                                        analysisId = 998)
+  subGroupCovariateSettings <- createSubgroupCovariateSettings(windowStart = -365, windowEnd = -1, 
+                                                              shortTermWindowStart = -7, 
+                                                              MaintenanceWindowEnd = 365,
+                                                              analysisId = 998)
   
-  covariateSettings <- list(subGroupCovariateSettings, defaultCovariateSettings)
+  covariateSettings <- list(defaultCovariateSettings ,subGroupCovariateSettings
+                            )
   
   getDbCmDataArgs <- CohortMethod::createGetDbCohortMethodDataArgs(washoutPeriod = 0,
                                                                    studyStartDate='20130301',
@@ -168,7 +184,7 @@ createAnalysesDetails <- function(workFolder) {
   timeToFirstPostIndexEvent1Year <- CohortMethod::createCreateStudyPopulationArgs(removeSubjectsWithPriorOutcome = FALSE,
                                                                                   firstExposureOnly = FALSE,
                                                                                   washoutPeriod = 0,
-                                                                                  removeDuplicateSubjects = FALSE,
+                                                                                  removeDuplicateSubjects = 'keep first',
                                                                                   minDaysAtRisk = 364,
                                                                                   riskWindowStart = 1,
                                                                                   addExposureDaysToStart = FALSE,
@@ -179,7 +195,7 @@ createAnalysesDetails <- function(workFolder) {
   timeToFirstPostIndexEventOnTreatment <- CohortMethod::createCreateStudyPopulationArgs(removeSubjectsWithPriorOutcome = FALSE,
                                                                                         firstExposureOnly = FALSE,
                                                                                         washoutPeriod = 0,
-                                                                                        removeDuplicateSubjects = FALSE,
+                                                                                        removeDuplicateSubjects = 'keep first',
                                                                                         minDaysAtRisk = 1,
                                                                                         riskWindowStart = 1,
                                                                                         addExposureDaysToStart = FALSE,
@@ -190,7 +206,7 @@ createAnalysesDetails <- function(workFolder) {
   timeToFirstPostIndexEvent7DaysFromTreatment <- CohortMethod::createCreateStudyPopulationArgs(removeSubjectsWithPriorOutcome = FALSE,
                                                                                                firstExposureOnly = FALSE,
                                                                                                washoutPeriod = 0,
-                                                                                               removeDuplicateSubjects = FALSE,
+                                                                                               removeDuplicateSubjects = 'keep first',
                                                                                                minDaysAtRisk = 1,
                                                                                                riskWindowStart = 1,
                                                                                                addExposureDaysToStart = FALSE,
@@ -201,7 +217,7 @@ createAnalysesDetails <- function(workFolder) {
   timeToFirstPostIndexEventITT <- CohortMethod::createCreateStudyPopulationArgs(removeSubjectsWithPriorOutcome = FALSE,
                                                                                 firstExposureOnly = FALSE,
                                                                                 washoutPeriod = 0,
-                                                                                removeDuplicateSubjects = FALSE,
+                                                                                removeDuplicateSubjects = 'keep first',
                                                                                 minDaysAtRisk = 1,
                                                                                 riskWindowStart = 1,
                                                                                 addExposureDaysToStart = FALSE,
@@ -220,15 +236,22 @@ createAnalysesDetails <- function(workFolder) {
   #                                                                                       addExposureDaysToEnd = FALSE,
   #                                                                                       censorAtNewRiskWindow = TRUE)
 
+  subgroupCovariateIds <- c(1000, 2000, 3000, 4000, 5000, 6000)+subGroupCovariateSettings$analysisId #c(1998, 2998, 3998, 4998, 5998, 6998)
+
   createPsArgs1 <- CohortMethod::createCreatePsArgs(control = defaultControl, 
                                                     errorOnHighCorrelation = FALSE,
+                                                    excludeCovariateIds = subgroupCovariateIds,
                                                     stopOnError = FALSE) 
 
-  trimByPsArgs<- CohortMethod::createTrimByPsArgs(trimFraction = 0.05)
+  #trimByPsArgs<- CohortMethod::createTrimByPsArgs(trimFraction = 0.05)
   
-  oneToOneMatchOnPsArgs <- CohortMethod::createMatchOnPsArgs(maxRatio = 1)
+  oneToOneMatchOnPsArgs <- CohortMethod::createMatchOnPsArgs(maxRatio = 1,
+                                                             caliper = 0.2,
+                                                             caliperScale = "standardized logit")
 
-  variableRatioMatchOnPsArgs <- CohortMethod::createMatchOnPsArgs(maxRatio = 100)
+  variableRatioMatchOnPsArgs <- CohortMethod::createMatchOnPsArgs(maxRatio = 100,
+                                                                  caliper = 0.2,
+                                                                  caliperScale = "standardized logit")
   
   stratifyByPsArgs <- CohortMethod::createStratifyByPsArgs(numberOfStrata = 10) 
   
@@ -238,13 +261,13 @@ createAnalysesDetails <- function(workFolder) {
                                                                   prior = defaultPrior, 
                                                                   control = defaultControl)
   
-  a1 <- CohortMethod::createCmAnalysis(analysisId = 1,
-                                       description = "Time to First Post Index Event within 1 year, Without Matching",
-                                       getDbCohortMethodDataArgs = getDbCmDataArgs,
-                                       createStudyPopArgs = timeToFirstPostIndexEvent1Year,
-                                       fitOutcomeModel = FALSE)
+  # a1 <- CohortMethod::createCmAnalysis(analysisId = 1,
+  #                                      description = "Time to First Post Index Event within 1 year, Without Matching",
+  #                                      getDbCohortMethodDataArgs = getDbCmDataArgs,
+  #                                      createStudyPopArgs = timeToFirstPostIndexEvent1Year,
+  #                                      fitOutcomeModel = FALSE)
 
-  a2 <- CohortMethod::createCmAnalysis(analysisId = 2,
+  a1 <- CohortMethod::createCmAnalysis(analysisId = 1,
                                        description = "Time to First Post Index Event within 1 year, With 1 to 1 Matching",
                                        getDbCohortMethodDataArgs = getDbCmDataArgs,
                                        createStudyPopArgs = timeToFirstPostIndexEvent1Year,
@@ -255,7 +278,7 @@ createAnalysesDetails <- function(workFolder) {
                                        fitOutcomeModel = TRUE,
                                        fitOutcomeModelArgs = fitOutcomeModelArgs1)
 
-  a3 <- CohortMethod::createCmAnalysis(analysisId = 3,
+  a2 <- CohortMethod::createCmAnalysis(analysisId = 2,
                                        description = "Time to First Post Index Event within 1 year, With Variable Ratio Matching",
                                        getDbCohortMethodDataArgs = getDbCmDataArgs,
                                        createStudyPopArgs = timeToFirstPostIndexEvent1Year,
@@ -266,26 +289,26 @@ createAnalysesDetails <- function(workFolder) {
                                        fitOutcomeModel = TRUE,
                                        fitOutcomeModelArgs = fitOutcomeModelArgs1)
 
-  a4 <- CohortMethod::createCmAnalysis(analysisId = 4,
+  a3 <- CohortMethod::createCmAnalysis(analysisId = 3,
                                        description = "Time to First Post Index Event within 1 year, With Stratification",
                                        getDbCohortMethodDataArgs = getDbCmDataArgs,
                                        createStudyPopArgs = timeToFirstPostIndexEvent1Year,
                                        createPs = TRUE,
                                        createPsArgs = createPsArgs1,
-                                       trimByPs = TRUE,
-                                       trimByPsArgs = trimByPsArgs,
+                                       #trimByPs = TRUE,
+                                       #trimByPsArgs = trimByPsArgs,
                                        stratifyByPs = TRUE,
                                        stratifyByPsArgs = stratifyByPsArgs,
                                        fitOutcomeModel = TRUE,
                                        fitOutcomeModelArgs = fitOutcomeModelArgs1)
 
-  a5 <- CohortMethod::createCmAnalysis(analysisId = 5,
-                                       description = "Time To First Post Index Event On Treatment, Without Matching",
-                                       getDbCohortMethodDataArgs = getDbCmDataArgs,
-                                       createStudyPopArgs = timeToFirstPostIndexEventOnTreatment,
-                                       fitOutcomeModel = FALSE)
+  # a5 <- CohortMethod::createCmAnalysis(analysisId = 5,
+  #                                      description = "Time To First Post Index Event On Treatment, Without Matching",
+  #                                      getDbCohortMethodDataArgs = getDbCmDataArgs,
+  #                                      createStudyPopArgs = timeToFirstPostIndexEventOnTreatment,
+  #                                      fitOutcomeModel = FALSE)
 
-  a6 <- CohortMethod::createCmAnalysis(analysisId = 6,
+  a4 <- CohortMethod::createCmAnalysis(analysisId = 4,
                                        description = "Time To First Post Index Event On Treatment, With 1 to 1 Matching",
                                        getDbCohortMethodDataArgs = getDbCmDataArgs,
                                        createStudyPopArgs = timeToFirstPostIndexEventOnTreatment,
@@ -296,7 +319,7 @@ createAnalysesDetails <- function(workFolder) {
                                        fitOutcomeModel = TRUE,
                                        fitOutcomeModelArgs = fitOutcomeModelArgs1)
 
-  a7 <- CohortMethod::createCmAnalysis(analysisId = 7,
+  a5 <- CohortMethod::createCmAnalysis(analysisId = 5,
                                        description = "Time To First Post Index Event On Treatment, With Variable Ratio Matching",
                                        getDbCohortMethodDataArgs = getDbCmDataArgs,
                                        createStudyPopArgs = timeToFirstPostIndexEventOnTreatment,
@@ -307,26 +330,26 @@ createAnalysesDetails <- function(workFolder) {
                                        fitOutcomeModel = TRUE,
                                        fitOutcomeModelArgs = fitOutcomeModelArgs1)
 
-  a8 <- CohortMethod::createCmAnalysis(analysisId = 8,
+  a6 <- CohortMethod::createCmAnalysis(analysisId = 6,
                                        description = "Time To First Post Index Event On Treatment, With Stratification",
                                        getDbCohortMethodDataArgs = getDbCmDataArgs,
                                        createStudyPopArgs = timeToFirstPostIndexEventOnTreatment,
                                        createPs = TRUE,
                                        createPsArgs = createPsArgs1,
-                                       trimByPs = TRUE,
-                                       trimByPsArgs = trimByPsArgs,
+                                       #trimByPs = TRUE,
+                                       #trimByPsArgs = trimByPsArgs,
                                        stratifyByPs = TRUE,
                                        stratifyByPsArgs = stratifyByPsArgs,
                                        fitOutcomeModel = TRUE,
                                        fitOutcomeModelArgs = fitOutcomeModelArgs1)
 
-  a9 <- CohortMethod::createCmAnalysis(analysisId = 9,
-                                       description = "Time To First Post Index Event 7Days From Treatment, Without Matching",
-                                       getDbCohortMethodDataArgs = getDbCmDataArgs,
-                                       createStudyPopArgs = timeToFirstPostIndexEvent7DaysFromTreatment,
-                                       fitOutcomeModel = FALSE)
+  # a9 <- CohortMethod::createCmAnalysis(analysisId = 9,
+  #                                      description = "Time To First Post Index Event 7Days From Treatment, Without Matching",
+  #                                      getDbCohortMethodDataArgs = getDbCmDataArgs,
+  #                                      createStudyPopArgs = timeToFirstPostIndexEvent7DaysFromTreatment,
+  #                                      fitOutcomeModel = FALSE)
 
-  a10 <- CohortMethod::createCmAnalysis(analysisId = 10,
+  a7 <- CohortMethod::createCmAnalysis(analysisId = 7,
                                        description = "Time To First Post Index Event 7Days From Treatment, With 1 to 1 Matching",
                                        getDbCohortMethodDataArgs = getDbCmDataArgs,
                                        createStudyPopArgs = timeToFirstPostIndexEvent7DaysFromTreatment,
@@ -337,7 +360,7 @@ createAnalysesDetails <- function(workFolder) {
                                        fitOutcomeModel = TRUE,
                                        fitOutcomeModelArgs = fitOutcomeModelArgs1)
 
-  a11 <- CohortMethod::createCmAnalysis(analysisId = 11,
+  a8 <- CohortMethod::createCmAnalysis(analysisId = 8,
                                        description = "Time To First Post Index Event 7Days From Treatment, With Variable Ratio Matching",
                                        getDbCohortMethodDataArgs = getDbCmDataArgs,
                                        createStudyPopArgs = timeToFirstPostIndexEvent7DaysFromTreatment,
@@ -348,26 +371,26 @@ createAnalysesDetails <- function(workFolder) {
                                        fitOutcomeModel = TRUE,
                                        fitOutcomeModelArgs = fitOutcomeModelArgs1)
 
-  a12 <- CohortMethod::createCmAnalysis(analysisId = 12,
+  a9 <- CohortMethod::createCmAnalysis(analysisId = 9,
                                        description = "Time To First Post Index Event 7Days From Treatment, With Stratification",
                                        getDbCohortMethodDataArgs = getDbCmDataArgs,
                                        createStudyPopArgs = timeToFirstPostIndexEvent7DaysFromTreatment,
                                        createPs = TRUE,
                                        createPsArgs = createPsArgs1,
-                                       trimByPs = TRUE,
-                                       trimByPsArgs = trimByPsArgs,
+                                       #trimByPs = TRUE,
+                                       #trimByPsArgs = trimByPsArgs,
                                        stratifyByPs = TRUE,
                                        stratifyByPsArgs = stratifyByPsArgs,
                                        fitOutcomeModel = TRUE,
                                        fitOutcomeModelArgs = fitOutcomeModelArgs1)
 
-  a13 <- CohortMethod::createCmAnalysis(analysisId = 13,
-                                       description = "Time To First Post Index Event ITT, Without Matching",
-                                       getDbCohortMethodDataArgs = getDbCmDataArgs,
-                                       createStudyPopArgs = timeToFirstPostIndexEventITT,
-                                       fitOutcomeModel = FALSE)
+  # a13 <- CohortMethod::createCmAnalysis(analysisId = 13,
+  #                                      description = "Time To First Post Index Event ITT, Without Matching",
+  #                                      getDbCohortMethodDataArgs = getDbCmDataArgs,
+  #                                      createStudyPopArgs = timeToFirstPostIndexEventITT,
+  #                                      fitOutcomeModel = FALSE)
 
-  a14 <- CohortMethod::createCmAnalysis(analysisId = 14,
+  a10 <- CohortMethod::createCmAnalysis(analysisId = 10,
                                        description = "Time To First Post Index Event ITT, With 1 to 1 Matching",
                                        getDbCohortMethodDataArgs = getDbCmDataArgs,
                                        createStudyPopArgs = timeToFirstPostIndexEventITT,
@@ -378,7 +401,7 @@ createAnalysesDetails <- function(workFolder) {
                                        fitOutcomeModel = TRUE,
                                        fitOutcomeModelArgs = fitOutcomeModelArgs1)
 
-  a15 <- CohortMethod::createCmAnalysis(analysisId = 15,
+  a11 <- CohortMethod::createCmAnalysis(analysisId = 11,
                                        description = "Time To First Post Index Event ITT, With Variable Ratio Matching",
                                        getDbCohortMethodDataArgs = getDbCmDataArgs,
                                        createStudyPopArgs = timeToFirstPostIndexEventITT,
@@ -389,24 +412,153 @@ createAnalysesDetails <- function(workFolder) {
                                        fitOutcomeModel = TRUE,
                                        fitOutcomeModelArgs = fitOutcomeModelArgs1)
 
-  a16 <- CohortMethod::createCmAnalysis(analysisId = 16,
+  a12 <- CohortMethod::createCmAnalysis(analysisId = 12,
                                        description = "Time To First Post Index Event ITT, With Stratification",
                                        getDbCohortMethodDataArgs = getDbCmDataArgs,
                                        createStudyPopArgs = timeToFirstPostIndexEventITT,
                                        createPs = TRUE,
                                        createPsArgs = createPsArgs1,
-                                       trimByPs = TRUE,
-                                       trimByPsArgs = trimByPsArgs,
+                                       #trimByPs = TRUE,
+                                       #trimByPsArgs = trimByPsArgs,
                                        stratifyByPs = TRUE,
                                        stratifyByPsArgs = stratifyByPsArgs,
                                        fitOutcomeModel = TRUE,
                                        fitOutcomeModelArgs = fitOutcomeModelArgs1)
 
 
-  cmAnalysisList <- list(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16)
+  ##Interaction terms
+  fitOutcomeModelArgsI1998 <- CohortMethod::createFitOutcomeModelArgs(useCovariates = FALSE,
+                                                                      modelType = "cox",
+                                                                      stratified = TRUE,
+                                                                      prior = defaultPrior, 
+                                                                      interactionCovariateIds = 1998)
+  
+  fitOutcomeModelArgsI2998 <- CohortMethod::createFitOutcomeModelArgs(useCovariates = FALSE,
+                                                                      modelType = "cox",
+                                                                      stratified = TRUE,
+                                                                      prior = defaultPrior, 
+                                                                      interactionCovariateIds = 2998)
+  
+  fitOutcomeModelArgsI3998 <- CohortMethod::createFitOutcomeModelArgs(useCovariates = FALSE,
+                                                                      modelType = "cox",
+                                                                      stratified = TRUE,
+                                                                      prior = defaultPrior, 
+                                                                      interactionCovariateIds = 3998)
+  
+  fitOutcomeModelArgsI4998 <- CohortMethod::createFitOutcomeModelArgs(useCovariates = FALSE,
+                                                                      modelType = "cox",
+                                                                      stratified = TRUE,
+                                                                      prior = defaultPrior, 
+                                                                      interactionCovariateIds = 4998)
+  
+  fitOutcomeModelArgsI5998 <- CohortMethod::createFitOutcomeModelArgs(useCovariates = FALSE,
+                                                                      modelType = "cox",
+                                                                      stratified = TRUE,
+                                                                      prior = defaultPrior, 
+                                                                      interactionCovariateIds = 5998)
+  
+  fitOutcomeModelArgsI6998 <- CohortMethod::createFitOutcomeModelArgs(useCovariates = FALSE,
+                                                                      modelType = "cox",
+                                                                      stratified = TRUE,
+                                                                      prior = defaultPrior, 
+                                                                      interactionCovariateIds = 6998)
+  
+  fitOutcomeModelArgsI9998 <- CohortMethod::createFitOutcomeModelArgs(useCovariates = FALSE,
+                                                                      modelType = "cox",
+                                                                      stratified = TRUE,
+                                                                      prior = defaultPrior, 
+                                                                      interactionCovariateIds = subgroupCovariateIds)
+
+  a19 <- CohortMethod::createCmAnalysis(analysisId = 19,
+                                        description = "Time to First Post Index Event within 1 year, With 1 to 1 Matching, femal interaction",
+                                        getDbCohortMethodDataArgs = getDbCmDataArgs,
+                                        createStudyPopArgs = timeToFirstPostIndexEvent1Year,
+                                        createPs = TRUE,
+                                        createPsArgs = createPsArgs1,
+                                        matchOnPs = TRUE,
+                                        matchOnPsArgs = oneToOneMatchOnPsArgs,
+                                        fitOutcomeModel = TRUE,
+                                        fitOutcomeModelArgs = fitOutcomeModelArgsI1998)
+
+  a29 <- CohortMethod::createCmAnalysis(analysisId = 29,
+                                        description = "Time to First Post Index Event within 1 year, With 1 to 1 Matching, elderly interaction",
+                                        getDbCohortMethodDataArgs = getDbCmDataArgs,
+                                        createStudyPopArgs = timeToFirstPostIndexEvent1Year,
+                                        createPs = TRUE,
+                                        createPsArgs = createPsArgs1,
+                                        matchOnPs = TRUE,
+                                        matchOnPsArgs = oneToOneMatchOnPsArgs,
+                                        fitOutcomeModel = TRUE,
+                                        fitOutcomeModelArgs = fitOutcomeModelArgsI2998)
+
+  a39 <- CohortMethod::createCmAnalysis(analysisId = 39,
+                                        description = "Time to First Post Index Event within 1 year, With 1 to 1 Matching, black or aftrican race interaction",
+                                        getDbCohortMethodDataArgs = getDbCmDataArgs,
+                                        createStudyPopArgs = timeToFirstPostIndexEvent1Year,
+                                        createPs = TRUE,
+                                        createPsArgs = createPsArgs1,
+                                        matchOnPs = TRUE,
+                                        matchOnPsArgs = oneToOneMatchOnPsArgs,
+                                        fitOutcomeModel = TRUE,
+                                        fitOutcomeModelArgs = fitOutcomeModelArgsI3998)
+
+  a49 <- CohortMethod::createCmAnalysis(analysisId = 49,
+                                        description = "Time to First Post Index Event within 1 year, With 1 to 1 Matching, short-term MI interaction",
+                                        getDbCohortMethodDataArgs = getDbCmDataArgs,
+                                        createStudyPopArgs = timeToFirstPostIndexEvent1Year,
+                                        createPs = TRUE,
+                                        createPsArgs = createPsArgs1,
+                                        matchOnPs = TRUE,
+                                        matchOnPsArgs = oneToOneMatchOnPsArgs,
+                                        fitOutcomeModel = TRUE,
+                                        fitOutcomeModelArgs = fitOutcomeModelArgsI4998)
+
+  a59 <- CohortMethod::createCmAnalysis(analysisId = 59,
+                                        description = "Time to First Post Index Event within 1 year, With 1 to 1 Matching, concomitant PPI use interaction",
+                                        getDbCohortMethodDataArgs = getDbCmDataArgs,
+                                        createStudyPopArgs = timeToFirstPostIndexEvent1Year,
+                                        createPs = TRUE,
+                                        createPsArgs = createPsArgs1,
+                                        matchOnPs = TRUE,
+                                        matchOnPsArgs = oneToOneMatchOnPsArgs,
+                                        fitOutcomeModel = TRUE,
+                                        fitOutcomeModelArgs = fitOutcomeModelArgsI5998)
+
+  a69 <- CohortMethod::createCmAnalysis(analysisId = 69,
+                                        description = "Time to First Post Index Event within 1 year, With 1 to 1 Matching, maintenance aspirin dosage interaction",
+                                        getDbCohortMethodDataArgs = getDbCmDataArgs,
+                                        createStudyPopArgs = timeToFirstPostIndexEvent1Year,
+                                        createPs = TRUE,
+                                        createPsArgs = createPsArgs1,
+                                        matchOnPs = TRUE,
+                                        matchOnPsArgs = oneToOneMatchOnPsArgs,
+                                        fitOutcomeModel = TRUE,
+                                        fitOutcomeModelArgs = fitOutcomeModelArgsI6998)
+  
+  # a99 <- CohortMethod::createCmAnalysis(analysisId = 99,
+  #                                       description = "Time to First Post Index Event within 1 year, With 1 to 1 Matching, all interaction",
+  #                                       getDbCohortMethodDataArgs = getDbCmDataArgs,
+  #                                       createStudyPopArgs = timeToFirstPostIndexEvent1Year,
+  #                                       createPs = TRUE,
+  #                                       createPsArgs = createPsArgs1,
+  #                                       matchOnPs = TRUE,
+  #                                       matchOnPsArgs = oneToOneMatchOnPsArgs,
+  #                                       fitOutcomeModel = TRUE,
+  #                                       fitOutcomeModelArgs = fitOutcomeModelArgsI6998)
+
+
+
+
+  cmAnalysisList <- list(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, #a13, a14, a15, a16
+                         a19, a29, a39, a49, a59, a69#, a99
+                        )
   #cmAnalysisList <- list(a1)
   
   CohortMethod::saveCmAnalysisList(cmAnalysisList, file.path(workFolder, "cmAnalysisList.json"))
+
+
+
+
 }
 
 createTcos <- function(outputFolder) {
