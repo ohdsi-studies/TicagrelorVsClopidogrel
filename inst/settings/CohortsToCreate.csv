@@ -1,14 +1,13 @@
 atlasId,atlasName,cohortId,name
-874,[SCYou]HIRA: Ticagrelor for ACS_KOR,874,SCYouHIRA_Ticagrelor_for_ACS_KOR
-929,[SCYou]HIRA: Clopidogrel for ACS_KOR,929,SCYouHIRA_Clopidogrel_for_ACS_KOR
-1033,SCYou: Net Adverse Clinical Event,1033,SCYou_Net_Adverse_Clinical_Event
-1036,SCYou: Hemorrhagic Event,1036,SCYou_Hemorrhagic_Event
-1034,SCYou: Ischemic event,1034,SCYou_Ischemic_event
-1030,SCYou: Revascularization,1030,SCYou_Revascularization
-1029,SCYou: GI bleeding,1029,SCYou_GI_bleeding
-1028,SCYou: Intracranial hemorrhage,1028,SCYou_Intracranial_hemorrhage
-1027,SCYou:SuddenCardiacDeath,1027,SCYouSuddenCardiacDeath
-1025,SCYou:(outcome)Acute myocardial infarction,1025,SCYououtcomeAcute_myocardial_infarction
-1026,[SCYou]Ischemic stroke,1026,SCYouIschemic_stroke
-20,SCYou:(outcome)any death,20,SCYououtcomeany_death
-1165,SCYou: dyspnea,1165,SCYou_dyspnea
+874,[SCYou]HIRA: Ticagrelor for ACS_KOR,874,Ticagrelor
+929,[SCYou]HIRA: Clopidogrel for ACS_KOR,929,Clopidogrel
+1202,SCYou: Net Adverse Clinical Event,1202,NACE
+1200,SCYou: Hemorrhagic Event,1200,HemorrhagicEvent
+1201,SCYou: Ischemic event,1201,IschemicEvent
+1030,SCYou: Revascularization,1030,Revascularization
+1197,SCYou: GI bleeding (inpatient or ED) and primary condition and first event,1197,giBleeding
+1190,SCYou: hemorrhagic stroke (inpatient or ED) and primary condition and first event,1190,ICH
+1198,SCYou: Acute MI (inpatient or ED) and primary condition and all event,1198,AMI
+1180,SCYou: ischemic stroke (inpatient or ED) and primary condition and first event,1180,ischemicStroke
+20,SCYou:(outcome)any death,20,anyDeath
+1165,SCYou: dyspnea,1165,dyspnea
