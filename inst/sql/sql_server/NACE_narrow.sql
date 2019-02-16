@@ -38,8 +38,20 @@ SELECT 2 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 INSERT INTO #Codesets (codeset_id, concept_id)
 SELECT 3 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where 0=1
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (192671,443530,4103703)and invalid_reason is null
+UNION  select c.concept_id
+  from @vocabulary_database_schema.CONCEPT c
+  join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
+  and ca.ancestor_concept_id in (192671,443530,4103703)
+  and c.invalid_reason is null
+
 ) I
+LEFT JOIN
+(
+  select concept_id from @vocabulary_database_schema.CONCEPT where concept_id in (4189259,37109016,4071070,4048608,4048286,194158,4048601,4048282,4048602)and invalid_reason is null
+
+) E ON I.concept_id = E.concept_id
+WHERE E.concept_id is null
 ) C;
 INSERT INTO #Codesets (codeset_id, concept_id)
 SELECT 4 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
@@ -97,7 +109,21 @@ FROM
   JOIN #Codesets codesets on ((co.condition_concept_id = codesets.concept_id and codesets.codeset_id = 0))
 ) C
 
+WHERE C.condition_type_concept_id  in (38000183,38000248,38000199,38000250,38000266,38000268,44786627)
+-- End Condition Occurrence Criteria
 
+UNION ALL
+-- Begin Condition Occurrence Criteria
+SELECT C.person_id, C.condition_occurrence_id as event_id, C.condition_start_date as start_date, COALESCE(C.condition_end_date, DATEADD(day,1,C.condition_start_date)) as end_date, C.CONDITION_CONCEPT_ID as TARGET_CONCEPT_ID, C.visit_occurrence_id
+FROM 
+(
+  SELECT co.* , row_number() over (PARTITION BY co.person_id ORDER BY co.condition_start_date, co.condition_occurrence_id) as ordinal
+  FROM @cdm_database_schema.CONDITION_OCCURRENCE co
+  JOIN #Codesets codesets on ((co.condition_concept_id = codesets.concept_id and codesets.codeset_id = 2))
+) C
+
+WHERE C.ordinal = 1
+AND C.condition_type_concept_id  in (38000183,38000248,38000199,38000250,38000266,38000268,44786627)
 -- End Condition Occurrence Criteria
 
 UNION ALL
@@ -111,6 +137,21 @@ FROM
 ) C
 
 WHERE C.ordinal = 1
+AND C.condition_type_concept_id  in (38000183,38000248,38000199,38000250,38000266,38000268,44786627)
+-- End Condition Occurrence Criteria
+
+UNION ALL
+-- Begin Condition Occurrence Criteria
+SELECT C.person_id, C.condition_occurrence_id as event_id, C.condition_start_date as start_date, COALESCE(C.condition_end_date, DATEADD(day,1,C.condition_start_date)) as end_date, C.CONDITION_CONCEPT_ID as TARGET_CONCEPT_ID, C.visit_occurrence_id
+FROM 
+(
+  SELECT co.* , row_number() over (PARTITION BY co.person_id ORDER BY co.condition_start_date, co.condition_occurrence_id) as ordinal
+  FROM @cdm_database_schema.CONDITION_OCCURRENCE co
+  JOIN #Codesets codesets on ((co.condition_concept_id = codesets.concept_id and codesets.codeset_id = 3))
+) C
+
+WHERE C.ordinal = 1
+AND C.condition_type_concept_id  in (38000183,38000248,38000199,38000250,38000266,38000268,44786627)
 -- End Condition Occurrence Criteria
 
 UNION ALL
