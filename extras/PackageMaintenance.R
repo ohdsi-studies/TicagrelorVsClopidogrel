@@ -36,6 +36,7 @@ rmarkdown::render("vignettes/DataModel.Rmd",
                                           toc = TRUE,
                                           number_sections = TRUE))
 
+
 # Insert cohort definitions from ATLAS into package -----------------------
 OhdsiRTools::insertCohortDefinitionSetInPackage(fileName = "CohortsToCreate.csv",
                                                 baseUrl = Sys.getenv("baseUrl"),
