@@ -1404,7 +1404,7 @@
     "attr_class": "cmAnalysis"
   },
   {
-    "analysisId": 7,
+    "analysisId": 10,
     "description": "ITT, matching",
     "getDbCohortMethodDataArgs": {
       "studyStartDate": "",
@@ -1576,7 +1576,7 @@
     "attr_class": "cmAnalysis"
   },
   {
-    "analysisId": 8,
+    "analysisId": 11,
     "description": "ITT, stratification",
     "getDbCohortMethodDataArgs": {
       "studyStartDate": "",
@@ -1747,7 +1747,7 @@
     "attr_class": "cmAnalysis"
   },
   {
-    "analysisId": 9,
+    "analysisId": 12,
     "description": "ITT, without matching",
     "getDbCohortMethodDataArgs": {
       "studyStartDate": "",

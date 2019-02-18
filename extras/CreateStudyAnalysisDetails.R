@@ -389,7 +389,7 @@ createAnalysesDetails <- function(workFolder) {
                                        fitOutcomeModel = TRUE,
                                        fitOutcomeModelArgs = fitOutcomeModelArgs0)
   
-  a10 <- CohortMethod::createCmAnalysis(analysisId = 7,
+  a10 <- CohortMethod::createCmAnalysis(analysisId = 10,
                                         description = "ITT, matching",
                                         getDbCohortMethodDataArgs = getDbCmDataArgs,
                                         createStudyPopArgs = ITT,
@@ -400,7 +400,7 @@ createAnalysesDetails <- function(workFolder) {
                                         fitOutcomeModel = TRUE,
                                         fitOutcomeModelArgs = fitOutcomeModelArgs1)
   
-  a11 <- CohortMethod::createCmAnalysis(analysisId = 8,
+  a11 <- CohortMethod::createCmAnalysis(analysisId = 11,
                                         description = "ITT, stratification",
                                         getDbCohortMethodDataArgs = getDbCmDataArgs,
                                         createStudyPopArgs = ITT,
@@ -413,7 +413,7 @@ createAnalysesDetails <- function(workFolder) {
                                         fitOutcomeModel = TRUE,
                                         fitOutcomeModelArgs = fitOutcomeModelArgs1)
   
-  a12 <- CohortMethod::createCmAnalysis(analysisId = 9,
+  a12 <- CohortMethod::createCmAnalysis(analysisId = 12,
                                         description = "ITT, without matching",
                                         getDbCohortMethodDataArgs = getDbCmDataArgs,
                                         createStudyPopArgs = ITT,
