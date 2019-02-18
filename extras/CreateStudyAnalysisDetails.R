@@ -63,7 +63,7 @@ createAnalysesDetails <- function(workFolder) {
                                                                          useConditionEraStartLongTerm = FALSE,
                                                                          useConditionEraStartMediumTerm = FALSE,
                                                                          useConditionEraStartShortTerm = FALSE,
-                                                                         useConditionGroupEraAnyTimePrior = FALSE,
+                                                                         useConditionGroupEraAnyTimePrior = TRUE,
                                                                          useConditionGroupEraLongTerm = TRUE,
                                                                          useConditionGroupEraMediumTerm = FALSE,
                                                                          useConditionGroupEraShortTerm = TRUE,
@@ -83,7 +83,7 @@ createAnalysesDetails <- function(workFolder) {
                                                                          useDrugEraStartLongTerm = FALSE,
                                                                          useDrugEraStartMediumTerm = FALSE, 
                                                                          useDrugEraStartShortTerm = FALSE,
-                                                                         useDrugGroupEraAnyTimePrior = FALSE, 
+                                                                         useDrugGroupEraAnyTimePrior = TRUE, 
                                                                          useDrugGroupEraLongTerm = TRUE,
                                                                          useDrugGroupEraMediumTerm = FALSE, 
                                                                          useDrugGroupEraShortTerm = TRUE,
@@ -91,12 +91,12 @@ createAnalysesDetails <- function(workFolder) {
                                                                          useDrugGroupEraStartLongTerm = FALSE,
                                                                          useDrugGroupEraStartMediumTerm = FALSE,
                                                                          useDrugGroupEraStartShortTerm = FALSE,
-                                                                         useProcedureOccurrenceAnyTimePrior = FALSE,
+                                                                         useProcedureOccurrenceAnyTimePrior = TRUE,
                                                                          useProcedureOccurrenceLongTerm = TRUE,
                                                                          useProcedureOccurrenceMediumTerm = FALSE,
                                                                          useProcedureOccurrenceShortTerm = TRUE,
                                                                          useDeviceExposureAnyTimePrior = FALSE,
-                                                                         useDeviceExposureLongTerm = FALSE,
+                                                                         useDeviceExposureLongTerm = TRUE,
                                                                          useDeviceExposureMediumTerm = FALSE,
                                                                          useDeviceExposureShortTerm = TRUE,
                                                                          useMeasurementAnyTimePrior = FALSE, 
@@ -171,59 +171,68 @@ createAnalysesDetails <- function(workFolder) {
   
   covariateSettings <- list(defaultCovariateSettings ,subGroupCovariateSettings
                             )
-  
   getDbCmDataArgs <- CohortMethod::createGetDbCohortMethodDataArgs(washoutPeriod = 0,
-                                                                   studyStartDate='20130301',
-                                                                   firstExposureOnly = FALSE,
-                                                                   removeDuplicateSubjects = 'keep first',
-                                                                   restrictToCommonPeriod = TRUE,
-                                                                   maxCohortSize = 0, 
-                                                                   excludeDrugsFromCovariates = FALSE,
-                                                                   covariateSettings = covariateSettings)
-
-  timeToFirstPostIndexEvent1Year <- CohortMethod::createCreateStudyPopulationArgs(removeSubjectsWithPriorOutcome = FALSE,
-                                                                                  firstExposureOnly = FALSE,
-                                                                                  washoutPeriod = 0,
-                                                                                  removeDuplicateSubjects = 'keep first',
-                                                                                  minDaysAtRisk = 364,
-                                                                                  riskWindowStart = 1,
-                                                                                  addExposureDaysToStart = FALSE,
-                                                                                  riskWindowEnd = 365,
-                                                                                  addExposureDaysToEnd = FALSE,
-                                                                                  censorAtNewRiskWindow = FALSE)
+                                                                    firstExposureOnly = FALSE,
+                                                                    removeDuplicateSubjects = 'keep first',
+                                                                    restrictToCommonPeriod = TRUE,
+                                                                    maxCohortSize = 0, 
+                                                                    excludeDrugsFromCovariates = FALSE,
+                                                                    covariateSettings = covariateSettings)
   
-  timeToFirstPostIndexEventOnTreatment <- CohortMethod::createCreateStudyPopulationArgs(removeSubjectsWithPriorOutcome = FALSE,
-                                                                                        firstExposureOnly = FALSE,
-                                                                                        washoutPeriod = 0,
-                                                                                        removeDuplicateSubjects = 'keep first',
-                                                                                        minDaysAtRisk = 1,
-                                                                                        riskWindowStart = 1,
-                                                                                        addExposureDaysToStart = FALSE,
-                                                                                        riskWindowEnd = 0,
-                                                                                        addExposureDaysToEnd = TRUE,
-                                                                                        censorAtNewRiskWindow = FALSE)
-
-  timeToFirstPostIndexEvent7DaysFromTreatment <- CohortMethod::createCreateStudyPopulationArgs(removeSubjectsWithPriorOutcome = FALSE,
-                                                                                               firstExposureOnly = FALSE,
-                                                                                               washoutPeriod = 0,
-                                                                                               removeDuplicateSubjects = 'keep first',
-                                                                                               minDaysAtRisk = 1,
-                                                                                               riskWindowStart = 1,
-                                                                                               addExposureDaysToStart = FALSE,
-                                                                                               riskWindowEnd = 7,
-                                                                                               addExposureDaysToEnd = TRUE,
-                                                                                               censorAtNewRiskWindow = FALSE)
+  OneYearOutcome <- CohortMethod::createCreateStudyPopulationArgs(removeSubjectsWithPriorOutcome = FALSE,
+                                                                  firstExposureOnly = FALSE,
+                                                                  washoutPeriod = 0,
+                                                                  removeDuplicateSubjects = 'keep first',
+                                                                  minDaysAtRisk = 1,
+                                                                  riskWindowStart = 1,
+                                                                  addExposureDaysToStart = FALSE,
+                                                                  riskWindowEnd = 365,
+                                                                  addExposureDaysToEnd = FALSE,
+                                                                  censorAtNewRiskWindow = FALSE)
   
-  timeToFirstPostIndexEventITT <- CohortMethod::createCreateStudyPopulationArgs(removeSubjectsWithPriorOutcome = FALSE,
-                                                                                firstExposureOnly = FALSE,
-                                                                                washoutPeriod = 0,
-                                                                                removeDuplicateSubjects = 'keep first',
-                                                                                minDaysAtRisk = 1,
-                                                                                riskWindowStart = 1,
-                                                                                addExposureDaysToStart = FALSE,
-                                                                                riskWindowEnd = 9999,
-                                                                                addExposureDaysToEnd = FALSE,
-                                                                                censorAtNewRiskWindow = FALSE)
+  OneYearOutcomeWithMinTAR <- CohortMethod::createCreateStudyPopulationArgs(removeSubjectsWithPriorOutcome = FALSE,
+                                                                            firstExposureOnly = FALSE,
+                                                                            washoutPeriod = 0,
+                                                                            removeDuplicateSubjects = 'keep first',
+                                                                            minDaysAtRisk = 364,
+                                                                            riskWindowStart = 1,
+                                                                            addExposureDaysToStart = FALSE,
+                                                                            riskWindowEnd = 365,
+                                                                            addExposureDaysToEnd = FALSE,
+                                                                            censorAtNewRiskWindow = FALSE)
+  
+  OnTreatment <- CohortMethod::createCreateStudyPopulationArgs(removeSubjectsWithPriorOutcome = FALSE,
+                                                               firstExposureOnly = FALSE,
+                                                               washoutPeriod = 0,
+                                                               removeDuplicateSubjects = 'keep first',
+                                                               minDaysAtRisk = 1,
+                                                               riskWindowStart = 1,
+                                                               addExposureDaysToStart = FALSE,
+                                                               riskWindowEnd = 0,
+                                                               addExposureDaysToEnd = TRUE,
+                                                               censorAtNewRiskWindow = FALSE)
+  
+  ITT <- CohortMethod::createCreateStudyPopulationArgs(removeSubjectsWithPriorOutcome = FALSE,
+                                                       firstExposureOnly = FALSE,
+                                                       washoutPeriod = 0,
+                                                       removeDuplicateSubjects = 'keep first',
+                                                       minDaysAtRisk = 1,
+                                                       riskWindowStart = 1,
+                                                       addExposureDaysToStart = FALSE,
+                                                       riskWindowEnd = 9999,
+                                                       addExposureDaysToEnd = FALSE,
+                                                       censorAtNewRiskWindow = FALSE)
+
+  # timeToFirstPostIndexEvent7DaysFromTreatment <- CohortMethod::createCreateStudyPopulationArgs(removeSubjectsWithPriorOutcome = FALSE,
+  #                                                                                              firstExposureOnly = FALSE,
+  #                                                                                              washoutPeriod = 0,
+  #                                                                                              removeDuplicateSubjects = 'keep first',
+  #                                                                                              minDaysAtRisk = 1,
+  #                                                                                              riskWindowStart = 1,
+  #                                                                                              addExposureDaysToStart = FALSE,
+  #                                                                                              riskWindowEnd = 7,
+  #                                                                                              addExposureDaysToEnd = TRUE,
+  #                                                                                              censorAtNewRiskWindow = FALSE)
   
   # timeToFirstPostIndexEventModifiedITT <- CohortMethod::createCreateStudyPopulationArgs(removeSubjectsWithPriorOutcome = FALSE,
   #                                                                                       firstExposureOnly = FALSE,
@@ -245,15 +254,22 @@ createAnalysesDetails <- function(workFolder) {
 
   #trimByPsArgs<- CohortMethod::createTrimByPsArgs(trimFraction = 0.05)
   
-  oneToOneMatchOnPsArgs <- CohortMethod::createMatchOnPsArgs(maxRatio = 1,
+  oneToFourMatchOnPsArgs <- CohortMethod::createMatchOnPsArgs(maxRatio = 4,
                                                              caliper = 0.2,
                                                              caliperScale = "standardized logit")
 
-  variableRatioMatchOnPsArgs <- CohortMethod::createMatchOnPsArgs(maxRatio = 100,
-                                                                  caliper = 0.2,
-                                                                  caliperScale = "standardized logit")
+  # variableRatioMatchOnPsArgs <- CohortMethod::createMatchOnPsArgs(maxRatio = 100,
+  #                                                                 caliper = 0.2,
+  #                                                                 caliperScale = "standardized logit")
   
   stratifyByPsArgs <- CohortMethod::createStratifyByPsArgs(numberOfStrata = 10) 
+  
+  #without matching arg
+  fitOutcomeModelArgs0 <- CohortMethod::createFitOutcomeModelArgs(useCovariates = FALSE,
+                                                                  modelType = "cox",
+                                                                  stratified = FALSE,
+                                                                  prior = defaultPrior, 
+                                                                  control = defaultControl)
   
   fitOutcomeModelArgs1 <- CohortMethod::createFitOutcomeModelArgs(useCovariates = FALSE,
                                                                   modelType = "cox",
@@ -261,169 +277,155 @@ createAnalysesDetails <- function(workFolder) {
                                                                   prior = defaultPrior, 
                                                                   control = defaultControl)
   
-  # a1 <- CohortMethod::createCmAnalysis(analysisId = 1,
-  #                                      description = "Time to First Post Index Event within 1 year, Without Matching",
-  #                                      getDbCohortMethodDataArgs = getDbCmDataArgs,
-  #                                      createStudyPopArgs = timeToFirstPostIndexEvent1Year,
-  #                                      fitOutcomeModel = FALSE)
-
+  
   a1 <- CohortMethod::createCmAnalysis(analysisId = 1,
-                                       description = "Time to First Post Index Event within 1 year, With 1 to 1 Matching",
+                                       description = "One-year outcome, matching",
                                        getDbCohortMethodDataArgs = getDbCmDataArgs,
-                                       createStudyPopArgs = timeToFirstPostIndexEvent1Year,
+                                       createStudyPopArgs = OneYearOutcome,
                                        createPs = TRUE,
                                        createPsArgs = createPsArgs1,
                                        matchOnPs = TRUE,
-                                       matchOnPsArgs = oneToOneMatchOnPsArgs,
+                                       matchOnPsArgs = oneToFourMatchOnPsArgs,
                                        fitOutcomeModel = TRUE,
                                        fitOutcomeModelArgs = fitOutcomeModelArgs1)
 
   a2 <- CohortMethod::createCmAnalysis(analysisId = 2,
-                                       description = "Time to First Post Index Event within 1 year, With Variable Ratio Matching",
+                                       description = "One-year outcome, stratification",
                                        getDbCohortMethodDataArgs = getDbCmDataArgs,
-                                       createStudyPopArgs = timeToFirstPostIndexEvent1Year,
+                                       createStudyPopArgs = OneYearOutcome,
                                        createPs = TRUE,
                                        createPsArgs = createPsArgs1,
-                                       matchOnPs = TRUE,
-                                       matchOnPsArgs = variableRatioMatchOnPsArgs,
+                                       #trimByPs = TRUE,
+                                       #trimByPsArgs = trimByPsArgs,
+                                       stratifyByPs = TRUE,
+                                       stratifyByPsArgs = stratifyByPsArgs,
                                        fitOutcomeModel = TRUE,
                                        fitOutcomeModelArgs = fitOutcomeModelArgs1)
-
+  
   a3 <- CohortMethod::createCmAnalysis(analysisId = 3,
-                                       description = "Time to First Post Index Event within 1 year, With Stratification",
+                                       description = "One-year outcome, without matching",
                                        getDbCohortMethodDataArgs = getDbCmDataArgs,
-                                       createStudyPopArgs = timeToFirstPostIndexEvent1Year,
-                                       createPs = TRUE,
-                                       createPsArgs = createPsArgs1,
+                                       createStudyPopArgs = OneYearOutcome,
+                                       createPs = FALSE,
+                                       createPsArgs = NULL,
                                        #trimByPs = TRUE,
                                        #trimByPsArgs = trimByPsArgs,
-                                       stratifyByPs = TRUE,
-                                       stratifyByPsArgs = stratifyByPsArgs,
+                                       stratifyByPs = FALSE,
+                                       stratifyByPsArgs = NULL,
                                        fitOutcomeModel = TRUE,
-                                       fitOutcomeModelArgs = fitOutcomeModelArgs1)
-
-  # a5 <- CohortMethod::createCmAnalysis(analysisId = 5,
-  #                                      description = "Time To First Post Index Event On Treatment, Without Matching",
-  #                                      getDbCohortMethodDataArgs = getDbCmDataArgs,
-  #                                      createStudyPopArgs = timeToFirstPostIndexEventOnTreatment,
-  #                                      fitOutcomeModel = FALSE)
-
+                                       fitOutcomeModelArgs = fitOutcomeModelArgs0)
+  
   a4 <- CohortMethod::createCmAnalysis(analysisId = 4,
-                                       description = "Time To First Post Index Event On Treatment, With 1 to 1 Matching",
+                                       description = "One-year outcome only for observed, matching",
                                        getDbCohortMethodDataArgs = getDbCmDataArgs,
-                                       createStudyPopArgs = timeToFirstPostIndexEventOnTreatment,
+                                       createStudyPopArgs = OneYearOutcomeWithMinTAR,
                                        createPs = TRUE,
                                        createPsArgs = createPsArgs1,
                                        matchOnPs = TRUE,
-                                       matchOnPsArgs = oneToOneMatchOnPsArgs,
+                                       matchOnPsArgs = oneToFourMatchOnPsArgs,
                                        fitOutcomeModel = TRUE,
                                        fitOutcomeModelArgs = fitOutcomeModelArgs1)
-
+  
   a5 <- CohortMethod::createCmAnalysis(analysisId = 5,
-                                       description = "Time To First Post Index Event On Treatment, With Variable Ratio Matching",
+                                       description = "One-year outcome only for observed, stratification",
                                        getDbCohortMethodDataArgs = getDbCmDataArgs,
-                                       createStudyPopArgs = timeToFirstPostIndexEventOnTreatment,
+                                       createStudyPopArgs = OneYearOutcomeWithMinTAR,
                                        createPs = TRUE,
                                        createPsArgs = createPsArgs1,
-                                       matchOnPs = TRUE,
-                                       matchOnPsArgs = variableRatioMatchOnPsArgs,
+                                       #trimByPs = TRUE,
+                                       #trimByPsArgs = trimByPsArgs,
+                                       stratifyByPs = TRUE,
+                                       stratifyByPsArgs = stratifyByPsArgs,
                                        fitOutcomeModel = TRUE,
                                        fitOutcomeModelArgs = fitOutcomeModelArgs1)
-
+  
   a6 <- CohortMethod::createCmAnalysis(analysisId = 6,
-                                       description = "Time To First Post Index Event On Treatment, With Stratification",
+                                       description = "One-year outcome only for observed, without matching",
                                        getDbCohortMethodDataArgs = getDbCmDataArgs,
-                                       createStudyPopArgs = timeToFirstPostIndexEventOnTreatment,
-                                       createPs = TRUE,
-                                       createPsArgs = createPsArgs1,
+                                       createStudyPopArgs = OneYearOutcomeWithMinTAR,
+                                       createPs = FALSE,
+                                       createPsArgs = NULL,
                                        #trimByPs = TRUE,
                                        #trimByPsArgs = trimByPsArgs,
-                                       stratifyByPs = TRUE,
-                                       stratifyByPsArgs = stratifyByPsArgs,
+                                       stratifyByPs = FALSE,
+                                       stratifyByPsArgs = NULL,
                                        fitOutcomeModel = TRUE,
-                                       fitOutcomeModelArgs = fitOutcomeModelArgs1)
-
-  # a9 <- CohortMethod::createCmAnalysis(analysisId = 9,
-  #                                      description = "Time To First Post Index Event 7Days From Treatment, Without Matching",
-  #                                      getDbCohortMethodDataArgs = getDbCmDataArgs,
-  #                                      createStudyPopArgs = timeToFirstPostIndexEvent7DaysFromTreatment,
-  #                                      fitOutcomeModel = FALSE)
-
+                                       fitOutcomeModelArgs = fitOutcomeModelArgs0)
+  
   a7 <- CohortMethod::createCmAnalysis(analysisId = 7,
-                                       description = "Time To First Post Index Event 7Days From Treatment, With 1 to 1 Matching",
+                                       description = "On-treatment, matching",
                                        getDbCohortMethodDataArgs = getDbCmDataArgs,
-                                       createStudyPopArgs = timeToFirstPostIndexEvent7DaysFromTreatment,
+                                       createStudyPopArgs = OnTreatment,
                                        createPs = TRUE,
                                        createPsArgs = createPsArgs1,
                                        matchOnPs = TRUE,
-                                       matchOnPsArgs = oneToOneMatchOnPsArgs,
+                                       matchOnPsArgs = oneToFourMatchOnPsArgs,
                                        fitOutcomeModel = TRUE,
                                        fitOutcomeModelArgs = fitOutcomeModelArgs1)
-
+  
   a8 <- CohortMethod::createCmAnalysis(analysisId = 8,
-                                       description = "Time To First Post Index Event 7Days From Treatment, With Variable Ratio Matching",
+                                       description = "On-treatment, stratification",
                                        getDbCohortMethodDataArgs = getDbCmDataArgs,
-                                       createStudyPopArgs = timeToFirstPostIndexEvent7DaysFromTreatment,
+                                       createStudyPopArgs = OnTreatment,
                                        createPs = TRUE,
                                        createPsArgs = createPsArgs1,
-                                       matchOnPs = TRUE,
-                                       matchOnPsArgs = variableRatioMatchOnPsArgs,
+                                       #trimByPs = TRUE,
+                                       #trimByPsArgs = trimByPsArgs,
+                                       stratifyByPs = TRUE,
+                                       stratifyByPsArgs = stratifyByPsArgs,
                                        fitOutcomeModel = TRUE,
                                        fitOutcomeModelArgs = fitOutcomeModelArgs1)
-
+  
   a9 <- CohortMethod::createCmAnalysis(analysisId = 9,
-                                       description = "Time To First Post Index Event 7Days From Treatment, With Stratification",
+                                       description = "On-treatment, without matching",
                                        getDbCohortMethodDataArgs = getDbCmDataArgs,
-                                       createStudyPopArgs = timeToFirstPostIndexEvent7DaysFromTreatment,
-                                       createPs = TRUE,
-                                       createPsArgs = createPsArgs1,
+                                       createStudyPopArgs = OnTreatment,
+                                       createPs = FALSE,
+                                       createPsArgs = NULL,
                                        #trimByPs = TRUE,
                                        #trimByPsArgs = trimByPsArgs,
-                                       stratifyByPs = TRUE,
-                                       stratifyByPsArgs = stratifyByPsArgs,
+                                       stratifyByPs = FALSE,
+                                       stratifyByPsArgs = NULL,
                                        fitOutcomeModel = TRUE,
-                                       fitOutcomeModelArgs = fitOutcomeModelArgs1)
-
-  # a13 <- CohortMethod::createCmAnalysis(analysisId = 13,
-  #                                      description = "Time To First Post Index Event ITT, Without Matching",
-  #                                      getDbCohortMethodDataArgs = getDbCmDataArgs,
-  #                                      createStudyPopArgs = timeToFirstPostIndexEventITT,
-  #                                      fitOutcomeModel = FALSE)
-
-  a10 <- CohortMethod::createCmAnalysis(analysisId = 10,
-                                       description = "Time To First Post Index Event ITT, With 1 to 1 Matching",
-                                       getDbCohortMethodDataArgs = getDbCmDataArgs,
-                                       createStudyPopArgs = timeToFirstPostIndexEventITT,
-                                       createPs = TRUE,
-                                       createPsArgs = createPsArgs1,
-                                       matchOnPs = TRUE,
-                                       matchOnPsArgs = oneToOneMatchOnPsArgs,
-                                       fitOutcomeModel = TRUE,
-                                       fitOutcomeModelArgs = fitOutcomeModelArgs1)
-
-  a11 <- CohortMethod::createCmAnalysis(analysisId = 11,
-                                       description = "Time To First Post Index Event ITT, With Variable Ratio Matching",
-                                       getDbCohortMethodDataArgs = getDbCmDataArgs,
-                                       createStudyPopArgs = timeToFirstPostIndexEventITT,
-                                       createPs = TRUE,
-                                       createPsArgs = createPsArgs1,
-                                       matchOnPs = TRUE,
-                                       matchOnPsArgs = variableRatioMatchOnPsArgs,
-                                       fitOutcomeModel = TRUE,
-                                       fitOutcomeModelArgs = fitOutcomeModelArgs1)
-
-  a12 <- CohortMethod::createCmAnalysis(analysisId = 12,
-                                       description = "Time To First Post Index Event ITT, With Stratification",
-                                       getDbCohortMethodDataArgs = getDbCmDataArgs,
-                                       createStudyPopArgs = timeToFirstPostIndexEventITT,
-                                       createPs = TRUE,
-                                       createPsArgs = createPsArgs1,
-                                       #trimByPs = TRUE,
-                                       #trimByPsArgs = trimByPsArgs,
-                                       stratifyByPs = TRUE,
-                                       stratifyByPsArgs = stratifyByPsArgs,
-                                       fitOutcomeModel = TRUE,
-                                       fitOutcomeModelArgs = fitOutcomeModelArgs1)
+                                       fitOutcomeModelArgs = fitOutcomeModelArgs0)
+  
+  a10 <- CohortMethod::createCmAnalysis(analysisId = 7,
+                                        description = "ITT, matching",
+                                        getDbCohortMethodDataArgs = getDbCmDataArgs,
+                                        createStudyPopArgs = ITT,
+                                        createPs = TRUE,
+                                        createPsArgs = createPsArgs1,
+                                        matchOnPs = TRUE,
+                                        matchOnPsArgs = oneToFourMatchOnPsArgs,
+                                        fitOutcomeModel = TRUE,
+                                        fitOutcomeModelArgs = fitOutcomeModelArgs1)
+  
+  a11 <- CohortMethod::createCmAnalysis(analysisId = 8,
+                                        description = "ITT, stratification",
+                                        getDbCohortMethodDataArgs = getDbCmDataArgs,
+                                        createStudyPopArgs = ITT,
+                                        createPs = TRUE,
+                                        createPsArgs = createPsArgs1,
+                                        #trimByPs = TRUE,
+                                        #trimByPsArgs = trimByPsArgs,
+                                        stratifyByPs = TRUE,
+                                        stratifyByPsArgs = stratifyByPsArgs,
+                                        fitOutcomeModel = TRUE,
+                                        fitOutcomeModelArgs = fitOutcomeModelArgs1)
+  
+  a12 <- CohortMethod::createCmAnalysis(analysisId = 9,
+                                        description = "ITT, without matching",
+                                        getDbCohortMethodDataArgs = getDbCmDataArgs,
+                                        createStudyPopArgs = ITT,
+                                        createPs = FALSE,
+                                        createPsArgs = NULL,
+                                        #trimByPs = TRUE,
+                                        #trimByPsArgs = trimByPsArgs,
+                                        stratifyByPs = FALSE,
+                                        stratifyByPsArgs = NULL,
+                                        fitOutcomeModel = TRUE,
+                                        fitOutcomeModelArgs = fitOutcomeModelArgs0)
+  
 
 
   ##Interaction terms
@@ -470,68 +472,68 @@ createAnalysesDetails <- function(workFolder) {
                                                                       interactionCovariateIds = subgroupCovariateIds)
 
   a19 <- CohortMethod::createCmAnalysis(analysisId = 19,
-                                        description = "Time to First Post Index Event within 1 year, With 1 to 1 Matching, femal interaction",
+                                        description = "One-year outcome, matching, femal interaction",
                                         getDbCohortMethodDataArgs = getDbCmDataArgs,
-                                        createStudyPopArgs = timeToFirstPostIndexEvent1Year,
+                                        createStudyPopArgs = OneYearOutcome,
                                         createPs = TRUE,
                                         createPsArgs = createPsArgs1,
                                         matchOnPs = TRUE,
-                                        matchOnPsArgs = oneToOneMatchOnPsArgs,
+                                        matchOnPsArgs = oneToFourMatchOnPsArgs,
                                         fitOutcomeModel = TRUE,
                                         fitOutcomeModelArgs = fitOutcomeModelArgsI1998)
 
   a29 <- CohortMethod::createCmAnalysis(analysisId = 29,
-                                        description = "Time to First Post Index Event within 1 year, With 1 to 1 Matching, elderly interaction",
+                                        description = "One-year outcome, matching, With 1 to 1 Matching, elderly interaction",
                                         getDbCohortMethodDataArgs = getDbCmDataArgs,
-                                        createStudyPopArgs = timeToFirstPostIndexEvent1Year,
+                                        createStudyPopArgs = OneYearOutcome,
                                         createPs = TRUE,
                                         createPsArgs = createPsArgs1,
                                         matchOnPs = TRUE,
-                                        matchOnPsArgs = oneToOneMatchOnPsArgs,
+                                        matchOnPsArgs = oneToFourMatchOnPsArgs,
                                         fitOutcomeModel = TRUE,
                                         fitOutcomeModelArgs = fitOutcomeModelArgsI2998)
 
   a39 <- CohortMethod::createCmAnalysis(analysisId = 39,
-                                        description = "Time to First Post Index Event within 1 year, With 1 to 1 Matching, black or aftrican race interaction",
+                                        description = "One-year outcome, matching, black or aftrican race interaction",
                                         getDbCohortMethodDataArgs = getDbCmDataArgs,
-                                        createStudyPopArgs = timeToFirstPostIndexEvent1Year,
+                                        createStudyPopArgs = OneYearOutcome,
                                         createPs = TRUE,
                                         createPsArgs = createPsArgs1,
                                         matchOnPs = TRUE,
-                                        matchOnPsArgs = oneToOneMatchOnPsArgs,
+                                        matchOnPsArgs = oneToFourMatchOnPsArgs,
                                         fitOutcomeModel = TRUE,
                                         fitOutcomeModelArgs = fitOutcomeModelArgsI3998)
 
   a49 <- CohortMethod::createCmAnalysis(analysisId = 49,
-                                        description = "Time to First Post Index Event within 1 year, With 1 to 1 Matching, short-term MI interaction",
+                                        description = "One-year outcome, matching, short-term MI interaction",
                                         getDbCohortMethodDataArgs = getDbCmDataArgs,
-                                        createStudyPopArgs = timeToFirstPostIndexEvent1Year,
+                                        createStudyPopArgs = OneYearOutcome,
                                         createPs = TRUE,
                                         createPsArgs = createPsArgs1,
                                         matchOnPs = TRUE,
-                                        matchOnPsArgs = oneToOneMatchOnPsArgs,
+                                        matchOnPsArgs = oneToFourMatchOnPsArgs,
                                         fitOutcomeModel = TRUE,
                                         fitOutcomeModelArgs = fitOutcomeModelArgsI4998)
 
   a59 <- CohortMethod::createCmAnalysis(analysisId = 59,
-                                        description = "Time to First Post Index Event within 1 year, With 1 to 1 Matching, concomitant PPI use interaction",
+                                        description = "One-year outcome, matching, concomitant PPI use interaction",
                                         getDbCohortMethodDataArgs = getDbCmDataArgs,
-                                        createStudyPopArgs = timeToFirstPostIndexEvent1Year,
+                                        createStudyPopArgs = OneYearOutcome,
                                         createPs = TRUE,
                                         createPsArgs = createPsArgs1,
                                         matchOnPs = TRUE,
-                                        matchOnPsArgs = oneToOneMatchOnPsArgs,
+                                        matchOnPsArgs = oneToFourMatchOnPsArgs,
                                         fitOutcomeModel = TRUE,
                                         fitOutcomeModelArgs = fitOutcomeModelArgsI5998)
 
   a69 <- CohortMethod::createCmAnalysis(analysisId = 69,
-                                        description = "Time to First Post Index Event within 1 year, With 1 to 1 Matching, maintenance aspirin dosage interaction",
+                                        description = "One-year outcome, matching, maintenance aspirin dosage interaction",
                                         getDbCohortMethodDataArgs = getDbCmDataArgs,
-                                        createStudyPopArgs = timeToFirstPostIndexEvent1Year,
+                                        createStudyPopArgs = OneYearOutcome,
                                         createPs = TRUE,
                                         createPsArgs = createPsArgs1,
                                         matchOnPs = TRUE,
-                                        matchOnPsArgs = oneToOneMatchOnPsArgs,
+                                        matchOnPsArgs = oneToFourMatchOnPsArgs,
                                         fitOutcomeModel = TRUE,
                                         fitOutcomeModelArgs = fitOutcomeModelArgsI6998)
   
@@ -556,32 +558,5 @@ createAnalysesDetails <- function(workFolder) {
   
   CohortMethod::saveCmAnalysisList(cmAnalysisList, file.path(workFolder, "cmAnalysisList.json"))
 
-
-
-
 }
 
-createTcos <- function(outputFolder) {
-  pathToCsv <- system.file("settings", "TcosOfInterest.csv", package = "TicagrelorVsClopidogrel")
-  tcosOfInterest <- read.csv(pathToCsv, stringsAsFactors = FALSE)
-  pathToCsv <- system.file("settings", "NegativeControls.csv", package = "TicagrelorVsClopidogrel")
-  negativeControls <- read.csv(pathToCsv)
-  negativeControlOutcomes <- negativeControls[negativeControls$type == "Outcome", ]
-  dcosList <- list()
-  tcs <- unique(tcosOfInterest[, c("targetId", "comparatorId")])
-  for (i in 1:nrow(tcs)) {
-    targetId <- tcs$targetId[i]
-    comparatorId <- tcs$comparatorId[i]
-    outcomeIds <- as.character(tcosOfInterest$outcomeIds[tcosOfInterest$targetId == targetId & tcosOfInterest$comparatorId == comparatorId])
-    outcomeIds <- as.numeric(strsplit(outcomeIds, split = ";")[[1]])
-    outcomeIds <- c(outcomeIds, negativeControlOutcomes$outcomeId)
-    excludeConceptIds <- tcosOfInterest$excludedCovariateConceptIds[tcosOfInterest$targetId == targetId & tcosOfInterest$comparatorId == comparatorId]
-    excludeConceptIds <- as.numeric(strsplit(excludeConceptIds, split = ";")[[1]])
-    dcos <- CohortMethod::createDrugComparatorOutcomes(targetId = targetId,
-                                                       comparatorId = comparatorId,
-                                                       outcomeIds = outcomeIds,
-                                                       excludedCovariateConceptIds =  excludeConceptIds)
-    dcosList[[length(dcosList) + 1]] <- dcos
-  }
-  return(dcosList)
-}

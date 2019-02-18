@@ -1,6 +1,8 @@
 atlasId,atlasName,cohortId,name
 874,Ticagrelor,874,Ticagrelor
 929,Clopidogrel,929,Clopidogrel
+1253,Ticagrelor2013To2015,1253,Ticagrelor2013To2015
+1254,Clopidogrel2013To2015,1254,Clopidogrel2013To2015
 20,anyDeath,20,anyDeath
 1165,dyspnea,1165,dyspnea
 1030,Revascularization,1030,Revascularization
