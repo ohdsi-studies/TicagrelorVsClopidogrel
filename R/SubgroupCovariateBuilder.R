@@ -1,6 +1,6 @@
 # Copyright 2018 Observational Health Data Sciences and Informatics
 #
-# This file is part of TicagrelorVsClopidogrel
+# This file is part of TicagrelorVsClopidogrel_narrow
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -38,7 +38,7 @@ createSubgroupCovariateSettings <- function(windowStart = -365, windowEnd = -1,
                               shortTermWindowStart = shortTermWindowStart,
                               MaintenanceWindowEnd = MaintenanceWindowEnd,
                               analysisId = analysisId)
-    attr(covariateSettings, "fun") <- "TicagrelorVsClopidogrel::getDbSubgroupCovariateData"
+    attr(covariateSettings, "fun") <- "TicagrelorVsClopidogrel_narrow::getDbSubgroupCovariateData"
     class(covariateSettings) <- "covariateSettings"
     return(covariateSettings)
 }
@@ -82,7 +82,7 @@ getDbSubgroupCovariateData <- function(connection,
         stop("Aggregation not supported")
     writeLines("Creating covariates indicating subgroups of interest")
     sql <- SqlRender::loadRenderTranslateSql("CreateSubgroups.sql",
-                                             packageName = "TicagrelorVsClopidogrel",
+                                             packageName = "TicagrelorVsClopidogrel_narrow",
                                              dbms = connection@dbms,
                                              oracleTempSchema = oracleTempSchema,
                                              cdm_database_schema = cdmDatabaseSchema,
@@ -97,14 +97,14 @@ getDbSubgroupCovariateData <- function(connection,
     DatabaseConnector::executeSql(connection, sql)
 
     sql <- SqlRender::loadRenderTranslateSql("GetSubgroups.sql",
-                                             packageName = "TicagrelorVsClopidogrel",
+                                             packageName = "TicagrelorVsClopidogrel_narrow",
                                              dbms = connection@dbms,
                                              oracleTempSchema = oracleTempSchema)
     covariates <- DatabaseConnector::querySql.ffdf(connection, sql)
     colnames(covariates) <- SqlRender::snakeCaseToCamelCase(colnames(covariates))
 
     sql <- SqlRender::loadRenderTranslateSql("DropSubgroupTempTables.sql",
-                                             packageName = "TicagrelorVsClopidogrel",
+                                             packageName = "TicagrelorVsClopidogrel_narrow",
                                              dbms = connection@dbms,
                                              oracleTempSchema = oracleTempSchema)
     DatabaseConnector::executeSql(connection, sql, progressBar = FALSE, reportOverallTime = FALSE)
