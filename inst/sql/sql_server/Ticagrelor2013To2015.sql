@@ -157,7 +157,8 @@ from
 JOIN #Codesets codesets on ((de.drug_concept_id = codesets.concept_id and codesets.codeset_id = 4))
 ) C
 JOIN @cdm_database_schema.PERSON P on C.person_id = P.person_id
-WHERE YEAR(C.drug_exposure_start_date) - P.year_of_birth >= 20
+WHERE (C.drug_exposure_start_date >= DATEFROMPARTS(2013, 02, 28) and C.drug_exposure_start_date <= DATEFROMPARTS(2015, 12, 30))
+AND YEAR(C.drug_exposure_start_date) - P.year_of_birth >= 20
 -- End Drug Exposure Criteria
 
   ) E
