@@ -1,4 +1,4 @@
-TicagrelorVsClopidogrel_narrow
+TicagrelorVsClopidogrel
 ==============================
 
 
@@ -37,14 +37,14 @@ How to run
 	
 	Alternatively, ensure that you have installed both 32-bit and 64-bit JDK versions, as mentioned in the [video tutorial](https://youtu.be/K9_0s2Rchbo).
 	
-2. In 'R', use the following code to install the TicagrelorVsClopidogrel_narrow package:
+2. In 'R', use the following code to install the TicagrelorVsClopidogrel package:
 
   To do: Need to provide some instructions for installing the study package itself.
 	
 3. Once installed, you can execute the study by modifying and using the following code:
 	
 	```r
-	library(TicagrelorVsClopidogrel_narrow)
+	library(TicagrelorVsClopidogrel)
 	
 	# Optional: specify where the temporary files (used by the ff package) will be created:
 	options(fftempdir = "c:/FFtemp")
@@ -56,7 +56,7 @@ How to run
 	minCellCount <- 5
 	
 	# The folder where the study intermediate and result files will be written:
-	outputFolder <- "c:/TicagrelorVsClopidogrel_narrow"
+	outputFolder <- "c:/TicagrelorVsClopidogrel"
 	
 	# Details for connecting to the server:
 	# See ?DatabaseConnector::createConnectionDetails for help
@@ -121,12 +121,12 @@ How to run
 
 License
 =======
-The TicagrelorVsClopidogrel_narrow package is licensed under Apache License 2.0
+The TicagrelorVsClopidogrel package is licensed under Apache License 2.0
 
 
 Development
 ===========
-TicagrelorVsClopidogrel_narrow was developed in ATLAS and R Studio.
+TicagrelorVsClopidogrel was developed in ATLAS and R Studio.
 
 ### Development status
 

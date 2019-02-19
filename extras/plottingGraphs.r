@@ -1,4 +1,4 @@
-outputFolder <- "s:/TicagrelorVsClopidogrel_narrow"
+outputFolder <- "s:/TicagrelorVsClopidogrel"
 
 #KM plot, follow-up distribution of study population
 studyPopList<-list.files(path = file.path(outputFolder,"cmOutput"), pattern = "StudyPop.*")
@@ -35,7 +35,7 @@ for (stratPopPath in stratPopList){
                                          fileName = file.path(outputFolder,"export",paste0("FollowUpDistribution","_stratPop_" ,analysisName,".tiff")))
 }
 #Tables for Baseline characteristics
-fileName<-system.file("csv","tableSpecification.csv",package= "TicagrelorVsClopidogrel_narrow")
+fileName<-system.file("csv","tableSpecification.csv",package= "TicagrelorVsClopidogrel")
 specification <-read.csv(fileName, stringsAsFactors = FALSE)
 balanceList<-list.files(path = file.path(outputFolder,"balance"), pattern = "bal.*")
 for (balancePath in balanceList){

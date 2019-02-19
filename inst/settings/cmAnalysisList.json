@@ -52,7 +52,7 @@
           "shortTermWindowStart": -7,
           "MaintenanceWindowEnd": 365,
           "analysisId": 998,
-          "attr_fun": "TicagrelorVsClopidogrel_narrow::getDbSubgroupCovariateData",
+          "attr_fun": "TicagrelorVsClopidogrel::getDbSubgroupCovariateData",
           "attr_class": "covariateSettings"
         }
       ],
@@ -224,7 +224,7 @@
           "shortTermWindowStart": -7,
           "MaintenanceWindowEnd": 365,
           "analysisId": 998,
-          "attr_fun": "TicagrelorVsClopidogrel_narrow::getDbSubgroupCovariateData",
+          "attr_fun": "TicagrelorVsClopidogrel::getDbSubgroupCovariateData",
           "attr_class": "covariateSettings"
         }
       ],
@@ -395,7 +395,7 @@
           "shortTermWindowStart": -7,
           "MaintenanceWindowEnd": 365,
           "analysisId": 998,
-          "attr_fun": "TicagrelorVsClopidogrel_narrow::getDbSubgroupCovariateData",
+          "attr_fun": "TicagrelorVsClopidogrel::getDbSubgroupCovariateData",
           "attr_class": "covariateSettings"
         }
       ],
@@ -520,7 +520,7 @@
           "shortTermWindowStart": -7,
           "MaintenanceWindowEnd": 365,
           "analysisId": 998,
-          "attr_fun": "TicagrelorVsClopidogrel_narrow::getDbSubgroupCovariateData",
+          "attr_fun": "TicagrelorVsClopidogrel::getDbSubgroupCovariateData",
           "attr_class": "covariateSettings"
         }
       ],
@@ -692,7 +692,7 @@
           "shortTermWindowStart": -7,
           "MaintenanceWindowEnd": 365,
           "analysisId": 998,
-          "attr_fun": "TicagrelorVsClopidogrel_narrow::getDbSubgroupCovariateData",
+          "attr_fun": "TicagrelorVsClopidogrel::getDbSubgroupCovariateData",
           "attr_class": "covariateSettings"
         }
       ],
@@ -863,7 +863,7 @@
           "shortTermWindowStart": -7,
           "MaintenanceWindowEnd": 365,
           "analysisId": 998,
-          "attr_fun": "TicagrelorVsClopidogrel_narrow::getDbSubgroupCovariateData",
+          "attr_fun": "TicagrelorVsClopidogrel::getDbSubgroupCovariateData",
           "attr_class": "covariateSettings"
         }
       ],
@@ -988,7 +988,7 @@
           "shortTermWindowStart": -7,
           "MaintenanceWindowEnd": 365,
           "analysisId": 998,
-          "attr_fun": "TicagrelorVsClopidogrel_narrow::getDbSubgroupCovariateData",
+          "attr_fun": "TicagrelorVsClopidogrel::getDbSubgroupCovariateData",
           "attr_class": "covariateSettings"
         }
       ],
@@ -1160,7 +1160,7 @@
           "shortTermWindowStart": -7,
           "MaintenanceWindowEnd": 365,
           "analysisId": 998,
-          "attr_fun": "TicagrelorVsClopidogrel_narrow::getDbSubgroupCovariateData",
+          "attr_fun": "TicagrelorVsClopidogrel::getDbSubgroupCovariateData",
           "attr_class": "covariateSettings"
         }
       ],
@@ -1331,7 +1331,7 @@
           "shortTermWindowStart": -7,
           "MaintenanceWindowEnd": 365,
           "analysisId": 998,
-          "attr_fun": "TicagrelorVsClopidogrel_narrow::getDbSubgroupCovariateData",
+          "attr_fun": "TicagrelorVsClopidogrel::getDbSubgroupCovariateData",
           "attr_class": "covariateSettings"
         }
       ],
@@ -1456,7 +1456,7 @@
           "shortTermWindowStart": -7,
           "MaintenanceWindowEnd": 365,
           "analysisId": 998,
-          "attr_fun": "TicagrelorVsClopidogrel_narrow::getDbSubgroupCovariateData",
+          "attr_fun": "TicagrelorVsClopidogrel::getDbSubgroupCovariateData",
           "attr_class": "covariateSettings"
         }
       ],
@@ -1628,7 +1628,7 @@
           "shortTermWindowStart": -7,
           "MaintenanceWindowEnd": 365,
           "analysisId": 998,
-          "attr_fun": "TicagrelorVsClopidogrel_narrow::getDbSubgroupCovariateData",
+          "attr_fun": "TicagrelorVsClopidogrel::getDbSubgroupCovariateData",
           "attr_class": "covariateSettings"
         }
       ],
@@ -1799,7 +1799,7 @@
           "shortTermWindowStart": -7,
           "MaintenanceWindowEnd": 365,
           "analysisId": 998,
-          "attr_fun": "TicagrelorVsClopidogrel_narrow::getDbSubgroupCovariateData",
+          "attr_fun": "TicagrelorVsClopidogrel::getDbSubgroupCovariateData",
           "attr_class": "covariateSettings"
         }
       ],
@@ -1924,7 +1924,7 @@
           "shortTermWindowStart": -7,
           "MaintenanceWindowEnd": 365,
           "analysisId": 998,
-          "attr_fun": "TicagrelorVsClopidogrel_narrow::getDbSubgroupCovariateData",
+          "attr_fun": "TicagrelorVsClopidogrel::getDbSubgroupCovariateData",
           "attr_class": "covariateSettings"
         }
       ],
@@ -2097,7 +2097,7 @@
           "shortTermWindowStart": -7,
           "MaintenanceWindowEnd": 365,
           "analysisId": 998,
-          "attr_fun": "TicagrelorVsClopidogrel_narrow::getDbSubgroupCovariateData",
+          "attr_fun": "TicagrelorVsClopidogrel::getDbSubgroupCovariateData",
           "attr_class": "covariateSettings"
         }
       ],
@@ -2270,7 +2270,7 @@
           "shortTermWindowStart": -7,
           "MaintenanceWindowEnd": 365,
           "analysisId": 998,
-          "attr_fun": "TicagrelorVsClopidogrel_narrow::getDbSubgroupCovariateData",
+          "attr_fun": "TicagrelorVsClopidogrel::getDbSubgroupCovariateData",
           "attr_class": "covariateSettings"
         }
       ],
@@ -2443,7 +2443,7 @@
           "shortTermWindowStart": -7,
           "MaintenanceWindowEnd": 365,
           "analysisId": 998,
-          "attr_fun": "TicagrelorVsClopidogrel_narrow::getDbSubgroupCovariateData",
+          "attr_fun": "TicagrelorVsClopidogrel::getDbSubgroupCovariateData",
           "attr_class": "covariateSettings"
         }
       ],
@@ -2616,7 +2616,7 @@
           "shortTermWindowStart": -7,
           "MaintenanceWindowEnd": 365,
           "analysisId": 998,
-          "attr_fun": "TicagrelorVsClopidogrel_narrow::getDbSubgroupCovariateData",
+          "attr_fun": "TicagrelorVsClopidogrel::getDbSubgroupCovariateData",
           "attr_class": "covariateSettings"
         }
       ],
@@ -2789,7 +2789,7 @@
           "shortTermWindowStart": -7,
           "MaintenanceWindowEnd": 365,
           "analysisId": 998,
-          "attr_fun": "TicagrelorVsClopidogrel_narrow::getDbSubgroupCovariateData",
+          "attr_fun": "TicagrelorVsClopidogrel::getDbSubgroupCovariateData",
           "attr_class": "covariateSettings"
         }
       ],

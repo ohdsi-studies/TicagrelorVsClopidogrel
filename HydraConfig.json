@@ -5,11 +5,11 @@
 	"actions":[{
 		"type": "fileNameFindAndReplace",
 		"input": "packageName",
-		"find": "TicagrelorVsClopidogrel_narrow"
+		"find": "TicagrelorVsClopidogrel"
 	},{
 		"type": "stringFindAndReplace",
 		"input": "packageName",
-		"find": "TicagrelorVsClopidogrel_narrow"
+		"find": "TicagrelorVsClopidogrel"
 	},{
 		"type": "jsonArrayToCsv",
 		"input": "cohortDefinitions",

@@ -1,6 +1,6 @@
 # Copyright 2018 Observational Health Data Sciences and Informatics
 #
-# This file is part of TicagrelorVsClopidogrel_narrow
+# This file is part of TicagrelorVsClopidogrel
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,12 +16,12 @@
 
 # Format and check code ---------------------------------------------------
 OhdsiRTools::formatRFolder()
-OhdsiRTools::checkUsagePackage("TicagrelorVsClopidogrel_narrow")
+OhdsiRTools::checkUsagePackage("TicagrelorVsClopidogrel")
 OhdsiRTools::updateCopyrightYearFolder()
 
 # Create manual -----------------------------------------------------------
-shell("rm extras/TicagrelorVsClopidogrel_narrow.pdf")
-shell("R CMD Rd2pdf ./ --output=extras/TicagrelorVsClopidogrel_narrow.pdf")
+shell("rm extras/TicagrelorVsClopidogrel.pdf")
+shell("R CMD Rd2pdf ./ --output=extras/TicagrelorVsClopidogrel.pdf")
 
 # Create vignettes ---------------------------------------------------------
 rmarkdown::render("vignettes/UsingSkeletonPackage.Rmd",
@@ -43,7 +43,7 @@ OhdsiRTools::insertCohortDefinitionSetInPackage(fileName = "CohortsToCreate.csv"
                                                 insertTableSql = TRUE,
                                                 insertCohortCreationR = TRUE,
                                                 generateStats = FALSE,
-                                                packageName = "TicagrelorVsClopidogrel_narrow")
+                                                packageName = "TicagrelorVsClopidogrel")
 
 # Create analysis details -------------------------------------------------
 source("extras/CreateStudyAnalysisDetails.R")
@@ -53,4 +53,4 @@ source("extras/CreatePositiveControlSynthesisDetails.R")
 createPositiveControlSynthesisArgs("inst/settings/")
 
 # Store environment in which the study was executed -----------------------
-OhdsiRTools::insertEnvironmentSnapshotInPackage("TicagrelorVsClopidogrel_narrow")
+OhdsiRTools::insertEnvironmentSnapshotInPackage("TicagrelorVsClopidogrel")

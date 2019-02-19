@@ -18933,7 +18933,7 @@
   ],
   "doPositiveControlSynthesis": false,
   "id": 3,
-  "packageName": "TicagrelorVsClopidogrel_narrow",
+  "packageName": "TicagrelorVsClopidogrel",
   "negativeControls": [
     {
       "targetId": 874,
