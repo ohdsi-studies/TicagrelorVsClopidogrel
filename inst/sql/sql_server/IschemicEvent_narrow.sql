@@ -97,7 +97,7 @@ FROM
   JOIN #Codesets codesets on ((co.condition_concept_id = codesets.concept_id and codesets.codeset_id = 0))
 ) C
 
-
+WHERE C.condition_type_concept_id  in (38000183,38000248,38000199,38000250,38000266,38000268,44786627)
 -- End Condition Occurrence Criteria
 
 UNION ALL
@@ -111,6 +111,7 @@ FROM
 ) C
 
 WHERE C.ordinal = 1
+AND C.condition_type_concept_id  in (38000183,38000248,38000199,38000250,38000266,38000268,44786627)
 -- End Condition Occurrence Criteria
 
 UNION ALL

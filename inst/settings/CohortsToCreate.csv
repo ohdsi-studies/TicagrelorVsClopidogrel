@@ -1,13 +1,22 @@
 atlasId,atlasName,cohortId,name
-874,[SCYou]HIRA: Ticagrelor for ACS_KOR,874,Ticagrelor
-929,[SCYou]HIRA: Clopidogrel for ACS_KOR,929,Clopidogrel
-1202,SCYou: Net Adverse Clinical Event,1202,NACE
-1200,SCYou: Hemorrhagic Event,1200,HemorrhagicEvent
-1201,SCYou: Ischemic event,1201,IschemicEvent
-1030,SCYou: Revascularization,1030,Revascularization
-1197,SCYou: GI bleeding (inpatient or ED) and primary condition and first event,1197,giBleeding
-1190,SCYou: hemorrhagic stroke (inpatient or ED) and primary condition and first event,1190,ICH
-1198,SCYou: Acute MI (inpatient or ED) and primary condition and all event,1198,AMI
-1180,SCYou: ischemic stroke (inpatient or ED) and primary condition and first event,1180,ischemicStroke
-20,SCYou:(outcome)any death,20,anyDeath
-1165,SCYou: dyspnea,1165,dyspnea
+874,Ticagrelor,874,Ticagrelor
+929,Clopidogrel,929,Clopidogrel
+1253,Ticagrelor2013To2015,1253,Ticagrelor2013To2015
+1254,Clopidogrel2013To2015,1254,Clopidogrel2013To2015
+20,anyDeath,20,anyDeath
+1165,dyspnea,1165,dyspnea
+1030,Revascularization,1030,Revascularization
+1197,giBleeding_narrow,1197,giBleeding_narrow
+1202,NACE_narrow,1202,NACE_narrow
+1200,HemorrhagicEvent_narrow,1200,HemorrhagicEvent_narrow
+1201,IschemicEvent_narrow,1201,IschemicEvent_narrow
+1190,ICH_narrow,1190,ICH_narrow
+1198,AMI_narrow,1198,AMI_narrow
+1180,ischemicStroke_narrow,1180,ischemicStroke_narrow
+1240,NACE,1240,NACE
+1239,HemorrhagicEvent,1239,HemorrhagicEvent
+1237,IschemicEvent,1237,IschemicEvent
+1236,giBleeding,1236,giBleeding
+1235,hemorrhagicStroke,1235,hemorrhagicStroke
+1234,AMI,1234,AMI
+1233,ischemicStroke,1233,ischemicStroke
