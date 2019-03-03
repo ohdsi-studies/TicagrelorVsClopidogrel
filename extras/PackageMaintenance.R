@@ -36,6 +36,7 @@ rmarkdown::render("vignettes/DataModel.Rmd",
                                           toc = TRUE,
                                           number_sections = TRUE))
 
+
 # Insert cohort definitions from ATLAS into package -----------------------
 OhdsiRTools::insertCohortDefinitionSetInPackage(fileName = "CohortsToCreate.csv",
                                                 baseUrl = Sys.getenv("baseUrl"),
@@ -47,6 +48,8 @@ OhdsiRTools::insertCohortDefinitionSetInPackage(fileName = "CohortsToCreate.csv"
 # Create analysis details -------------------------------------------------
 source("extras/CreateStudyAnalysisDetails.R")
 createAnalysesDetails("inst/settings/")
+
+source("extras/CreatePositiveControlSynthesisDetails.R")
 createPositiveControlSynthesisArgs("inst/settings/")
 
 # Store environment in which the study was executed -----------------------
