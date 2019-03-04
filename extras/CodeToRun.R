@@ -1,5 +1,7 @@
 library(TicagrelorVsClopidogrel)
 
+# file.edit(".Renviron") #you can edit your R environment to hide ID/PW
+
 # Optional: specify where the temporary files (used by the ff package) will be created:
 options(fftempdir = "s:/FFtemp")
 
@@ -21,7 +23,7 @@ cdmDatabaseSchema <- "cdm_truven_mdcd_v699.dbo"
 
 # The name of the database schema and table where the study-specific cohorts will be instantiated:
 cohortDatabaseSchema <- "scratch.dbo"
-cohortTable <- "mschuemi_skeleton"
+cohortTable <- "ticagrelor"
 
 # Some meta-information that will be used by the export function:
 databaseId <- "Synpuf"
