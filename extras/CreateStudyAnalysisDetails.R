@@ -190,6 +190,17 @@ createAnalysesDetails <- function(workFolder) {
                                                                     addExposureDaysToEnd = FALSE,
                                                                     censorAtNewRiskWindow = FALSE)
     
+    OneYearOutcomeWithBlanking <- CohortMethod::createCreateStudyPopulationArgs(removeSubjectsWithPriorOutcome = FALSE,
+                                                                                firstExposureOnly = FALSE,
+                                                                                washoutPeriod = 0,
+                                                                                removeDuplicateSubjects = 'keep first',
+                                                                                minDaysAtRisk = 1,
+                                                                                riskWindowStart = 29,
+                                                                                addExposureDaysToStart = FALSE,
+                                                                                riskWindowEnd = 365,
+                                                                                addExposureDaysToEnd = FALSE,
+                                                                                censorAtNewRiskWindow = FALSE)
+    
     # OneYearOutcomeWithMinTAR <- CohortMethod::createCreateStudyPopulationArgs(removeSubjectsWithPriorOutcome = FALSE,
     #                                                                           firstExposureOnly = FALSE,
     #                                                                           washoutPeriod = 0,
@@ -315,16 +326,16 @@ createAnalysesDetails <- function(workFolder) {
                                          fitOutcomeModel = TRUE,
                                          fitOutcomeModelArgs = fitOutcomeModelArgs0)
     
-    # a4 <- CohortMethod::createCmAnalysis(analysisId = 4,
-    #                                      description = "One-year outcome only for observed, matching",
-    #                                      getDbCohortMethodDataArgs = getDbCmDataArgs,
-    #                                      createStudyPopArgs = OneYearOutcomeWithMinTAR,
-    #                                      createPs = TRUE,
-    #                                      createPsArgs = createPsArgs1,
-    #                                      matchOnPs = TRUE,
-    #                                      matchOnPsArgs = oneToFourMatchOnPsArgs,
-    #                                      fitOutcomeModel = TRUE,
-    #                                      fitOutcomeModelArgs = fitOutcomeModelArgs1)
+    a4 <- CohortMethod::createCmAnalysis(analysisId = 4,
+                                         description = "One-year outcome, matching with blanking period",
+                                         getDbCohortMethodDataArgs = getDbCmDataArgs,
+                                         createStudyPopArgs = OneYearOutcomeWithBlanking,
+                                         createPs = TRUE,
+                                         createPsArgs = createPsArgs1,
+                                         matchOnPs = TRUE,
+                                         matchOnPsArgs = MatchOnPsArgs,
+                                         fitOutcomeModel = TRUE,
+                                         fitOutcomeModelArgs = fitOutcomeModelArgs1)
     
     # a5 <- CohortMethod::createCmAnalysis(analysisId = 5,
     #                                      description = "One-year outcome only for observed, stratification",
@@ -338,7 +349,7 @@ createAnalysesDetails <- function(workFolder) {
     #                                      stratifyByPsArgs = stratifyByPsArgs,
     #                                      fitOutcomeModel = TRUE,
     #                                      fitOutcomeModelArgs = fitOutcomeModelArgs1)
-    # 
+    #
     # a6 <- CohortMethod::createCmAnalysis(analysisId = 6,
     #                                      description = "One-year outcome only for observed, without matching",
     #                                      getDbCohortMethodDataArgs = getDbCmDataArgs,
@@ -551,7 +562,7 @@ createAnalysesDetails <- function(workFolder) {
     
     
     
-    cmAnalysisList <- list(a1, a2, a3, #a4, a5, a6, 
+    cmAnalysisList <- list(a1, a2, a3, a4, #a5, a6,
                            a7, a8, a9, a10, a11, a12, #a13, a14, a15, a16
                            a19, a29, a39, a49, a59, a69#, a99
     )

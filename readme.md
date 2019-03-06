@@ -39,7 +39,9 @@ How to run
 	
 2. In 'R', use the following code to install the TicagrelorVsClopidogrel package:
 
-  To do: Need to provide some instructions for installing the study package itself.
+  	```r
+	install_github("chandryou/TicagrelorVsClopidogrel", args = "--no-multiarch")
+	```
 	
 3. Once installed, you can execute the study by modifying and using the following code:
 	
