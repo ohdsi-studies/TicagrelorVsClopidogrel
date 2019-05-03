@@ -49,11 +49,11 @@ createAnalysesDetails <- function(workFolder) {
                                                                             #useDemographicsIndexYearMonth = FALSE,
                                                                             #useConditionOccurrenceAnyTimePrior = FALSE,
                                                                             useConditionOccurrenceLongTerm = TRUE,
-                                                                            useConditionOccurrenceMediumTerm = TRUE,
+                                                                            #useConditionOccurrenceMediumTerm = TRUE,
                                                                             useConditionOccurrenceShortTerm = TRUE,
                                                                             #useConditionOccurrencePrimaryInpatientAnyTimePrior = FALSE,
                                                                             #useConditionOccurrencePrimaryInpatientLongTerm = FALSE,
-                                                                            useConditionOccurrencePrimaryInpatientMediumTerm = TRUE,
+                                                                            #useConditionOccurrencePrimaryInpatientMediumTerm = TRUE,
                                                                             #useConditionOccurrencePrimaryInpatientShortTerm = FALSE,
                                                                             #useConditionEraAnyTimePrior = FALSE,
                                                                             #useConditionEraLongTerm = FALSE,
@@ -64,7 +64,7 @@ createAnalysesDetails <- function(workFolder) {
                                                                             #useConditionEraStartMediumTerm = FALSE,
                                                                             #useConditionEraStartShortTerm = FALSE,
                                                                             useConditionGroupEraAnyTimePrior = TRUE,
-                                                                            useConditionGroupEraLongTerm = TRUE,
+                                                                            #useConditionGroupEraLongTerm = TRUE,
                                                                             #useConditionGroupEraMediumTerm = FALSE,
                                                                             #useConditionGroupEraShortTerm = TRUE,
                                                                             #useConditionGroupEraOverlapping = FALSE,
@@ -73,8 +73,8 @@ createAnalysesDetails <- function(workFolder) {
                                                                             #useConditionGroupEraStartShortTerm = FALSE,
                                                                             #useDrugExposureAnyTimePrior = FALSE,
                                                                             #useDrugExposureLongTerm = FALSE,
-                                                                            useDrugExposureMediumTerm = TRUE,
-                                                                            #useDrugExposureShortTerm = TRUE,
+                                                                            #useDrugExposureMediumTerm = TRUE,
+                                                                            useDrugExposureShortTerm = TRUE,
                                                                             #useDrugEraAnyTimePrior = FALSE,
                                                                             #useDrugEraLongTerm = FALSE,
                                                                             #useDrugEraMediumTerm = FALSE,
@@ -96,16 +96,16 @@ createAnalysesDetails <- function(workFolder) {
                                                                             #useProcedureOccurrenceMediumTerm = FALSE,
                                                                             useProcedureOccurrenceShortTerm = TRUE,
                                                                             #useDeviceExposureAnyTimePrior = FALSE,
-                                                                            useDeviceExposureLongTerm = TRUE,
+                                                                            #useDeviceExposureLongTerm = TRUE,
                                                                             #useDeviceExposureMediumTerm = FALSE,
                                                                             useDeviceExposureShortTerm = TRUE,
                                                                             #useMeasurementAnyTimePrior = FALSE,
                                                                             #useMeasurementLongTerm = FALSE,
-                                                                            useMeasurementMediumTerm = TRUE,
+                                                                            #useMeasurementMediumTerm = TRUE,
                                                                             useMeasurementShortTerm = TRUE,
                                                                             #useMeasurementValueAnyTimePrior = FALSE,
                                                                             #useMeasurementValueLongTerm = FALSE,
-                                                                            useMeasurementValueMediumTerm = TRUE,
+                                                                            #useMeasurementValueMediumTerm = TRUE,
                                                                             useMeasurementValueShortTerm = TRUE,
                                                                             #useMeasurementRangeGroupAnyTimePrior = FALSE,
                                                                             #useMeasurementRangeGroupLongTerm = FALSE,
@@ -194,7 +194,7 @@ createAnalysesDetails <- function(workFolder) {
                                                                                 firstExposureOnly = FALSE,
                                                                                 washoutPeriod = 0,
                                                                                 removeDuplicateSubjects = 'keep first',
-                                                                                minDaysAtRisk = 1,
+                                                                                minDaysAtRisk = 28,
                                                                                 riskWindowStart = 29,
                                                                                 addExposureDaysToStart = FALSE,
                                                                                 riskWindowEnd = 365,
@@ -223,6 +223,17 @@ createAnalysesDetails <- function(workFolder) {
                                                                  addExposureDaysToEnd = TRUE,
                                                                  censorAtNewRiskWindow = FALSE)
     
+    OnTreatmentWithBlanking <- CohortMethod::createCreateStudyPopulationArgs(removeSubjectsWithPriorOutcome = FALSE,
+                                                                             firstExposureOnly = FALSE,
+                                                                             washoutPeriod = 0,
+                                                                             removeDuplicateSubjects = 'keep first',
+                                                                             minDaysAtRisk = 28,
+                                                                             riskWindowStart = 29,
+                                                                             addExposureDaysToStart = FALSE,
+                                                                             riskWindowEnd = 0,
+                                                                             addExposureDaysToEnd = TRUE,
+                                                                             censorAtNewRiskWindow = FALSE)
+    
     ITT <- CohortMethod::createCreateStudyPopulationArgs(removeSubjectsWithPriorOutcome = FALSE,
                                                          firstExposureOnly = FALSE,
                                                          washoutPeriod = 0,
@@ -233,6 +244,18 @@ createAnalysesDetails <- function(workFolder) {
                                                          riskWindowEnd = 1825,
                                                          addExposureDaysToEnd = FALSE,
                                                          censorAtNewRiskWindow = FALSE)
+    
+    
+    ITTwithBlanking <- CohortMethod::createCreateStudyPopulationArgs(removeSubjectsWithPriorOutcome = FALSE,
+                                                                     firstExposureOnly = FALSE,
+                                                                     washoutPeriod = 0,
+                                                                     removeDuplicateSubjects = 'keep first',
+                                                                     minDaysAtRisk = 28,
+                                                                     riskWindowStart = 29,
+                                                                     addExposureDaysToStart = FALSE,
+                                                                     riskWindowEnd = 1825,
+                                                                     addExposureDaysToEnd = FALSE,
+                                                                     censorAtNewRiskWindow = FALSE)
     
     # timeToFirstPostIndexEvent7DaysFromTreatment <- CohortMethod::createCreateStudyPopulationArgs(removeSubjectsWithPriorOutcome = FALSE,
     #                                                                                              firstExposureOnly = FALSE,
@@ -437,6 +460,28 @@ createAnalysesDetails <- function(workFolder) {
                                           fitOutcomeModel = TRUE,
                                           fitOutcomeModelArgs = fitOutcomeModelArgs0)
     
+    a13 <- CohortMethod::createCmAnalysis(analysisId = 13,
+                                          description = "On-treatment, matching with blanking period",
+                                          getDbCohortMethodDataArgs = getDbCmDataArgs,
+                                          createStudyPopArgs = OnTreatmentWithBlanking,
+                                          createPs = TRUE,
+                                          createPsArgs = createPsArgs1,
+                                          matchOnPs = TRUE,
+                                          matchOnPsArgs = MatchOnPsArgs,
+                                          fitOutcomeModel = TRUE,
+                                          fitOutcomeModelArgs = fitOutcomeModelArgs1)
+    
+    a14 <- CohortMethod::createCmAnalysis(analysisId = 1142,
+                                          description = "Five-year, matching with blanking period",
+                                          getDbCohortMethodDataArgs = getDbCmDataArgs,
+                                          createStudyPopArgs = ITTwithBlanking,
+                                          createPs = TRUE,
+                                          createPsArgs = createPsArgs1,
+                                          matchOnPs = TRUE,
+                                          matchOnPsArgs = MatchOnPsArgs,
+                                          fitOutcomeModel = TRUE,
+                                          fitOutcomeModelArgs = fitOutcomeModelArgs1)
+    
     
     
     ##Interaction terms
@@ -563,7 +608,7 @@ createAnalysesDetails <- function(workFolder) {
     
     
     cmAnalysisList <- list(a1, a2, a3, a4, #a5, a6,
-                           a7, a8, a9, a10, a11, a12, #a13, a14, a15, a16
+                           a7, a8, a9, a10, a11, a12, a13, a14, #a15, a16
                            a19, a29, a39, a49, a59, a69#, a99
     )
     #cmAnalysisList <- list(a1)
