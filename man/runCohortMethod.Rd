@@ -5,7 +5,7 @@
 \title{Run CohortMethod package}
 \usage{
 runCohortMethod(connectionDetails, cdmDatabaseSchema, cohortDatabaseSchema,
-  cohortTable, oracleTempSchema, outputFolder, maxCores, country = country,
+  cohortTable, oracleTempSchema, outputFolder, maxCores,
   onTreatmentWithBlankingPeriod = onTreatmentWithBlankingPeriod)
 }
 \arguments{

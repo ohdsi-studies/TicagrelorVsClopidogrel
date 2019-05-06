@@ -47,7 +47,6 @@ runCohortMethod <- function(connectionDetails,
                             oracleTempSchema,
                             outputFolder,
                             maxCores,
-                            country = country,
                             onTreatmentWithBlankingPeriod=onTreatmentWithBlankingPeriod) {
   cmOutputFolder <- file.path(outputFolder, "cmOutput")
   if (!file.exists(cmOutputFolder)) {
