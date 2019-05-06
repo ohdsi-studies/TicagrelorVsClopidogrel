@@ -78,12 +78,12 @@ How to run
 	databaseId <- "Synpuf"
 	databaseName <- "Medicare Claims Synthetic Public Use Files (SynPUFs)"
 	databaseDescription <- "Medicare Claims Synthetic Public Use Files (SynPUFs) were created to allow interested parties to gain familiarity using Medicare claims data while protecting beneficiary privacy. These files are intended to promote development of software and applications that utilize files in this format, train researchers on the use and complexities of Centers for Medicare and Medicaid Services (CMS) claims, and support safe data mining innovations. The SynPUFs were created by combining randomized information from multiple unique beneficiaries and changing variable values. This randomization and combining of beneficiary information ensures privacy of health information."
-
-	#Country for where the database originated (The study date can vary across countries, becuase the drug approval date can differ. Currently, 'Korea','USA','EU','China' are available):
-	country <- "Korea"
 	
 	# For Oracle: define a schema that can be used to emulate temp tables:
 	oracleTempSchema <- NULL
+	
+	#onTreatmentWithBlankingPeriod:
+	If you cannot run the analysis 13 (on-treatment with blanking period analysis) on your database, please set this argument FALSE. 
 	
 	execute(connectionDetails = connectionDetails,
 		cdmDatabaseSchema = cdmDatabaseSchema,
@@ -94,6 +94,7 @@ How to run
 		databaseId = databaseId
 		databaseName = databaseName,
 		databaseDescription = databaseDescription,
+		onTreatmentWithBlankingPeriod = TRUE,
 		createCohorts = TRUE,
 		synthesizePositiveControls = TRUE,
 		runAnalyses = TRUE,
