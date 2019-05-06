@@ -44,7 +44,7 @@
 #' @param databaseName         The full name of the database (e.g. 'Medicare Claims
 #'                             Synthetic Public Use Files (SynPUFs)').
 #' @param databaseDescription  A short description (several sentences) of the database.
-#' @param country              Coutry name of the database coming from. Currently not supported (Should be NULL)
+#' @param onTreatmentWithBlankingPeriod logical value (TRUE or FALSE). If the analysis number 13(on-treatment with blanking period analysis) doesn't work, then please set this value FALSE
 #' @param createCohorts        Create the cohortTable table with the exposure and outcome cohorts?
 #' @param synthesizePositiveControls  Should positive controls be synthesized?
 #' @param runAnalyses          Perform the cohort method analyses?
@@ -81,7 +81,7 @@ execute <- function(connectionDetails,
                     databaseId = "Unknown",
                     databaseName = "Unknown",
                     databaseDescription = "Unknown",
-                    country = NULL,
+                    onTreatmentWithBlankingPeriod = TRUE,
                     createCohorts = TRUE,
                     synthesizePositiveControls = TRUE,
                     runAnalyses = TRUE,
@@ -132,7 +132,7 @@ execute <- function(connectionDetails,
                     oracleTempSchema = oracleTempSchema,
                     outputFolder = outputFolder,
                     maxCores = maxCores,
-                    country = country)
+                    onTreatmentWithBlankingPeriod = onTreatmentWithBlankingPeriod)
   }
   
   if (runDiagnostics) {
