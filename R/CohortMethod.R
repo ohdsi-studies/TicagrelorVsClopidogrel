@@ -47,14 +47,21 @@ runCohortMethod <- function(connectionDetails,
                             oracleTempSchema,
                             outputFolder,
                             maxCores,
-                            country = country) {
+                            onTreatmentWithBlankingPeriod=onTreatmentWithBlankingPeriod) {
   cmOutputFolder <- file.path(outputFolder, "cmOutput")
   if (!file.exists(cmOutputFolder)) {
     dir.create(cmOutputFolder)
   }
-  cmAnalysisListFile <- system.file("settings",
-                                    "cmAnalysisList.json",
-                                    package = "TicagrelorVsClopidogrel")
+  if(onTreatmentWithBlankingPeriod){
+      cmAnalysisListFile <- system.file("settings",
+                                        "cmAnalysisList.json",
+                                        package = "TicagrelorVsClopidogrel")
+  }else{
+      cmAnalysisListFile <- system.file("settings",
+                                        "cmAnalysisListWithoutOnTreatmentWithBlankingPeriod.json",
+                                        package = "TicagrelorVsClopidogrel")
+  }
+  
   cmAnalysisList <- CohortMethod::loadCmAnalysisList(cmAnalysisListFile)
   tcosList <- createTcos(outputFolder = outputFolder)
   outcomesOfInterest <- getOutcomesOfInterest()
