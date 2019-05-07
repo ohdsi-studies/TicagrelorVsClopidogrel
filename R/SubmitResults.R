@@ -38,6 +38,7 @@ submitResults <- function(outputFolder, key, secret) {
   writeLines(paste0("Uploading file '", zipName, "' to study coordinating center"))
   result <- OhdsiSharing::putS3File(file = zipName,
                                     bucket = "ticagrelorvsclopidogrel",
+                                    region = "ap-northeast-2",
                                     key = key,
                                     secret = secret)
   if (result) {
