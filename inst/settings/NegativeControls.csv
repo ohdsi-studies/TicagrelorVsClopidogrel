@@ -27,7 +27,6 @@ targetId,comparatorId,outcomeId,outcomeName,type
 874,929,4044391,Diabetic neuropathy,outcome
 874,929,443767,Diabetic oculopathy,outcome
 874,929,4174977,Diabetic retinopathy,outcome
-874,929,4132130,Dilatation of aorta,outcome
 874,929,4147672,Disease due to Papilloma virus,outcome
 874,929,4153380,Disorder of carotid artery,outcome
 874,929,4140510,Disorder of lymphatic vessel,outcome
@@ -103,7 +102,6 @@ targetId,comparatorId,outcomeId,outcomeName,type
 874,929,261326,Viral pneumonia,outcome
 1253,1254,378256,Abnormal reflex,outcome
 1253,1254,4218106,Alcoholism,outcome
-1253,1254,317585,Aortic aneurysm,outcome
 1253,1254,440424,Aphasia,outcome
 1253,1254,439237,Assault,outcome
 1253,1254,378424,Astigmatism,outcome
@@ -128,10 +126,8 @@ targetId,comparatorId,outcomeId,outcomeName,type
 1253,1254,4095288,Diabetic coma with ketoacidosis,outcome
 1253,1254,4044391,Diabetic neuropathy,outcome
 1253,1254,443767,Diabetic oculopathy,outcome
-1253,1254,4174977,Diabetic retinopathy,outcome
 1253,1254,4132130,Dilatation of aorta,outcome
 1253,1254,4147672,Disease due to Papilloma virus,outcome
-1253,1254,4153380,Disorder of carotid artery,outcome
 1253,1254,4140510,Disorder of lymphatic vessel,outcome
 1253,1254,433440,Dysthymia,outcome
 1253,1254,376132,Ectropion,outcome
@@ -155,8 +151,6 @@ targetId,comparatorId,outcomeId,outcomeName,type
 1253,1254,444191,Injury of face,outcome
 1253,1254,444130,Injury of foot,outcome
 1253,1254,134222,Injury of forearm,outcome
-1253,1254,4029966,Intracranial aneurysm,outcome
-1253,1254,437409,Intracranial injury,outcome
 1253,1254,4297984,Local infection of wound,outcome
 1253,1254,4018050,Localized infection,outcome
 1253,1254,439840,Lymphangitis,outcome
