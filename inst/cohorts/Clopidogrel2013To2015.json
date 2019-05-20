@@ -1323,39 +1323,9 @@
     "CriteriaList": [
       {
         "ProcedureOccurrence": {
-          "CorrelatedCriteria": {
-            "Type": "ALL",
-            "CriteriaList": [
-              {
-                "Criteria": {
-                  "DrugExposure": {
-                    "CodesetId": 5
-                  }
-                },
-                "StartWindow": {
-                  "Start": {
-                    "Days": 7,
-                    "Coeff": -1
-                  },
-                  "End": {
-                    "Days": 0,
-                    "Coeff": 1
-                  },
-                  "UseEventEnd": false
-                },
-                "Occurrence": {
-                  "Type": 2,
-                  "Count": 1
-                },
-                "RestrictVisit": true
-              }
-            ],
-            "DemographicCriteriaList": [],
-            "Groups": []
-          },
           "CodesetId": 0,
           "OccurrenceStartDate": {
-            "Value": "2013-02-28",
+            "Value": "2013-03-01",
             "Extent": "2015-12-31",
             "Op": "bt"
           },
@@ -1399,6 +1369,28 @@
           "Type": 2,
           "Count": 1
         }
+      },
+      {
+        "Criteria": {
+          "DrugExposure": {
+            "CodesetId": 5
+          }
+        },
+        "StartWindow": {
+          "Start": {
+            "Days": 7,
+            "Coeff": -1
+          },
+          "End": {
+            "Days": 0,
+            "Coeff": 1
+          },
+          "UseEventEnd": false
+        },
+        "Occurrence": {
+          "Type": 2,
+          "Count": 1
+        }
       }
     ],
     "DemographicCriteriaList": [],
@@ -1411,39 +1403,6 @@
     "Type": "First"
   },
   "InclusionRules": [
-    {
-      "name": "aspirin",
-      "description": "concomittant aspirin",
-      "expression": {
-        "Type": "ALL",
-        "CriteriaList": [
-          {
-            "Criteria": {
-              "DrugExposure": {
-                "CodesetId": 3
-              }
-            },
-            "StartWindow": {
-              "Start": {
-                "Days": 7,
-                "Coeff": -1
-              },
-              "End": {
-                "Days": 0,
-                "Coeff": 1
-              },
-              "UseEventEnd": false
-            },
-            "Occurrence": {
-              "Type": 2,
-              "Count": 1
-            }
-          }
-        ],
-        "DemographicCriteriaList": [],
-        "Groups": []
-      }
-    },
     {
       "name": "Without ticagrelor or prasugrel on the day of PCI",
       "expression": {
