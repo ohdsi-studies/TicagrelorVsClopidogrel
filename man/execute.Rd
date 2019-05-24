@@ -8,7 +8,7 @@ execute(connectionDetails, cdmDatabaseSchema,
   cohortDatabaseSchema = cdmDatabaseSchema, cohortTable = "cohort",
   oracleTempSchema = cohortDatabaseSchema, outputFolder,
   databaseId = "Unknown", databaseName = "Unknown",
-  databaseDescription = "Unknown", country = NULL,
+  databaseDescription = "Unknown", onTreatmentWithBlankingPeriod = TRUE,
   createCohorts = TRUE, synthesizePositiveControls = TRUE,
   runAnalyses = TRUE, runDiagnostics = TRUE, packageResults = TRUE,
   maxCores = 4, minCellCount = 5)
@@ -45,7 +45,7 @@ Synthetic Public Use Files (SynPUFs)').}
 
 \item{databaseDescription}{A short description (several sentences) of the database.}
 
-\item{country}{Coutry name of the database coming from. Currently not supported (Should be NULL)}
+\item{onTreatmentWithBlankingPeriod}{logical value (TRUE or FALSE). If the analysis number 13(on-treatment with blanking period analysis) doesn't work, then please set this value FALSE}
 
 \item{createCohorts}{Create the cohortTable table with the exposure and outcome cohorts?}
 

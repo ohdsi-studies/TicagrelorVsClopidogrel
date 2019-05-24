@@ -155,7 +155,9 @@ FROM
                 AND drug_exposure_start_date <= DATEADD(DAY, @maintenance_window_end, c.cohort_start_date)
                 AND drug_exposure_start_date <= c.cohort_end_date
                 AND st.ingredient_concept_id = 1112807
-                AND st. amount_value is not null AND st. amount_value != ''
+                AND st.amount_value is not null 
+                AND CAST(st. amount_value AS VARCHAR)  != ''
+                AND ex.days_supply > 0
 {@cohort_id != -1} ? {                AND c.cohort_definition_id = @cohort_id}
                 GROUP BY @row_id_field, ex.quantity*st.amount_value/ex.days_supply
                 ) AS X

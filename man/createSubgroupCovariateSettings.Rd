@@ -5,8 +5,7 @@
 \title{Create settings for adding subgroup markers as covariates}
 \usage{
 createSubgroupCovariateSettings(windowStart = -365, windowEnd = -1,
-  shortTermWindowStart = -7, MaintenanceWindowEnd = 365,
-  analysisId = 998)
+  shortTermWindowStart = -7, MaintenanceWindowEnd = 365, analysisId = 998)
 }
 \arguments{
 \item{windowStart}{Start day of the window where covariates are captured, relative to the index
