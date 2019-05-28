@@ -25,6 +25,11 @@ loadFile <- function(file) {
   camelCaseName <- SqlRender::snakeCaseToCamelCase(tableName)
   if (!(tableName %in% splittableTables)) {
     newData <- readRDS(file.path(dataFolder, file))
+    newData <- data.frame(lapply(newData, function(x){
+        if(is.factor(x)) {
+            as.character(x)
+        } else {x}
+    }), stringsAsFactors=FALSE)
     colnames(newData) <- SqlRender::snakeCaseToCamelCase(colnames(newData))
     if (exists(camelCaseName, envir = .GlobalEnv)) {
       existingData <- get(camelCaseName, envir = .GlobalEnv)
