@@ -43,20 +43,8 @@ How to run
 	install_github("chandryou/TicagrelorVsClopidogrel", args = "--no-multiarch")
 	```
 
-    If you cannot install the package in your local R studio, you can use docker image            alternatively. 
-    See the instructions on how to set up the Docker environment on [Windows](https://docs.docker.com/docker-for-windows/), [Mac](https://docs.docker.com/docker-for-mac/).
-   
-    ```console
-    $docker run --name TicagrelorVsClopidogrel -e USER=user -e PASSWORD=password1 -d -p 8787:8787 chandryou/ticagrelorvsclopidogrel
-    ```   
+    If you cannot install the package in your local R studio, you can use docker image alternatively (see Docker below). 
     
-    Please set freely 'user' and 'password1' as you want. These will be the ID and PW for the activated Rstudio on docker. 
-
-    Then in the 'browser' activate Rstudio with following address
-    
-    http://localhost:8787
-    
-    The ID and PW are user and password1 as set above.
 	
 3. Once installed, you can execute the study by modifying and using the following code:
 	
@@ -161,3 +149,8 @@ Consider to increase C_stack size
 ```
 docker run --name TicagrelorVsClopidogrel -e USER=user -e PASSWORD=password1 -p 8787:8787 chandryou/ticagrelorvsclopidogrel --ulimit stack=8277716992:8277716992
 ```
+
+After pulling and running the dockr image, you can connect to the Rstudio with required packages in the following address
+http://localhost:8787
+    
+Enter ID and PW as set above in the Rstudio browser.
