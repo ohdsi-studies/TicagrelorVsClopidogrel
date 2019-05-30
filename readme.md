@@ -47,7 +47,7 @@ How to run
     See the instructions on how to set up the Docker environment on [Windows](https://docs.docker.com/docker-for-windows/), [Mac](https://docs.docker.com/docker-for-mac/).
    
     ```console
-    $docker run --name TicagrelorVsClopidogrel -e USER=user -e PASSWORD=password1 -d -p 8787:8787 chandryou/TicagrelorVsClopidogrel
+    $docker run --name TicagrelorVsClopidogrel -e USER=user -e PASSWORD=password1 -d -p 8787:8787 chandryou/ticagrelorvsclopidogrel
     ```   
     
     Please set freely 'user' and 'password1' as you want. These will be the ID and PW for the activated Rstudio on docker. 
