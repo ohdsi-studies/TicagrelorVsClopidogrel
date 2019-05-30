@@ -38,8 +38,12 @@ for (stratPopPath in stratPopList){
 fileName<-system.file("csv","tableSpecification.csv",package= "TicagrelorVsClopidogrel")
 specification <-read.csv(fileName, stringsAsFactors = FALSE)
 balanceList<-list.files(path = file.path(outputFolder,"balance"), pattern = "bal.*")
+
+library(dplyr)
+balance<-balance %>% filter(target_id==874) %>% filter(comparator_id ==929) %>% filter(analysis_id ==1)
+
 for (balancePath in balanceList){
-  balance <- readRDS(file.path(outputFolder,"balance",balancePath))
+  balance <- read.csv(file.path(outputFolder,"covariate_balance.csv"), stringsAsFactors = FALSE)
   analysisName<-gsub(".rds","",gsub("bal_","",balancePath))
   cmTable1<-CohortMethod::createCmTable1(balance = balance, specifications = specification)
   write.csv(cmTable1,file.path(outputFolder,"export",paste0(analysisName,"_cmTable.csv")))
