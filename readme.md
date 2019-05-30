@@ -42,6 +42,21 @@ How to run
   	```r
 	install_github("chandryou/TicagrelorVsClopidogrel", args = "--no-multiarch")
 	```
+
+    If you cannot install the package in your local R studio, you can use docker image            alternatively. 
+    See the instructions on how to set up the Docker environment on [Windows](https://docs.docker.com/docker-for-windows/), [Mac](https://docs.docker.com/docker-for-mac/).
+   
+    ```console
+    $docker run --name TicagrelorVsClopidogrel -e USER=user -e PASSWORD=password1 -d -p 8787:8787 chandryou/TicagrelorVsClopidogrel
+    ```   
+    
+    Please set freely 'user' and 'password1' as you want. These will be the ID and PW for the activated Rstudio on docker. 
+
+    Then in the 'browser' activate Rstudio with following address
+    
+    http://localhost:8787
+    
+    The ID and PW are user and password1 as set above.
 	
 3. Once installed, you can execute the study by modifying and using the following code:
 	
