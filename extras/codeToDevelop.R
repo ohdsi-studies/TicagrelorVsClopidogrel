@@ -11,3 +11,6 @@ createPositiveControlSynthesisArgs("inst/settings/")
 
 #insert Environment
 OhdsiRTools::insertEnvironmentSnapshotInPackage("TicagrelorVsClopidogrel")
+
+#Build Docker Image
+system("docker build -t chandryou/ticagrelorvsclopidogrel .")
