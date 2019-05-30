@@ -148,16 +148,16 @@ If you cannot install the package in your local R studio, you can use docker ima
 See the instructions on how to set up the Docker environment on [Windows](https://docs.docker.com/docker-for-windows/), [Mac](https://docs.docker.com/docker-for-mac/).
     
 ```
-docker run --name TicagrelorVsClopidogrel -e USER=user -e PASSWORD=password1 -p 8787:8787 chandryou/TicagrelorVsClopidogrel
+docker run --name TicagrelorVsClopidogrel -e USER=user -e PASSWORD=password1 -p 8787:8787 chandryou/ticagrelorvsclopidogrel
 ```
 Please set freely 'user' and 'password1' as you want. These will be the ID and PW for the activated Rstudio on docker. 
 
 Consider to increase the upper limit of file open
 ```
-docker run --name TicagrelorVsClopidogrel -e USER=user -e PASSWORD=password1 -p 8787:8787 chandryou/TicagrelorVsClopidogrel --ulimit nofile= 10000000:10000000
+docker run --name TicagrelorVsClopidogrel -e USER=user -e PASSWORD=password1 -p 8787:8787 chandryou/ticagrelorvsclopidogrel --ulimit nofile= 10000000:10000000
 ```
 
 Consider to increase C_stack size
 ```
-docker run --name TicagrelorVsClopidogrel -e USER=user -e PASSWORD=password1 -p 8787:8787 chandryou/TicagrelorVsClopidogrel --ulimit stack=8277716992:8277716992
+docker run --name TicagrelorVsClopidogrel -e USER=user -e PASSWORD=password1 -p 8787:8787 chandryou/ticagrelorvsclopidogrel --ulimit stack=8277716992:8277716992
 ```
