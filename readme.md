@@ -83,7 +83,7 @@ How to run
 	oracleTempSchema <- NULL
 	
 	#onTreatmentWithBlankingPeriod:
-	If you cannot run the analysis 13 (on-treatment with blanking period analysis) on your database, please set this argument FALSE. 
+	If you cannot run the 'on-treatment with blanking period analysis' on your database, please set this argument FALSE. Otherwise, I do recommend to set this argument 'TRUE'.
 	
 	execute(connectionDetails = connectionDetails,
 		cdmDatabaseSchema = cdmDatabaseSchema,
@@ -104,7 +104,7 @@ How to run
 		minCellCount = minCellCount)
 	```
 
-4. Upload the file ```export/Results<DatabaseId>.zip``` in the output folder to the study coordinator:
+4. Upload the file ```export/Results<DatabaseId>.zip``` in the output folder to the study coordinator (SCYou). Please ask the key and secret to the study coordinator (applegna@gmail.com):
 
 	```r
 	submitResults("export/Results<DatabaseId>.zip", key = "<key>", secret = "<secret>")
@@ -119,7 +119,7 @@ How to run
 	launchEvidenceExplorer("/shinyData", blind = TRUE)
 	```
   
-  Note that you can save plots from within the Shiny app. It is possible to view results from more than one database by applying `prepareForEvidenceExplorer` to the Results file from each database, and using the same data folder. Set `blind = FALSE` if you wish to be unblinded to the final results.
+  Note that you can save plots from within the Shiny app (You can do this by re-building the package). It is possible to view results from more than one database by applying `prepareForEvidenceExplorer` to the Results file from each database, and using the same data folder. Set `blind = FALSE` if you wish to be unblinded to the final results.
 
 
 License
@@ -127,10 +127,22 @@ License
 The TicagrelorVsClopidogrel package is licensed under Apache License 2.0
 
 
-Development
-===========
-TicagrelorVsClopidogrel was developed in ATLAS and R Studio.
+Docker
+=======
+If you cannot install the package in your local R studio, you can use docker image alternatively. 
+See the instructions on how to set up the Docker environment on [Windows](https://docs.docker.com/docker-for-windows/), [Mac](https://docs.docker.com/docker-for-mac/).
+    
+```
+docker run --name TicagrelorVsClopidogrel -e USER=user -e PASSWORD=password1 -p 8787:8787 chandryou/TicagrelorVsClopidogrel
+```
+Please set freely 'user' and 'password1' as you want. These will be the ID and PW for the activated Rstudio on docker. 
 
-### Development status
+Consider to increase the upper limit of file open
+```
+docker run --name TicagrelorVsClopidogrel -e USER=user -e PASSWORD=password1 -p 8787:8787 chandryou/TicagrelorVsClopidogrel --ulimit nofile= 10000000:10000000
+```
 
-Unknown
+Consider to increase C_stack size
+```
+docker run --name TicagrelorVsClopidogrel -e USER=user -e PASSWORD=password1 -p 8787:8787 chandryou/TicagrelorVsClopidogrel --ulimit stack=8277716992:8277716992
+```
