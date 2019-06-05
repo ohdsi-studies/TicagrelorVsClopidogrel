@@ -108,6 +108,7 @@ execute <- function(connectionDetails,
                   outputFolder = outputFolder)
   }
   
+  
   # Set doPositiveControlSynthesis to FALSE if you don't want to use synthetic positive controls:
   doPositiveControlSynthesis = FALSE
   if (doPositiveControlSynthesis) {
@@ -142,6 +143,22 @@ execute <- function(connectionDetails,
   }
   
   if (packageResults) {
+      
+    ParallelLogger::logInfo("Counting cohorts by years")
+    conn <- DatabaseConnector::connect(connectionDetails)
+    sql <- SqlRender::loadRenderTranslateSql("GetCountByYear.sql",
+                                             "TicagrelorVsClopidogrel",
+                                             dbms = connectionDetails$dbms,
+                                             oracleTempSchema = oracleTempSchema,
+                                             cdm_database_schema = cdmDatabaseSchema,
+                                             work_database_schema = cohortDatabaseSchema,
+                                             study_cohort_table = cohortTable)
+    countPerYear <- DatabaseConnector::querySql(conn, sql)
+    DatabaseConnector::disconnect(conn)
+    colnames(countPerYear) <- SqlRender::snakeCaseToCamelCase(colnames(countPerYear))
+    countPerYear <- addCohortNames(countPerYear)
+    saveRDS(countPerYear, file.path(outputFolder, "CohortCountByYear.rds"))
+    
     ParallelLogger::logInfo("Packaging results")
     exportResults(outputFolder = outputFolder,
                   databaseId = databaseId,

@@ -41,6 +41,12 @@ exportResults <- function(outputFolder,
     dir.create(exportFolder, recursive = TRUE)
   }
   
+  exportCount(outputFolder = outputFolder,
+              exportFolder = exportFolder,
+              databaseId = databaseId,
+              databaseName = databaseName,
+              minCellCount = minCellCount)
+  
   exportAnalyses(outputFolder = outputFolder,
                  exportFolder = exportFolder)
   
@@ -77,6 +83,24 @@ exportResults <- function(outputFolder,
   on.exit(setwd(oldWd))
   DatabaseConnector::createZipFile(zipFile = zipName, files = files)
   ParallelLogger::logInfo("Results are ready for sharing at:", zipName)
+}
+
+exportCount <- function(outputFolder,
+                        exportFolder,
+                        databaseId,
+                        databaseName,
+                        minCellCount){
+    ParallelLogger::logInfo("Exporting count per years")
+    
+    cohortCountPerYear <- readRDS(file.path(outputFolder,"CohortCountByYear.rds"))
+    cohortCountPerYear$databaseId <- databaseId
+    cohortCountPerYear$databaseName <- databaseName
+    cohortCountPerYear <- enforceMinCellValue(cohortCountPerYear, "personCount", minCellCount)
+    
+    fileName <- file.path(exportFolder, "cohort_count_per_year.csv")
+    write.csv(cohortCountPerYear, fileName, row.names = FALSE)
+    
+    rm(cohortCountPerYear)  # Free up memory
 }
 
 exportAnalyses <- function(outputFolder, exportFolder) {
