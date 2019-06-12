@@ -288,9 +288,13 @@ createAnalysesDetails <- function(workFolder) {
     
     #trimByPsArgs<- CohortMethod::createTrimByPsArgs(trimFraction = 0.05)
     
-    MatchOnPsArgs <- CohortMethod::createMatchOnPsArgs(maxRatio = 10,
-                                                       caliper = 0.2,
-                                                       caliperScale = "standardized logit")
+    oneToOneMatchOnPsArgs <- CohortMethod::createMatchOnPsArgs(maxRatio = 1,
+                                                               caliper = 0.2,
+                                                               caliperScale = "standardized logit")
+    
+    variableRatioMatchOnPsArgs <- CohortMethod::createMatchOnPsArgs(maxRatio = 10,
+                                                                    caliper = 0.2,
+                                                                    caliperScale = "standardized logit")
     
     # variableRatioMatchOnPsArgs <- CohortMethod::createMatchOnPsArgs(maxRatio = 100,
     #                                                                 caliper = 0.2,
@@ -324,7 +328,7 @@ createAnalysesDetails <- function(workFolder) {
                                          createPs = TRUE,
                                          createPsArgs = createPsArgs1,
                                          matchOnPs = TRUE,
-                                         matchOnPsArgs = MatchOnPsArgs,
+                                         matchOnPsArgs = oneToOneMatchOnPsArgs,
                                          fitOutcomeModel = TRUE,
                                          fitOutcomeModelArgs = fitOutcomeModelArgs2)
     
@@ -335,7 +339,7 @@ createAnalysesDetails <- function(workFolder) {
                                          createPs = TRUE,
                                          createPsArgs = createPsArgs1,
                                          matchOnPs = TRUE,
-                                         matchOnPsArgs = MatchOnPsArgs,
+                                         matchOnPsArgs = variableRatioMatchOnPsArgs,
                                          fitOutcomeModel = TRUE,
                                          fitOutcomeModelArgs = fitOutcomeModelArgs1)
     
@@ -361,7 +365,7 @@ createAnalysesDetails <- function(workFolder) {
                                          createPs = TRUE,
                                          createPsArgs = createPsArgs1,
                                          matchOnPs = TRUE,
-                                         matchOnPsArgs = MatchOnPsArgs,
+                                         matchOnPsArgs = oneToOneMatchOnPsArgs,
                                          fitOutcomeModel = TRUE,
                                          fitOutcomeModelArgs = fitOutcomeModelArgs2)
     
@@ -410,7 +414,7 @@ createAnalysesDetails <- function(workFolder) {
                                          createPs = TRUE,
                                          createPsArgs = createPsArgs1,
                                          matchOnPs = TRUE,
-                                         matchOnPsArgs = MatchOnPsArgs,
+                                         matchOnPsArgs = oneToOneMatchOnPsArgs,
                                          fitOutcomeModel = TRUE,
                                          fitOutcomeModelArgs = fitOutcomeModelArgs2)
     
@@ -421,7 +425,7 @@ createAnalysesDetails <- function(workFolder) {
                                          createPs = TRUE,
                                          createPsArgs = createPsArgs1,
                                          matchOnPs = TRUE,
-                                         matchOnPsArgs = MatchOnPsArgs,
+                                         matchOnPsArgs = variableRatioMatchOnPsArgs,
                                          fitOutcomeModel = TRUE,
                                          fitOutcomeModelArgs = fitOutcomeModelArgs1)
     
@@ -446,7 +450,7 @@ createAnalysesDetails <- function(workFolder) {
                                          createPs = TRUE,
                                          createPsArgs = createPsArgs1,
                                          matchOnPs = TRUE,
-                                         matchOnPsArgs = MatchOnPsArgs,
+                                         matchOnPsArgs = oneToOneMatchOnPsArgs,
                                          fitOutcomeModel = TRUE,
                                          fitOutcomeModelArgs = fitOutcomeModelArgs2)
     
@@ -470,7 +474,7 @@ createAnalysesDetails <- function(workFolder) {
                                           createPs = TRUE,
                                           createPsArgs = createPsArgs1,
                                           matchOnPs = TRUE,
-                                          matchOnPsArgs = MatchOnPsArgs,
+                                          matchOnPsArgs = oneToOneMatchOnPsArgs,
                                           fitOutcomeModel = TRUE,
                                           fitOutcomeModelArgs = fitOutcomeModelArgs2)
     
@@ -481,7 +485,7 @@ createAnalysesDetails <- function(workFolder) {
                                           createPs = TRUE,
                                           createPsArgs = createPsArgs1,
                                           matchOnPs = TRUE,
-                                          matchOnPsArgs = MatchOnPsArgs,
+                                          matchOnPsArgs = variableRatioMatchOnPsArgs,
                                           fitOutcomeModel = TRUE,
                                           fitOutcomeModelArgs = fitOutcomeModelArgs1)
     
@@ -505,7 +509,7 @@ createAnalysesDetails <- function(workFolder) {
                                           createPs = TRUE,
                                           createPsArgs = createPsArgs1,
                                           matchOnPs = TRUE,
-                                          matchOnPsArgs = MatchOnPsArgs,
+                                          matchOnPsArgs = oneToOneMatchOnPsArgs,
                                           fitOutcomeModel = TRUE,
                                           fitOutcomeModelArgs = fitOutcomeModelArgs2)
     
@@ -573,7 +577,7 @@ createAnalysesDetails <- function(workFolder) {
                                           createPs = TRUE,
                                           createPsArgs = createPsArgs1,
                                           matchOnPs = TRUE,
-                                          matchOnPsArgs = MatchOnPsArgs,
+                                          matchOnPsArgs = oneToOneMatchOnPsArgs,
                                           fitOutcomeModel = TRUE,
                                           fitOutcomeModelArgs = fitOutcomeModelArgsI1998)
     
@@ -584,7 +588,7 @@ createAnalysesDetails <- function(workFolder) {
                                           createPs = TRUE,
                                           createPsArgs = createPsArgs1,
                                           matchOnPs = TRUE,
-                                          matchOnPsArgs = MatchOnPsArgs,
+                                          matchOnPsArgs = oneToOneMatchOnPsArgs,
                                           fitOutcomeModel = TRUE,
                                           fitOutcomeModelArgs = fitOutcomeModelArgsI2998)
     
@@ -595,7 +599,7 @@ createAnalysesDetails <- function(workFolder) {
                                           createPs = TRUE,
                                           createPsArgs = createPsArgs1,
                                           matchOnPs = TRUE,
-                                          matchOnPsArgs = MatchOnPsArgs,
+                                          matchOnPsArgs = oneToOneMatchOnPsArgs,
                                           fitOutcomeModel = TRUE,
                                           fitOutcomeModelArgs = fitOutcomeModelArgsI3998)
     
@@ -606,7 +610,7 @@ createAnalysesDetails <- function(workFolder) {
                                           createPs = TRUE,
                                           createPsArgs = createPsArgs1,
                                           matchOnPs = TRUE,
-                                          matchOnPsArgs = MatchOnPsArgs,
+                                          matchOnPsArgs = oneToOneMatchOnPsArgs,
                                           fitOutcomeModel = TRUE,
                                           fitOutcomeModelArgs = fitOutcomeModelArgsI4998)
     
@@ -617,7 +621,7 @@ createAnalysesDetails <- function(workFolder) {
                                           createPs = TRUE,
                                           createPsArgs = createPsArgs1,
                                           matchOnPs = TRUE,
-                                          matchOnPsArgs = MatchOnPsArgs,
+                                          matchOnPsArgs = oneToOneMatchOnPsArgs,
                                           fitOutcomeModel = TRUE,
                                           fitOutcomeModelArgs = fitOutcomeModelArgsI5998)
     
@@ -628,7 +632,7 @@ createAnalysesDetails <- function(workFolder) {
                                           createPs = TRUE,
                                           createPsArgs = createPsArgs1,
                                           matchOnPs = TRUE,
-                                          matchOnPsArgs = MatchOnPsArgs,
+                                          matchOnPsArgs = oneToOneMatchOnPsArgs,
                                           fitOutcomeModel = TRUE,
                                           fitOutcomeModelArgs = fitOutcomeModelArgsI6998)
     
