@@ -40,7 +40,7 @@ How to run
 2. In 'R', use the following code to install the TicagrelorVsClopidogrel package:
 
   	```r
-	install_github("chandryou/TicagrelorVsClopidogrel", args = "--no-multiarch")
+	install_github("ohdsi-studies/TicagrelorVsClopidogrel", args = "--no-multiarch")
 	```
 
     If you cannot install the package in your local R studio, you can use docker image alternatively (see Docker below). 
