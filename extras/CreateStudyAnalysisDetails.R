@@ -194,7 +194,7 @@ createAnalysesDetails <- function(workFolder) {
                                                                                 firstExposureOnly = FALSE,
                                                                                 washoutPeriod = 0,
                                                                                 removeDuplicateSubjects = 'keep first',
-                                                                                minDaysAtRisk = 28,
+                                                                                minDaysAtRisk = 1,
                                                                                 riskWindowStart = 29,
                                                                                 addExposureDaysToStart = FALSE,
                                                                                 riskWindowEnd = 365,
@@ -227,7 +227,7 @@ createAnalysesDetails <- function(workFolder) {
                                                                              firstExposureOnly = FALSE,
                                                                              washoutPeriod = 0,
                                                                              removeDuplicateSubjects = 'keep first',
-                                                                             minDaysAtRisk = 28,
+                                                                             minDaysAtRisk = 1,
                                                                              riskWindowStart = 29,
                                                                              addExposureDaysToStart = FALSE,
                                                                              riskWindowEnd = 0,
@@ -241,7 +241,7 @@ createAnalysesDetails <- function(workFolder) {
                                                          minDaysAtRisk = 1,
                                                          riskWindowStart = 1,
                                                          addExposureDaysToStart = FALSE,
-                                                         riskWindowEnd = 1825,
+                                                         riskWindowEnd = 9999,
                                                          addExposureDaysToEnd = FALSE,
                                                          censorAtNewRiskWindow = FALSE)
     
@@ -250,10 +250,10 @@ createAnalysesDetails <- function(workFolder) {
                                                                      firstExposureOnly = FALSE,
                                                                      washoutPeriod = 0,
                                                                      removeDuplicateSubjects = 'keep first',
-                                                                     minDaysAtRisk = 28,
+                                                                     minDaysAtRisk = 1,
                                                                      riskWindowStart = 29,
                                                                      addExposureDaysToStart = FALSE,
-                                                                     riskWindowEnd = 1825,
+                                                                     riskWindowEnd = 9999,
                                                                      addExposureDaysToEnd = FALSE,
                                                                      censorAtNewRiskWindow = FALSE)
     
@@ -357,19 +357,7 @@ createAnalysesDetails <- function(workFolder) {
                                          fitOutcomeModel = TRUE,
                                          fitOutcomeModelArgs = fitOutcomeModelArgs1)
     
-    
     a4 <- CohortMethod::createCmAnalysis(analysisId = 4,
-                                         description = "One-year outcome, matching with blanking period",
-                                         getDbCohortMethodDataArgs = getDbCmDataArgs,
-                                         createStudyPopArgs = OneYearOutcomeWithBlanking,
-                                         createPs = TRUE,
-                                         createPsArgs = createPsArgs1,
-                                         matchOnPs = TRUE,
-                                         matchOnPsArgs = oneToOneMatchOnPsArgs,
-                                         fitOutcomeModel = TRUE,
-                                         fitOutcomeModelArgs = fitOutcomeModelArgs2)
-
-    a5 <- CohortMethod::createCmAnalysis(analysisId = 5,
                                          description = "One-year outcome, without matching",
                                          getDbCohortMethodDataArgs = getDbCmDataArgs,
                                          createStudyPopArgs = OneYearOutcome,
@@ -381,34 +369,49 @@ createAnalysesDetails <- function(workFolder) {
                                          stratifyByPsArgs = NULL,
                                          fitOutcomeModel = TRUE,
                                          fitOutcomeModelArgs = fitOutcomeModelArgs0)
-
-    # a5 <- CohortMethod::createCmAnalysis(analysisId = 5,
-    #                                      description = "One-year outcome only for observed, stratification",
-    #                                      getDbCohortMethodDataArgs = getDbCmDataArgs,
-    #                                      createStudyPopArgs = OneYearOutcomeWithMinTAR,
-    #                                      createPs = TRUE,
-    #                                      createPsArgs = createPsArgs1,
-    #                                      #trimByPs = TRUE,
-    #                                      #trimByPsArgs = trimByPsArgs,
-    #                                      stratifyByPs = TRUE,
-    #                                      stratifyByPsArgs = stratifyByPsArgs,
-    #                                      fitOutcomeModel = TRUE,
-    #                                      fitOutcomeModelArgs = fitOutcomeModelArgs1)
-    #
-    # a6 <- CohortMethod::createCmAnalysis(analysisId = 6,
-    #                                      description = "One-year outcome only for observed, without matching",
-    #                                      getDbCohortMethodDataArgs = getDbCmDataArgs,
-    #                                      createStudyPopArgs = OneYearOutcomeWithMinTAR,
-    #                                      createPs = FALSE,
-    #                                      createPsArgs = NULL,
-    #                                      #trimByPs = TRUE,
-    #                                      #trimByPsArgs = trimByPsArgs,
-    #                                      stratifyByPs = FALSE,
-    #                                      stratifyByPsArgs = NULL,
-    #                                      fitOutcomeModel = TRUE,
-    #                                      fitOutcomeModelArgs = fitOutcomeModelArgs0)
+    
+    a5 <- CohortMethod::createCmAnalysis(analysisId = 5,
+                                         description = "One-year outcome with blanking period, one-to-one matching ",
+                                         getDbCohortMethodDataArgs = getDbCmDataArgs,
+                                         createStudyPopArgs = OneYearOutcomeWithBlanking,
+                                         createPs = TRUE,
+                                         createPsArgs = createPsArgs1,
+                                         matchOnPs = TRUE,
+                                         matchOnPsArgs = oneToOneMatchOnPsArgs,
+                                         fitOutcomeModel = TRUE,
+                                         fitOutcomeModelArgs = fitOutcomeModelArgs2)
+    
+    
     a6 <- CohortMethod::createCmAnalysis(analysisId = 6,
-                                         description = "On-treatment, one-to-one matching",
+                                         description = "One-year outcome with blanking period, variable-ratio matchingg",
+                                         getDbCohortMethodDataArgs = getDbCmDataArgs,
+                                         createStudyPopArgs = OneYearOutcomeWithBlanking,
+                                         createPs = TRUE,
+                                         createPsArgs = createPsArgs1,
+                                         matchOnPs = TRUE,
+                                         matchOnPsArgs = variableRatioMatchOnPsArgs,
+                                         fitOutcomeModel = TRUE,
+                                         fitOutcomeModelArgs = fitOutcomeModelArgs1)
+    
+    
+    a7 <- CohortMethod::createCmAnalysis(analysisId = 7,
+                                         description = "One-year outcome with blanking period, stratification",
+                                         getDbCohortMethodDataArgs = getDbCmDataArgs,
+                                         createStudyPopArgs = OneYearOutcomeWithBlanking,
+                                         createPs = TRUE,
+                                         createPsArgs = createPsArgs1,
+                                         #trimByPs = TRUE,
+                                         #trimByPsArgs = trimByPsArgs,
+                                         stratifyByPs = TRUE,
+                                         stratifyByPsArgs = stratifyByPsArgs,
+                                         fitOutcomeModel = TRUE,
+                                         fitOutcomeModelArgs = fitOutcomeModelArgs1)
+    
+    #####################################################
+    
+    
+    a8 <- CohortMethod::createCmAnalysis(analysisId = 8,
+                                         description = "On-treatment outcome, one-to-one matching",
                                          getDbCohortMethodDataArgs = getDbCmDataArgs,
                                          createStudyPopArgs = OnTreatment,
                                          createPs = TRUE,
@@ -418,8 +421,8 @@ createAnalysesDetails <- function(workFolder) {
                                          fitOutcomeModel = TRUE,
                                          fitOutcomeModelArgs = fitOutcomeModelArgs2)
     
-    a7 <- CohortMethod::createCmAnalysis(analysisId = 7,
-                                         description = "On-treatment, variable-ratio matching",
+    a9 <- CohortMethod::createCmAnalysis(analysisId = 9,
+                                         description = "On-treatment outcome, variable-ratio matching",
                                          getDbCohortMethodDataArgs = getDbCmDataArgs,
                                          createStudyPopArgs = OnTreatment,
                                          createPs = TRUE,
@@ -429,8 +432,9 @@ createAnalysesDetails <- function(workFolder) {
                                          fitOutcomeModel = TRUE,
                                          fitOutcomeModelArgs = fitOutcomeModelArgs1)
     
-    a8 <- CohortMethod::createCmAnalysis(analysisId = 8,
-                                         description = "On-treatment, stratification",
+    
+    a10 <- CohortMethod::createCmAnalysis(analysisId = 10,
+                                         description = "On-treatment outcome, stratification",
                                          getDbCohortMethodDataArgs = getDbCmDataArgs,
                                          createStudyPopArgs = OnTreatment,
                                          createPs = TRUE,
@@ -442,20 +446,8 @@ createAnalysesDetails <- function(workFolder) {
                                          fitOutcomeModel = TRUE,
                                          fitOutcomeModelArgs = fitOutcomeModelArgs1)
     
-    
-    a9 <- CohortMethod::createCmAnalysis(analysisId = 9,
-                                          description = "On-treatment, matching with blanking period",
-                                          getDbCohortMethodDataArgs = getDbCmDataArgs,
-                                          createStudyPopArgs = OnTreatmentWithBlanking,
-                                          createPs = TRUE,
-                                          createPsArgs = createPsArgs1,
-                                          matchOnPs = TRUE,
-                                          matchOnPsArgs = oneToOneMatchOnPsArgs,
-                                          fitOutcomeModel = TRUE,
-                                          fitOutcomeModelArgs = fitOutcomeModelArgs2)
-    
-    a10 <- CohortMethod::createCmAnalysis(analysisId = 10,
-                                         description = "On-treatment, without matching",
+    a11 <- CohortMethod::createCmAnalysis(analysisId = 11,
+                                         description = "On-treatment outcome, without matching",
                                          getDbCohortMethodDataArgs = getDbCmDataArgs,
                                          createStudyPopArgs = OnTreatment,
                                          createPs = FALSE,
@@ -467,8 +459,47 @@ createAnalysesDetails <- function(workFolder) {
                                          fitOutcomeModel = TRUE,
                                          fitOutcomeModelArgs = fitOutcomeModelArgs0)
     
+    a12 <- CohortMethod::createCmAnalysis(analysisId = 12,
+                                         description = "On-treatment outcome with blanking period, one-to-one matching ",
+                                         getDbCohortMethodDataArgs = getDbCmDataArgs,
+                                         createStudyPopArgs = OnTreatmentWithBlanking,
+                                         createPs = TRUE,
+                                         createPsArgs = createPsArgs1,
+                                         matchOnPs = TRUE,
+                                         matchOnPsArgs = oneToOneMatchOnPsArgs,
+                                         fitOutcomeModel = TRUE,
+                                         fitOutcomeModelArgs = fitOutcomeModelArgs2)
+    
+    
     a13 <- CohortMethod::createCmAnalysis(analysisId = 13,
-                                         description = "Five-year, one-to-one matching",
+                                         description = "On-treatment outcome with blanking period, variable-ratio matchingg",
+                                         getDbCohortMethodDataArgs = getDbCmDataArgs,
+                                         createStudyPopArgs = OnTreatmentWithBlanking,
+                                         createPs = TRUE,
+                                         createPsArgs = createPsArgs1,
+                                         matchOnPs = TRUE,
+                                         matchOnPsArgs = variableRatioMatchOnPsArgs,
+                                         fitOutcomeModel = TRUE,
+                                         fitOutcomeModelArgs = fitOutcomeModelArgs1)
+    
+    
+    a14 <- CohortMethod::createCmAnalysis(analysisId = 14,
+                                         description = "On-treatment outcome with blanking period, stratification",
+                                         getDbCohortMethodDataArgs = getDbCmDataArgs,
+                                         createStudyPopArgs = OnTreatmentWithBlanking,
+                                         createPs = TRUE,
+                                         createPsArgs = createPsArgs1,
+                                         #trimByPs = TRUE,
+                                         #trimByPsArgs = trimByPsArgs,
+                                         stratifyByPs = TRUE,
+                                         stratifyByPsArgs = stratifyByPsArgs,
+                                         fitOutcomeModel = TRUE,
+                                         fitOutcomeModelArgs = fitOutcomeModelArgs1)
+    
+    ###########################################
+    
+    a15 <- CohortMethod::createCmAnalysis(analysisId = 15,
+                                         description = "ITT, one-to-one matching",
                                          getDbCohortMethodDataArgs = getDbCmDataArgs,
                                          createStudyPopArgs = ITT,
                                          createPs = TRUE,
@@ -478,19 +509,20 @@ createAnalysesDetails <- function(workFolder) {
                                          fitOutcomeModel = TRUE,
                                          fitOutcomeModelArgs = fitOutcomeModelArgs2)
     
-    a14 <- CohortMethod::createCmAnalysis(analysisId = 14,
-                                          description = "Five-year, variable-ratio matching",
-                                          getDbCohortMethodDataArgs = getDbCmDataArgs,
-                                          createStudyPopArgs = ITT,
-                                          createPs = TRUE,
-                                          createPsArgs = createPsArgs1,
-                                          matchOnPs = TRUE,
-                                          matchOnPsArgs = variableRatioMatchOnPsArgs,
-                                          fitOutcomeModel = TRUE,
-                                          fitOutcomeModelArgs = fitOutcomeModelArgs1)
+    a16 <- CohortMethod::createCmAnalysis(analysisId = 16,
+                                         description = "ITT, variable-ratio matching",
+                                         getDbCohortMethodDataArgs = getDbCmDataArgs,
+                                         createStudyPopArgs = ITT,
+                                         createPs = TRUE,
+                                         createPsArgs = createPsArgs1,
+                                         matchOnPs = TRUE,
+                                         matchOnPsArgs = variableRatioMatchOnPsArgs,
+                                         fitOutcomeModel = TRUE,
+                                         fitOutcomeModelArgs = fitOutcomeModelArgs1)
     
-    a15 <- CohortMethod::createCmAnalysis(analysisId = 15,
-                                          description = "Five-year, stratification",
+    
+    a17 <- CohortMethod::createCmAnalysis(analysisId = 17,
+                                          description = "ITT, stratification",
                                           getDbCohortMethodDataArgs = getDbCmDataArgs,
                                           createStudyPopArgs = ITT,
                                           createPs = TRUE,
@@ -502,19 +534,8 @@ createAnalysesDetails <- function(workFolder) {
                                           fitOutcomeModel = TRUE,
                                           fitOutcomeModelArgs = fitOutcomeModelArgs1)
     
-    a16 <- CohortMethod::createCmAnalysis(analysisId = 16,
-                                          description = "Five-year, matching with blanking period",
-                                          getDbCohortMethodDataArgs = getDbCmDataArgs,
-                                          createStudyPopArgs = ITTwithBlanking,
-                                          createPs = TRUE,
-                                          createPsArgs = createPsArgs1,
-                                          matchOnPs = TRUE,
-                                          matchOnPsArgs = oneToOneMatchOnPsArgs,
-                                          fitOutcomeModel = TRUE,
-                                          fitOutcomeModelArgs = fitOutcomeModelArgs2)
-    
-    a17 <- CohortMethod::createCmAnalysis(analysisId = 17,
-                                          description = "Five-year, without matching",
+    a18 <- CohortMethod::createCmAnalysis(analysisId = 18,
+                                          description = "ITT, without matching",
                                           getDbCohortMethodDataArgs = getDbCmDataArgs,
                                           createStudyPopArgs = ITT,
                                           createPs = FALSE,
@@ -525,6 +546,43 @@ createAnalysesDetails <- function(workFolder) {
                                           stratifyByPsArgs = NULL,
                                           fitOutcomeModel = TRUE,
                                           fitOutcomeModelArgs = fitOutcomeModelArgs0)
+    
+    a19 <- CohortMethod::createCmAnalysis(analysisId = 19,
+                                          description = "ITT with blanking period, one-to-one matching ",
+                                          getDbCohortMethodDataArgs = getDbCmDataArgs,
+                                          createStudyPopArgs = ITTwithBlanking,
+                                          createPs = TRUE,
+                                          createPsArgs = createPsArgs1,
+                                          matchOnPs = TRUE,
+                                          matchOnPsArgs = oneToOneMatchOnPsArgs,
+                                          fitOutcomeModel = TRUE,
+                                          fitOutcomeModelArgs = fitOutcomeModelArgs2)
+    
+    
+    a20 <- CohortMethod::createCmAnalysis(analysisId = 20,
+                                          description = "ITT with blanking period, variable-ratio matchingg",
+                                          getDbCohortMethodDataArgs = getDbCmDataArgs,
+                                          createStudyPopArgs = ITTwithBlanking,
+                                          createPs = TRUE,
+                                          createPsArgs = createPsArgs1,
+                                          matchOnPs = TRUE,
+                                          matchOnPsArgs = variableRatioMatchOnPsArgs,
+                                          fitOutcomeModel = TRUE,
+                                          fitOutcomeModelArgs = fitOutcomeModelArgs1)
+    
+    
+    a21 <- CohortMethod::createCmAnalysis(analysisId = 21,
+                                          description = "ITT with blanking period, stratification",
+                                          getDbCohortMethodDataArgs = getDbCmDataArgs,
+                                          createStudyPopArgs = ITTwithBlanking,
+                                          createPs = TRUE,
+                                          createPsArgs = createPsArgs1,
+                                          #trimByPs = TRUE,
+                                          #trimByPsArgs = trimByPsArgs,
+                                          stratifyByPs = TRUE,
+                                          stratifyByPsArgs = stratifyByPsArgs,
+                                          fitOutcomeModel = TRUE,
+                                          fitOutcomeModelArgs = fitOutcomeModelArgs1)
 
 
     ##Interaction terms
@@ -570,7 +628,7 @@ createAnalysesDetails <- function(workFolder) {
                                                                         prior = defaultPrior,
                                                                         interactionCovariateIds = subgroupCovariateIds)
     
-    a19 <- CohortMethod::createCmAnalysis(analysisId = 19,
+    a79 <- CohortMethod::createCmAnalysis(analysisId = 79,
                                           description = "One-year outcome, matching, femal interaction",
                                           getDbCohortMethodDataArgs = getDbCmDataArgs,
                                           createStudyPopArgs = OneYearOutcome,
@@ -582,7 +640,7 @@ createAnalysesDetails <- function(workFolder) {
                                           fitOutcomeModelArgs = fitOutcomeModelArgsI1998)
     
     a29 <- CohortMethod::createCmAnalysis(analysisId = 29,
-                                          description = "One-year outcome, matching, With 1 to 1 Matching, elderly interaction",
+                                          description = "One-year outcome, matching, elderly interaction",
                                           getDbCohortMethodDataArgs = getDbCmDataArgs,
                                           createStudyPopArgs = OneYearOutcome,
                                           createPs = TRUE,
@@ -650,10 +708,10 @@ createAnalysesDetails <- function(workFolder) {
     
     
     
-    cmAnalysisList <- list(a1, a2, a3, a4, a5, 
-                           a6, a7, a8, a9, a10, 
-                           a13, a14, a15, a16, a17,#a15, a16
-                           a19, a29, a39, a49, a59, a69#, a99
+    cmAnalysisList <- list(a1, a2, a3, a4, a5, a6, a7,
+                           a8, a9, a10, a11, a12, a13, a14,
+                           a15, a16, a17, a18, a19, a20, a21,
+                           a79, a29, a39, a49, a59, a69#, a99
     )
     #cmAnalysisList <- list(a1)
     

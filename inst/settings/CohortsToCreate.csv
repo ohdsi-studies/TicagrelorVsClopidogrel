@@ -4,22 +4,22 @@ atlasId,atlasName,cohortId,name
 1253,Ticagrelor2013To2015,1253,Ticagrelor2013To2015
 1254,Clopidogrel2013To2015,1254,Clopidogrel2013To2015
 1240,NACE,1240,NACE
-1202,NACE_narrow,1202,NACE (only primary condition)
-653,NACE_w_death,653,NACE or mortality
-654,NACE_w_death_narrow,654,NACE or mortality (only primary condition)
-1237,IschemicEvent,1237,Ischemic event
-1201,IschemicEvent_narrow,1201,Ischemic event (only primary condition)
-1234,AMI,1234,Acute myocardial infarction
-1198,AMI_narrow,1198,Acute myocardial infarction (only primary condition)
+1202,NACE (only primary condition),1202,NACE_narrow
+653,NACE or mortality,653,NACE_w_death
+654,NACE or mortality (only primary condition),654,NACE_w_death_narrow
+1237,Ischemic event,1237,IschemicEvent
+1201,Ischemic event (only primary condition),1201,IschemicEvent_narrow
+1234,Acute myocardial infarction,1234,AMI
+1198,Acute myocardial infarction (only primary condition),1198,AMI_narrow
 1030,Revascularization,1030,Revascularization
-1233,ischemicStroke,1233,Ischemic stroke
-1180,ischemicStroke_narrow,1180,Ischemic stroke (only primary condition)
-20,anyDeath,20,All-cause mortality
-1239,HemorrhagicEvent,1239,Hemorrhagic event
-1200,HemorrhagicEvent_narrow,1200,Hemorrhagic event (only primary conditino)
-1236,giBleeding,1236,GI bleeding
-1197,giBleeding_narrow,1197,GI bleeding (only primary condition)
-1235,hemorrhagicStroke,1235,Hemorrhagic stroke
-1190,hemorrhagicStroke_narrow,1190,Hemorrhagic stroke (only primary condition)
-1165,dyspnea,1165,Dyspnea
-1241,PCIduetoACS,1241,PCI due to ACS
+1233,Ischemic stroke,1233,ischemicStroke
+1180,Ischemic stroke (only primary condition),1180,ischemicStroke_narrow
+20,All-cause mortality,20,anyDeath
+1239,Hemorrhagic event,1239,HemorrhagicEvent
+1200,Hemorrhagic event (only primary conditino),1200,HemorrhagicEvent_narrow
+1236,GI bleeding,1236,giBleeding
+1197,GI bleeding (only primary condition),1197,giBleeding_narrow
+1235,Hemorrhagic stroke,1235,hemorrhagicStroke
+1190,Hemorrhagic stroke (only primary condition),1190,hemorrhagicStroke_narrow
+1165,Dyspnea,1165,dyspnea
+1241,PCI due to ACS,1241,PCIduetoACS
