@@ -332,8 +332,8 @@
   },
   "InclusionRules": [
     {
-      "name": "Inpatient only",
-      "description": "Inpatient only",
+      "name": "Inpatient Only",
+      "description": "Inpatient Only",
       "expression": {
         "Type": "ALL",
         "CriteriaList": [
@@ -341,6 +341,76 @@
             "Criteria": {
               "VisitOccurrence": {
                 "CodesetId": 2
+              }
+            },
+            "StartWindow": {
+              "Start": {
+                "Days": 0,
+                "Coeff": -1
+              },
+              "End": {
+                "Days": 0,
+                "Coeff": 1
+              },
+              "UseEventEnd": false
+            },
+            "Occurrence": {
+              "Type": 2,
+              "Count": 1
+            }
+          }
+        ],
+        "DemographicCriteriaList": [],
+        "Groups": []
+      }
+    },
+    {
+      "name": "Primary diagnosis only",
+      "description": "Primary diagnosis only\n\n",
+      "expression": {
+        "Type": "ALL",
+        "CriteriaList": [
+          {
+            "Criteria": {
+              "ConditionOccurrence": {
+                "CodesetId": 1,
+                "ConditionType": [
+                  {
+                    "CONCEPT_CODE": "OMOP generated",
+                    "CONCEPT_ID": 38000183,
+                    "CONCEPT_NAME": "Inpatient detail - primary",
+                    "DOMAIN_ID": "Type Concept",
+                    "VOCABULARY_ID": "Condition Type"
+                  },
+                  {
+                    "CONCEPT_CODE": "OMOP generated",
+                    "CONCEPT_ID": 38000248,
+                    "CONCEPT_NAME": "Inpatient detail - primary position",
+                    "DOMAIN_ID": "Type Concept",
+                    "VOCABULARY_ID": "Procedure Type"
+                  },
+                  {
+                    "CONCEPT_CODE": "OMOP generated",
+                    "CONCEPT_ID": 38000199,
+                    "CONCEPT_NAME": "Inpatient header - primary",
+                    "DOMAIN_ID": "Type Concept",
+                    "VOCABULARY_ID": "Condition Type"
+                  },
+                  {
+                    "CONCEPT_CODE": "OMOP generated",
+                    "CONCEPT_ID": 38000250,
+                    "CONCEPT_NAME": "Inpatient header - primary position",
+                    "DOMAIN_ID": "Type Concept",
+                    "VOCABULARY_ID": "Procedure Type"
+                  },
+                  {
+                    "CONCEPT_CODE": "OMOP generated",
+                    "CONCEPT_ID": 44786627,
+                    "CONCEPT_NAME": "Primary Condition",
+                    "DOMAIN_ID": "Type Concept",
+                    "VOCABULARY_ID": "Condition Type"
+                  }
+                ]
               }
             },
             "StartWindow": {
