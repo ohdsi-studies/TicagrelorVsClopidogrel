@@ -1,6 +1,20 @@
-TicagrelorVsClopidogrel
-==============================
+Ticagrelor Vs Clopidogrel
+=============
 
+<img src="https://img.shields.io/badge/Study%20Status-Results%20Available-yellow.svg" alt="Study Status: Results Available">
+
+- Analytics use case(s): **Population-Level Estimation**
+- Study type: **Clinical Application**
+- Tags: **-**
+- Study lead: **Seng Chan You**
+- Study lead forums tag: **[SCYou](https://forums.ohdsi.org/u/SCYou)**
+- Study start date: **December 11, 2018**
+- Study end date: **December 11, 2018**
+- Protocol: [**Word file**](https://github.com/ohdsi-studies/TicagrelorVsClopidogrel/blob/master/documents/SAP_TicagrelorVsClopidogrelVer1.3.docx)
+- Publications: 
+- Results explorer: **[EvidenceExplorer](https://data.ohdsi.org/TicagrelorVsClopidogrel/)**
+
+This study aims to compare the effectiveness of ticagrelor vs clopidogrel in real-world practice
 
 Requirements
 ============
@@ -125,11 +139,6 @@ How to run
   Note that you can save plots from within the Shiny app (You can do this by re-building the package). It is possible to view results from more than one database by applying `prepareForEvidenceExplorer` to the Results file from each database, and using the same data folder. Set `blind = FALSE` if you wish to be unblinded to the final results.
 
 
-License
-=======
-The TicagrelorVsClopidogrel package is licensed under Apache License 2.0
-
-
 Docker
 =======
 If you cannot install the package in your local R studio, you can use docker image alternatively. 
@@ -154,3 +163,7 @@ After pulling and running the dockr image, you can connect to the Rstudio with r
 http://localhost:8787
     
 Enter ID and PW as set above in the Rstudio browser.
+
+License
+=======
+The TicagrelorVsClopidogrel package is licensed under Apache License 2.0
