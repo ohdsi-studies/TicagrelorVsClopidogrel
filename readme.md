@@ -9,7 +9,7 @@ Ticagrelor Vs Clopidogrel
 - Study lead: **Seng Chan You**
 - Study lead forums tag: **[SCYou](https://forums.ohdsi.org/u/SCYou)**
 - Study start date: **December 11, 2018**
-- Study end date: **December 11, 2018**
+- Study end date: 
 - Protocol: [**Word file**](https://github.com/ohdsi-studies/TicagrelorVsClopidogrel/blob/master/documents/SAP_TicagrelorVsClopidogrelVer1.3.docx)
 - Publications: 
 - Results explorer: **[EvidenceExplorer](https://data.ohdsi.org/TicagrelorVsClopidogrel/)**
