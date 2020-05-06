@@ -23,3 +23,4 @@ atlasId,atlasName,cohortId,name
 1190,Hemorrhagic stroke (only primary condition),1190,hemorrhagicStroke_narrow
 1165,Dyspnea,1165,dyspnea
 1241,PCI due to ACS,1241,PCIduetoACS
+30,Cardiovascular-related mortality,30,Cardiovascular-related mortality
