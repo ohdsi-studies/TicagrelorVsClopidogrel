@@ -19,6 +19,7 @@ atlasId,atlasName,cohortId,name
 20,All-cause mortality,20,anyDeath
 1239,Hemorrhagic event,1239,HemorrhagicEvent
 1200,Hemorrhagic event (only primary conditino),1200,HemorrhagicEvent_narrow
+1205,Hemorrhagic event lead to transfusion or death,1205,HemorrhagicEvent_intervention
 1236,GI bleeding,1236,giBleeding
 1197,GI bleeding (only primary condition),1197,giBleeding_narrow
 1235,Hemorrhagic stroke,1235,hemorrhagicStroke
