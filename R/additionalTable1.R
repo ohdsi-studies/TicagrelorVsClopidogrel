@@ -55,6 +55,17 @@ additionalResult <- function(connectionDetails = connectionDetails,
     }
     
     ####Baseline characteristics####
+  
+    primaryPop <- readRDS(file.path(outputFolder, "cmOutput", "StratPop_l1_s1_p1_t874_c929_s1_o1240.rds"))
+    numAtRisk <- data.frame(c90=sum(primaryPop[primaryPop$survivalTime>=90,]$treatment ==0),
+                            t90=sum(primaryPop[primaryPop$survivalTime>=90,]$treatment ==1),
+                            c180=sum(primaryPop[primaryPop$survivalTime>=180,]$treatment ==0),
+                            t180=sum(primaryPop[primaryPop$survivalTime>=180,]$treatment ==1),
+                            c270=sum(primaryPop[primaryPop$survivalTime>=270,]$treatment ==0),
+                            t270=sum(primaryPop[primaryPop$survivalTime>=270,]$treatment ==1),
+                            c360=sum(primaryPop[primaryPop$survivalTime>=360,]$treatment ==0),
+                            t360=sum(primaryPop[primaryPop$survivalTime>=360,]$treatment ==1))
+    write.csv(numAtRisk, file.path(outputFolder, "export", "number_at_risk.csv"))
     
     # popList <- list.files(file.path(outputFolder,"cmOutput"), pattern = "StratPop_l1_s1_p1_t874_c929_s1_o1240.rds")
     # 
