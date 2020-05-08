@@ -87,6 +87,7 @@ execute <- function(connectionDetails,
                     runAnalyses = TRUE,
                     runDiagnostics = TRUE,
                     packageResults = TRUE,
+                    revision = T, 
                     maxCores = 4,
                     minCellCount= 5) {
   if (!file.exists(outputFolder))
@@ -158,6 +159,16 @@ execute <- function(connectionDetails,
     colnames(countPerYear) <- SqlRender::snakeCaseToCamelCase(colnames(countPerYear))
     countPerYear <- addCohortNames(countPerYear)
     saveRDS(countPerYear, file.path(outputFolder, "CohortCountByYear.rds"))
+    
+    ParallelLogger::logInfo("Additional result for revision")
+    additionalResult(connectionDetails = connectionDetails,
+                     cdmDatabaseSchema = cdmDatabaseSchema,
+                     cohortDatabaseSchema = cohortDatabaseSchema,
+                     cohortTable = cohortTable,
+                     oracleTempSchema = oracleTempSchema,
+                     outputFolder = outputFolder,
+                     databaseId = databaseId,
+                     minCellCount = 5)
     
     ParallelLogger::logInfo("Packaging results")
     exportResults(outputFolder = outputFolder,
