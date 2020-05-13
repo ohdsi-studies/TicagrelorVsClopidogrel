@@ -1,0 +1,1 @@
+DELETE FROM @target_database_schema.@target_cohort_table where cohort_definition_id IN (@target_cohort_ids);
