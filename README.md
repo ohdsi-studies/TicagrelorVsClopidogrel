@@ -9,9 +9,9 @@ Ticagrelor Vs Clopidogrel
 - Study lead: **Seng Chan You**
 - Study lead forums tag: **[SCYou](https://forums.ohdsi.org/u/SCYou)**
 - Study start date: **December 11, 2018**
-- Study end date: 
+- Study end date:
 - Protocol: [**Word file**](https://github.com/ohdsi-studies/TicagrelorVsClopidogrel/blob/master/documents/SAP_TicagrelorVsClopidogrelVer1.3.docx)
-- Publications: 
+- Publications:
 - Results explorer: **[EvidenceExplorer](https://data.ohdsi.org/TicagrelorVsClopidogrel/)**
 
 This study aims to compare the effectiveness of ticagrelor vs clopidogrel in real-world practice
@@ -26,6 +26,45 @@ Requirements
 - 25 GB of free disk space
 
 See [this video](https://youtu.be/K9_0s2Rchbo) for instructions on how to set up the R environment on Windows.
+
+For revision
+==========
+
+For revision, please install the revision branch of the package
+Set the old outputFolder as outputFolder and run the `additionalResult` function to generate additional results for revision (Cox assumption test, and baseline characteristics with actual numbers)
+After running the `additionalResult` function against previous outputFolder, please re-run the `execute` function to analyze the risk of MACE.
+
+```r
+install_github("ohdsi-studies/TicagrelorVsClopidogrel", ref = "revision")
+
+outputFolder <- "old output folder path"
+TicagrelorVsClopidogrel::additionalResult(connectionDetails = connectionDetails,
+                                          cdmDatabaseSchema = cdmDatabaseSchema,
+                                          cohortDatabaseSchema = cohortDatabaseSchema,
+                                          cohortTable = cohortTable,
+                                          oracleTempSchema = oracleTempSchema,
+                                          outputFolder = outputFolder,
+                                          databaseId = databaseId,
+                                          minCellCount = 5)
+
+outputFolder <- "new output folder path"
+
+execute(connectionDetails = connectionDetails,
+        cdmDatabaseSchema = cdmDatabaseSchema,
+        cohortDatabaseSchema = cohortDatabaseSchema,
+        cohortTable = cohortTable,
+        oracleTempSchema = oracleTempSchema,
+        outputFolder = outputFolder,
+        databaseId = databaseId,
+        databaseName = databaseName,
+        databaseDescription = databaseDescription,
+        createCohorts = T,
+        synthesizePositiveControls = T,
+        runAnalyses = T,
+        runDiagnostics = T,
+        packageResults = T,
+        maxCores = maxCores)
+```
 
 How to run
 ==========
@@ -44,64 +83,64 @@ How to run
 	```
 
 	If you experience problems on Windows where rJava can't find Java, one solution may be to add `args = "--no-multiarch"` to each `install_github` call, for example:
-	
+
 	```r
 	install_github("ohdsi/SqlRender", args = "--no-multiarch")
 	```
-	
+
 	Alternatively, ensure that you have installed both 32-bit and 64-bit JDK versions, as mentioned in the [video tutorial](https://youtu.be/K9_0s2Rchbo).
-	
+
 2. In 'R', use the following code to install the TicagrelorVsClopidogrel package:
 
   	```r
 	install_github("ohdsi-studies/TicagrelorVsClopidogrel", args = "--no-multiarch")
 	```
 
-    If you cannot install the package in your local R studio, you can use docker image alternatively (see Docker below). 
-    
-	
+    If you cannot install the package in your local R studio, you can use docker image alternatively (see Docker below).
+
+
 3. Once installed, you can execute the study by modifying and using the following code:
-	
+
 	```r
 	library(TicagrelorVsClopidogrel)
-	
+
 	# Optional: specify where the temporary files (used by the ff package) will be created:
 	options(fftempdir = "c:/FFtemp")
-	
+
 	# Maximum number of cores to be used:
 	maxCores <- parallel::detectCores()
-	
+
 	# Minimum cell count when exporting data:
 	minCellCount <- 5
-	
+
 	# The folder where the study intermediate and result files will be written:
 	outputFolder <- "c:/TicagrelorVsClopidogrel"
-	
+
 	# Details for connecting to the server:
 	# See ?DatabaseConnector::createConnectionDetails for help
 	connectionDetails <- DatabaseConnector::createConnectionDetails(dbms = "postgresql",
 									server = "some.server.com/ohdsi",
 									user = "joe",
 									password = "secret")
-	
+
 	# The name of the database schema where the CDM data can be found:
 	cdmDatabaseSchema <- "cdm_synpuf"
-	
+
 	# The name of the database schema and table where the study-specific cohorts will be instantiated:
 	cohortDatabaseSchema <- "scratch.dbo"
 	cohortTable <- "my_study_cohorts"
-	
+
 	# Some meta-information that will be used by the export function:
 	databaseId <- "Synpuf"
 	databaseName <- "Medicare Claims Synthetic Public Use Files (SynPUFs)"
 	databaseDescription <- "Medicare Claims Synthetic Public Use Files (SynPUFs) were created to allow interested parties to gain familiarity using Medicare claims data while protecting beneficiary privacy. These files are intended to promote development of software and applications that utilize files in this format, train researchers on the use and complexities of Centers for Medicare and Medicaid Services (CMS) claims, and support safe data mining innovations. The SynPUFs were created by combining randomized information from multiple unique beneficiaries and changing variable values. This randomization and combining of beneficiary information ensures privacy of health information."
-	
+
 	# For Oracle: define a schema that can be used to emulate temp tables:
 	oracleTempSchema <- NULL
-	
+
 	#onTreatmentWithBlankingPeriod:
 	If you cannot run the 'on-treatment with blanking period analysis' on your database, please set this argument FALSE. Otherwise, I do recommend to set this argument 'TRUE'.
-	
+
 	execute(connectionDetails = connectionDetails,
 		cdmDatabaseSchema = cdmDatabaseSchema,
 		cohortDatabaseSchema = cohortDatabaseSchema,
@@ -126,28 +165,28 @@ How to run
 	```r
 	submitResults("export/Results<DatabaseId>.zip", key = "<key>", secret = "<secret>")
 	```
-	
+
 	Where ```key``` and ```secret``` are the credentials provided to you personally by the study coordinator.
-		
+
 5. To view the results, use the Shiny app:
 
 	```r
 	prepareForEvidenceExplorer("Result<databaseId>.zip", "/shinyData")
 	launchEvidenceExplorer("/shinyData", blind = TRUE)
 	```
-  
+
   Note that you can save plots from within the Shiny app (You can do this by re-building the package). It is possible to view results from more than one database by applying `prepareForEvidenceExplorer` to the Results file from each database, and using the same data folder. Set `blind = FALSE` if you wish to be unblinded to the final results.
 
 
 Docker
 =======
-If you cannot install the package in your local R studio, you can use docker image alternatively. 
+If you cannot install the package in your local R studio, you can use docker image alternatively.
 See the instructions on how to set up the Docker environment on [Windows](https://docs.docker.com/docker-for-windows/), [Mac](https://docs.docker.com/docker-for-mac/).
-    
+
 ```
 docker run --name TicagrelorVsClopidogrel -e USER=user -e PASSWORD=password1 -p 8787:8787 chandryou/ticagrelorvsclopidogrel
 ```
-Please set freely 'user' and 'password1' as you want. These will be the ID and PW for the activated Rstudio on docker. 
+Please set freely 'user' and 'password1' as you want. These will be the ID and PW for the activated Rstudio on docker.
 
 Consider to increase the upper limit of file open
 ```
@@ -161,7 +200,7 @@ docker run --name TicagrelorVsClopidogrel -e USER=user -e PASSWORD=password1 -p 
 
 After pulling and running the dockr image, you can connect to the Rstudio with required packages in the following address
 http://localhost:8787
-    
+
 Enter ID and PW as set above in the Rstudio browser.
 
 License
