@@ -118,7 +118,7 @@ additionalResult <- function(connectionDetails = connectionDetails,
                             t360=sum(primaryPop[primaryPop$survivalTime>=360,]$treatment ==1))
     write.csv(numAtRisk, file.path(exportFolder, "rev_number_at_risk.csv"))
     
-    popList <- list.files(file.path(outputFolder,"cmOutput"), pattern = "StratPop_l1_s1_p1_t874_c929_s1_o1240.rds")
+    popList <- list.files(file.path(outputFolder,"cmOutput"), pattern = "StratPop_l1_s1_p1_t874_c929_s1_o1240.rds|StudyPop_l1_s1_t874_c929_o1240.rds")
 
     connectionDetails$schema <- cohortDatabaseSchema
     connection <- DatabaseConnector::connect(connectionDetails)
@@ -130,10 +130,10 @@ additionalResult <- function(connectionDetails = connectionDetails,
         }
         popName <- popList[i]
 
-        exportName <- gsub("\\.rds","", gsub("StratPop_l1_s1_p1_","",popName))
-        origTargetId <- as.numeric(gsub("_c.*.rds","",gsub("StratPop.*_t","",popName)))
-        origComparatorId <- as.numeric(gsub("_s.*.rds","",gsub("StratPop.*_c","",popName)))
-        outcomeId <- as.numeric(gsub("t.*_s1_o","",exportName))
+        exportName <- gsub("\\.rds","", gsub("Pop_l1_s1_","",popName))
+        origTargetId <- 874
+        origComparatorId <- 929
+        outcomeId <- 1240
         pop <- readRDS(file.path(outputFolder,"cmOutput", popName))
 
         pop$cohortId <- NA
@@ -181,7 +181,7 @@ additionalResult <- function(connectionDetails = connectionDetails,
     drugGroupConceptIds <- c(19047423,19017067,1310149,43013024,36428260,40228152,21601784,21601823,21601665,21601744,21601461,21601855,21600095,21600713,21600744) #412
     deviceConceptIds <- c(45772824) #604
     #measConceptIds <- c(3038553000,3004249000,3012888000,3000963713,3004501840,3008631840,3048150842) #708
-    # 
+    measValConceptIds <- c(3038553000,3004249000,3012888000,3000963713,3004501840,3008631840,3048150842)
     
     for( i in 1:length(targetIds)){
         targetCohortId <- targetIds[i]
@@ -218,7 +218,7 @@ additionalResult <- function(connectionDetails = connectionDetails,
                                                         conceptIdsConditionEraStartMediumTerm = c(),
                                                         conceptIdsConditionEraStartShortTerm = c(),
                                                         conceptIdsConditionGroupEraAnyTimePrior = c(),
-                                                        conceptIdsConditionGroupEraLongTerm = conditionGroupConceptIds,
+                                                        conceptIdsConditionGroupEraLongTerm = c(),
                                                         conceptIdsConditionGroupEraMediumTerm = c(),
                                                         conceptIdsConditionGroupEraShortTerm = shorTermAcs,
                                                         conceptIdsConditionGroupEraOverlapping = c(),
@@ -232,7 +232,7 @@ additionalResult <- function(connectionDetails = connectionDetails,
                                                         conceptIdsDrugEraAnyTimePrior = c(),
                                                         conceptIdsDrugEraLongTerm = c(),
                                                         conceptIdsDrugEraMediumTerm = c(),
-                                                        conceptIdsDrugEraShortTerm = drugGroupConceptIds,
+                                                        conceptIdsDrugEraShortTerm = c(),
                                                         conceptIdsDrugEraOverlapping = c(),
                                                         conceptIdsDrugEraStartLongTerm = c(),
                                                         conceptIdsDrugEraStartMediumTerm = c(),
@@ -240,7 +240,7 @@ additionalResult <- function(connectionDetails = connectionDetails,
                                                         conceptIdsDrugGroupEraAnyTimePrior = c(),
                                                         conceptIdsDrugGroupEraLongTerm = c(),
                                                         conceptIdsDrugGroupEraMediumTerm = c(),
-                                                        conceptIdsDrugGroupEraShortTerm = drugGroupConceptIds,
+                                                        conceptIdsDrugGroupEraShortTerm = c(),
                                                         conceptIdsDrugGroupEraOverlapping = c(),
                                                         conceptIdsDrugGroupEraStartLongTerm = c(),
                                                         conceptIdsDrugGroupEraStartMediumTerm = c(),
@@ -252,7 +252,7 @@ additionalResult <- function(connectionDetails = connectionDetails,
                                                         conceptIdsDeviceExposureAnyTimePrior = c(),
                                                         conceptIdsDeviceExposureLongTerm = c(),
                                                         conceptIdsDeviceExposureMediumTerm = c(),
-                                                        conceptIdsDeviceExposureShortTerm = deviceConceptIds,
+                                                        conceptIdsDeviceExposureShortTerm = c(),
                                                         conceptIdsMeasurementAnyTimePrior = c(),
                                                         conceptIdsMeasurementLongTerm = c(),
                                                         conceptIdsMeasurementMediumTerm = c(),
@@ -260,7 +260,7 @@ additionalResult <- function(connectionDetails = connectionDetails,
                                                         conceptIdsMeasurementValueAnyTimePrior = c(),
                                                         conceptIdsMeasurementValueLongTerm = c(),
                                                         conceptIdsMeasurementValueMediumTerm = c(),
-                                                        conceptIdsMeasurementValueShortTerm = c(), #measConceptIds,
+                                                        conceptIdsMeasurementValueShortTerm = measValConceptIds, #measConceptIds,
                                                         conceptIdsMeasurementRangeGroupAnyTimePrior = c(),
                                                         conceptIdsMeasurementRangeGroupLongTerm = c(),
                                                         conceptIdsMeasurementRangeGroupMediumTerm = c(),
@@ -1179,18 +1179,18 @@ setTableSpecification <- function(useDemographicsGender = FALSE,
     if(length(conceptIdsMeasurementValueLongTerm)){
         label <- c(label, "MeasurementValueLongTerm")
         analysisId <- c(analysisId, 706)
-        covariateIds <- c(covariateIds, paste0(sprintf("%d%03d",conceptIdsMeasurementValueLongTerm,706),collapse=","))
+        covariateIds <- c(covariateIds, paste0(sprintf("%s%03d",conceptIdsMeasurementValueLongTerm,706),collapse=","))
     }
     if(length(conceptIdsMeasurementValueMediumTerm)){
         label <- c(label, "MeasurementValueMediumTerm")
         analysisId <- c(analysisId, 707)
-        covariateIds <- c(covariateIds, paste0(sprintf("%d%03d",conceptIdsMeasurementValueMediumTerm,707),collapse=","))
+        covariateIds <- c(covariateIds, paste0(sprintf("%s%03d",conceptIdsMeasurementValueMediumTerm,707),collapse=","))
     }
     
     if(length(conceptIdsMeasurementValueShortTerm)){
         label <- c(label, "MeasurementValueShortTerm")
         analysisId <- c(analysisId, 708)
-        covariateIds <- c(covariateIds, paste0(sprintf("%d%03d",conceptIdsMeasurementValueShortTerm,708),collapse=","))
+        covariateIds <- c(covariateIds, paste0(sprintf("%s%03d",conceptIdsMeasurementValueShortTerm,708),collapse=","))
     }
     
     if(length(conceptIdsMeasurementRangeGroupAnyTimePrior)){
