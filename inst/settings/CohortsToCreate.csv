@@ -5,6 +5,8 @@ atlasId,atlasName,cohortId,name
 1254,Clopidogrel2013To2015,1254,Clopidogrel2013To2015
 1240,NACE,1240,NACE
 1202,NACE (only primary condition),1202,NACE_narrow
+1300,MACE,1300,MACE
+1301,MACE (only primary condition),1301,MACE_narrow
 653,NACE or mortality,653,NACE_w_death
 654,NACE or mortality (only primary condition),654,NACE_w_death_narrow
 1237,Ischemic event,1237,IschemicEvent
@@ -17,9 +19,12 @@ atlasId,atlasName,cohortId,name
 20,All-cause mortality,20,anyDeath
 1239,Hemorrhagic event,1239,HemorrhagicEvent
 1200,Hemorrhagic event (only primary conditino),1200,HemorrhagicEvent_narrow
+1205,Hemorrhagic event lead to transfusion or death,1205,HemorrhagicEvent_intervention
 1236,GI bleeding,1236,giBleeding
 1197,GI bleeding (only primary condition),1197,giBleeding_narrow
 1235,Hemorrhagic stroke,1235,hemorrhagicStroke
 1190,Hemorrhagic stroke (only primary condition),1190,hemorrhagicStroke_narrow
 1165,Dyspnea,1165,dyspnea
 1241,PCI due to ACS,1241,PCIduetoACS
+30,Cardiovascular-related mortality,30,Cardiovascular-related_mortality
+31,Cardiovascular-related mortality (only primary condition),31,Cardiovascular-related_mortality_narrow

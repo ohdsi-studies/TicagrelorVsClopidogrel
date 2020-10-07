@@ -1006,11 +1006,11 @@ prepareKaplanMeier <- function(population) {
   cutoff <- quantile(population$survivalTime, dataCutoff)
   data <- data[data$time <= cutoff, ]
   if (cutoff <= 300) {
-    xBreaks <- seq(0, cutoff, by = 50)
+    xBreaks <- seq(0, cutoff, by = 30)
   } else if (cutoff <= 600) {
-    xBreaks <- seq(0, cutoff, by = 100)
+    xBreaks <- seq(0, cutoff, by = 30)
   } else {
-    xBreaks <- seq(0, cutoff, by = 250)
+    xBreaks <- seq(0, cutoff, by = 30)
   }
   
   targetAtRisk <- c()
